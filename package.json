@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "dev:convex": "convex dev",
-    "build": "npx tsc && npx vite build",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "sync": "npx tsx scripts/sync-posts.ts",
