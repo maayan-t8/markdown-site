@@ -1,0 +1,273 @@
+# Markdown Site
+
+A minimalist markdown site built with React, Convex, and Vite. Optimized for SEO, AI agents, and LLM discovery.
+
+## Features
+
+- Markdown-based blog posts with frontmatter
+- Syntax highlighting for code blocks
+- Four theme options: Dark, Light, Tan (default), Cloud
+- Real-time data with Convex
+- Fully responsive design
+
+### SEO and Discovery
+
+- RSS feeds at `/rss.xml` and `/rss-full.xml` (with full content)
+- Dynamic sitemap at `/sitemap.xml`
+- JSON-LD structured data for Google rich results
+- Open Graph and Twitter Card meta tags
+- `robots.txt` with AI crawler rules
+- `llms.txt` for AI agent discovery
+
+### AI and LLM Access
+
+- `/api/posts` - JSON list of all posts for agents
+- `/api/post?slug=xxx` - Single post JSON or markdown
+- `/rss-full.xml` - Full content RSS for LLM ingestion
+- Copy Page dropdown for sharing to ChatGPT, Claude, Cursor, VS Code
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18 or higher
+- A Convex account
+
+### Setup
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Initialize Convex:
+
+```bash
+npx convex dev
+```
+
+This will create your Convex project and generate the `.env.local` file.
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+4. Open http://localhost:5173
+
+## Writing Blog Posts
+
+Create markdown files in `content/blog/` with frontmatter:
+
+## Static Pages (Optional)
+
+Create optional pages like About, Projects, or Contact in `content/pages/`:
+
+```markdown
+---
+title: "About"
+slug: "about"
+published: true
+order: 1
+---
+
+Your page content here...
+```
+
+Pages appear as navigation links in the top right, next to the theme toggle. The `order` field controls display order (lower numbers first).
+
+```markdown
+---
+title: "Your Post Title"
+description: "A brief description"
+date: "2025-01-15"
+slug: "your-post-slug"
+published: true
+tags: ["tag1", "tag2"]
+readTime: "5 min read"
+image: "/images/my-header.png"
+---
+
+Your markdown content here...
+```
+
+## Images
+
+### Open Graph Images
+
+Add an `image` field to frontmatter for social media previews:
+
+```yaml
+image: "/images/my-header.png"
+```
+
+Recommended dimensions: 1200x630 pixels. Images can be local (`/images/...`) or external URLs.
+
+### Inline Images
+
+Add images in markdown content:
+
+```markdown
+![Alt text description](/images/screenshot.png)
+```
+
+Place image files in `public/images/`. The alt text displays as a caption.
+
+### Site Logo
+
+Edit `src/pages/Home.tsx` to set your site logo:
+
+```typescript
+const siteConfig = {
+  logo: "/images/logo.svg", // Set to null to hide
+  // ...
+};
+```
+
+Replace `public/images/logo.svg` with your own logo file.
+
+### Favicon
+
+Replace `public/favicon.svg` with your own icon. The default is a rounded square with the letter "m". Edit the SVG to change the letter or style.
+
+### Default Open Graph Image
+
+The default OG image is used when posts do not have an `image` field. Replace `public/images/og-default.svg` with your own image (1200x630 recommended).
+
+Update the reference in `src/pages/Post.tsx`:
+
+```typescript
+const DEFAULT_OG_IMAGE = "/images/og-default.svg";
+```
+
+## Syncing Posts
+
+Posts are synced to Convex at build time. To manually sync:
+
+```bash
+npm run sync
+```
+
+## Deployment
+
+### Netlify
+
+1. Connect your repository to Netlify
+2. Set environment variables:
+   - `VITE_CONVEX_URL` - Your Convex deployment URL
+3. Update `netlify.toml` with your Convex HTTP URL (replace `YOUR_CONVEX_DEPLOYMENT`)
+4. Deploy with:
+
+```bash
+npm run deploy
+```
+
+## Project Structure
+
+```
+personal-blog/
+├── content/blog/      # Markdown blog posts
+├── convex/            # Convex backend
+│   ├── http.ts        # HTTP endpoints (sitemap, API, RSS)
+│   ├── posts.ts       # Post queries and mutations
+│   ├── rss.ts         # RSS feed generation
+│   └── schema.ts      # Database schema
+├── netlify/           # Netlify edge functions
+├── public/            # Static assets
+│   ├── images/        # Blog images and OG images
+│   ├── robots.txt     # Crawler rules
+│   └── llms.txt       # AI agent discovery
+├── scripts/           # Build scripts
+└── src/
+    ├── components/    # React components
+    ├── context/       # Theme context
+    ├── pages/         # Page components
+    └── styles/        # Global CSS
+```
+
+## Tech Stack
+
+- React 18
+- TypeScript
+- Vite
+- Convex
+- react-markdown
+- react-syntax-highlighter
+- date-fns
+- lucide-react
+- Netlify
+
+## API Endpoints
+
+| Endpoint                       | Description                     |
+| ------------------------------ | ------------------------------- |
+| `/rss.xml`                     | RSS feed with post descriptions |
+| `/rss-full.xml`                | RSS feed with full post content |
+| `/sitemap.xml`                 | Dynamic XML sitemap             |
+| `/api/posts`                   | JSON list of all posts          |
+| `/api/post?slug=xxx`           | Single post as JSON             |
+| `/api/post?slug=xxx&format=md` | Single post as markdown         |
+| `/meta/post?slug=xxx`          | Open Graph HTML for crawlers    |
+
+## How Blog Post Slugs Work
+
+Slugs are defined in the frontmatter of each markdown file:
+
+```markdown
+---
+slug: "my-post-slug"
+---
+```
+
+The slug becomes the URL path: `yourdomain.com/my-post-slug`
+
+Rules:
+
+- Slugs must be unique across all posts
+- Use lowercase letters, numbers, and hyphens
+- The sync script reads the `slug` field from frontmatter
+- Posts are queried by slug using a Convex index
+
+## Theme Configuration
+
+The default theme is Tan. Users can cycle through themes using the toggle:
+
+- Dark (Moon icon)
+- Light (Sun icon)
+- Tan (Half icon) - default
+- Cloud (Cloud icon)
+
+To change the default theme, edit `src/context/ThemeContext.tsx`:
+
+```typescript
+const DEFAULT_THEME: Theme = "tan"; // Change to "dark", "light", or "cloud"
+```
+
+## Font Configuration
+
+The blog uses a serif font (New York) by default. To switch fonts, edit `src/styles/global.css`:
+
+```css
+body {
+  /* Sans-serif option */
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+    Cantarell, sans-serif;
+
+  /* Serif option (default) */
+  font-family:
+    "New York",
+    -apple-system-ui-serif,
+    ui-serif,
+    Georgia,
+    Cambria,
+    "Times New Roman",
+    Times,
+    serif;
+}
+```
+
+Replace the `font-family` property with your preferred font stack.
+# markdown-site
