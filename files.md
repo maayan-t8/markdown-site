@@ -112,9 +112,12 @@ Markdown files for static pages like About, Projects, Contact.
 
 ## Netlify (`netlify/edge-functions/`)
 
-| File         | Description                                      |
-| ------------ | ------------------------------------------------ |
-| `botMeta.ts` | Edge function for social media crawler detection |
+| File         | Description                                           |
+| ------------ | ----------------------------------------------------- |
+| `botMeta.ts` | Edge function for social media crawler detection      |
+| `rss.ts`     | Proxies `/rss.xml` and `/rss-full.xml` to Convex HTTP |
+| `sitemap.ts` | Proxies `/sitemap.xml` to Convex HTTP                 |
+| `api.ts`     | Proxies `/api/posts` and `/api/post` to Convex HTTP   |
 
 ## Public Assets (`public/`)
 

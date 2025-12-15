@@ -165,30 +165,18 @@ The HTTP URL uses `.convex.site` instead of `.convex.cloud`:
 https://happy-animal-123.convex.site
 ```
 
-## Step 6: Configure Netlify Redirects
+## Step 6: Verify Edge Functions
 
-Open `netlify.toml` and replace `YOUR_CONVEX_DEPLOYMENT` with your actual deployment name:
+The blog uses Netlify Edge Functions to dynamically proxy RSS, sitemap, and API requests to your Convex HTTP endpoints. No manual URL configuration is needed.
 
-```toml
-# Before
-[[redirects]]
-  from = "/rss.xml"
-  to = "https://YOUR_CONVEX_DEPLOYMENT.convex.site/rss.xml"
+Edge functions in `netlify/edge-functions/`:
 
-# After (example)
-[[redirects]]
-  from = "/rss.xml"
-  to = "https://happy-animal-123.convex.site/rss.xml"
-```
+- `rss.ts` - Proxies `/rss.xml` and `/rss-full.xml`
+- `sitemap.ts` - Proxies `/sitemap.xml`
+- `api.ts` - Proxies `/api/posts` and `/api/post`
+- `botMeta.ts` - Serves Open Graph HTML to social media crawlers
 
-Update all redirect rules with your deployment name:
-
-- `/rss.xml`
-- `/rss-full.xml`
-- `/sitemap.xml`
-- `/api/posts`
-- `/api/post`
-- `/meta/post`
+These functions automatically read `VITE_CONVEX_URL` from your environment and convert it to the Convex HTTP site URL (`.cloud` becomes `.site`).
 
 ## Step 7: Deploy to Netlify
 
@@ -495,9 +483,10 @@ Your blog includes these API endpoints for search engines and AI:
 
 ### RSS/Sitemap not working
 
-1. Verify `netlify.toml` has correct Convex URL
-2. Check that Convex functions are deployed
-3. Test the Convex HTTP URL directly in browser
+1. Verify `VITE_CONVEX_URL` is set in Netlify environment variables
+2. Check that Convex HTTP endpoints are deployed (`npx convex deploy`)
+3. Test the Convex HTTP URL directly: `https://your-deployment.convex.site/rss.xml`
+4. Verify edge functions exist in `netlify/edge-functions/`
 
 ### Build failures on Netlify
 
@@ -545,6 +534,12 @@ markdown-site/
 │   ├── posts.ts        # Post queries/mutations
 │   ├── rss.ts          # RSS feed generation
 │   └── schema.ts       # Database schema
+├── netlify/
+│   └── edge-functions/ # Netlify edge functions
+│       ├── rss.ts      # RSS proxy
+│       ├── sitemap.ts  # Sitemap proxy
+│       ├── api.ts      # API proxy
+│       └── botMeta.ts  # OG crawler detection
 ├── public/             # Static assets
 │   ├── robots.txt      # Crawler rules
 │   └── llms.txt        # AI agent discovery

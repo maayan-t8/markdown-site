@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.1.0] - 2025-12-14
+
+### Added
+
+- Netlify Edge Functions for dynamic Convex HTTP proxying
+  - `rss.ts` proxies `/rss.xml` and `/rss-full.xml`
+  - `sitemap.ts` proxies `/sitemap.xml`
+  - `api.ts` proxies `/api/posts` and `/api/post`
+- Vite dev server proxy for RSS, sitemap, and API endpoints
+
+### Changed
+
+- Replaced hardcoded Convex URLs in netlify.toml with edge functions
+- Edge functions dynamically read `VITE_CONVEX_URL` from environment
+- Updated setup guide, docs, and README with edge function documentation
+
+### Fixed
+
+- RSS feeds and sitemap now work without manual URL configuration
+- Local development properly proxies API routes to Convex
+
 ## [1.0.0] - 2025-12-14
 
 ### Added
@@ -25,7 +46,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - API endpoints for LLM access:
   - `/api/posts` - JSON list of all posts
   - `/api/post?slug=xxx` - Single post as JSON or markdown
-- Copy Page dropdown for sharing to ChatGPT, Claude, Cursor, VS Code
+- Copy Page dropdown for sharing to ChatGPT, Claude
 - Open Graph and Twitter Card meta tags
 - Netlify edge function for social media crawler detection
 - Build-time markdown sync from `content/blog/` to Convex

@@ -5,54 +5,37 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# Convex HTTP endpoints
-# RSS feeds
-[[redirects]]
-  from = "/rss.xml"
-  to = "https://agreeable-trout-200.convex.site/rss.xml"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/rss-full.xml"
-  to = "https://agreeable-trout-200.convex.site/rss-full.xml"
-  status = 200
-  force = true
-
-# Sitemap for search engines
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "https://agreeable-trout-200.convex.site/sitemap.xml"
-  status = 200
-  force = true
-
-# API endpoints for LLMs and agents
-[[redirects]]
-  from = "/api/posts"
-  to = "https://agreeable-trout-200.convex.site/api/posts"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/api/post"
-  to = "https://agreeable-trout-200.convex.site/api/post"
-  status = 200
-  force = true
-
-# Open Graph metadata endpoint
-[[redirects]]
-  from = "/meta/post"
-  to = "https://agreeable-trout-200.convex.site/meta/post"
-  status = 200
-  force = true
-
 # SPA fallback for client-side routing (must be last)
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
-# Edge function for Open Graph bot detection
+# Edge functions for dynamic Convex HTTP proxying
+# RSS feeds
+[[edge_functions]]
+  path = "/rss.xml"
+  function = "rss"
+
+[[edge_functions]]
+  path = "/rss-full.xml"
+  function = "rss"
+
+# Sitemap
+[[edge_functions]]
+  path = "/sitemap.xml"
+  function = "sitemap"
+
+# API endpoints
+[[edge_functions]]
+  path = "/api/posts"
+  function = "api"
+
+[[edge_functions]]
+  path = "/api/post"
+  function = "api"
+
+# Open Graph bot detection (catches all other routes)
 [[edge_functions]]
   path = "/*"
   function = "botMeta"

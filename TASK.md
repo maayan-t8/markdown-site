@@ -2,7 +2,7 @@
 
 ## Current Status
 
-v1.0.0 ready for deployment. Build passes. TypeScript verified.
+v1.1.0 ready for deployment. Build passes. TypeScript verified.
 
 ## Completed
 
@@ -26,13 +26,15 @@ v1.0.0 ready for deployment. Build passes. TypeScript verified.
 - [x] Netlify build configuration verified
 - [x] SPA 404 fallback configured
 - [x] Mobile responsive design
+- [x] Edge functions for dynamic Convex HTTP proxying
+- [x] Vite dev server proxy for local development
 
 ## Deployment Steps
 
 1. Run `npx convex dev` to initialize Convex
-2. Update `netlify.toml` with your Convex deployment URL
-3. Set `VITE_CONVEX_URL` in Netlify environment variables
-4. Connect repo to Netlify and deploy
+2. Set `CONVEX_DEPLOY_KEY` in Netlify environment variables
+3. Connect repo to Netlify and deploy
+4. Edge functions automatically handle RSS, sitemap, and API routes
 
 ## Future Enhancements
 

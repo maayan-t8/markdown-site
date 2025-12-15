@@ -39,6 +39,12 @@ markdown-site/
 │   ├── pages.ts        # Page queries/mutations
 │   ├── http.ts         # API endpoints
 │   └── rss.ts          # RSS generation
+├── netlify/
+│   └── edge-functions/ # Netlify edge functions
+│       ├── rss.ts      # RSS proxy
+│       ├── sitemap.ts  # Sitemap proxy
+│       ├── api.ts      # API proxy
+│       └── botMeta.ts  # OG crawler detection
 ├── src/
 │   ├── components/     # React components
 │   ├── context/        # Theme context
@@ -186,9 +192,11 @@ body {
 ### Netlify setup
 
 1. Connect GitHub repo to Netlify
-2. Set build command: `npm run deploy`
-3. Set publish directory: `dist`
-4. Add env variable: `VITE_CONVEX_URL`
+2. Build command: `npm ci --include=dev && npx convex deploy --cmd 'npm run build'`
+3. Publish directory: `dist`
+4. Add env variable: `CONVEX_DEPLOY_KEY` (from Convex Dashboard)
+
+The build automatically sets `VITE_CONVEX_URL` from the deploy key.
 
 ### Convex production
 
@@ -196,16 +204,9 @@ body {
 npx convex deploy
 ```
 
-### netlify.toml
+### Edge functions
 
-Replace `YOUR_CONVEX_DEPLOYMENT` with your deployment name:
-
-```toml
-[[redirects]]
-  from = "/rss.xml"
-  to = "https://YOUR_DEPLOYMENT.convex.site/rss.xml"
-  status = 200
-```
+RSS, sitemap, and API routes are handled by Netlify Edge Functions in `netlify/edge-functions/`. They dynamically read `VITE_CONVEX_URL` from the environment. No manual URL configuration needed.
 
 ## Convex schema
 
@@ -250,12 +251,13 @@ export default defineSchema({
 
 **RSS/Sitemap errors**
 
-- Verify `netlify.toml` Convex URL
-- Test Convex HTTP URL directly
-- Check Convex function deployment
+- Verify `VITE_CONVEX_URL` is set in Netlify
+- Test Convex HTTP URL: `https://your-deployment.convex.site/rss.xml`
+- Check edge functions in `netlify/edge-functions/`
 
 **Build failures**
 
-- Verify `VITE_CONVEX_URL` is set
+- Verify `CONVEX_DEPLOY_KEY` is set in Netlify
+- Ensure `@types/node` is in devDependencies
+- Build command must include `--include=dev`
 - Check Node.js version (18+)
-- Review Netlify build logs

@@ -24,7 +24,7 @@ A minimalist markdown site built with React, Convex, and Vite. Optimized for SEO
 - `/api/posts` - JSON list of all posts for agents
 - `/api/post?slug=xxx` - Single post JSON or markdown
 - `/rss-full.xml` - Full content RSS for LLM ingestion
-- Copy Page dropdown for sharing to ChatGPT, Claude, Cursor, VS Code
+- Copy Page dropdown for sharing to ChatGPT, Claude
 
 ## Getting Started
 
@@ -202,9 +202,8 @@ npx convex deploy
    - Publish directory: `dist`
 4. Add environment variable:
    - `CONVEX_DEPLOY_KEY` - Generate from [Convex Dashboard](https://dashboard.convex.dev) > Project Settings > Deploy Key
-5. Update `netlify.toml` with your production Convex HTTP URL (replace `YOUR_CONVEX_DEPLOYMENT`)
 
-The `CONVEX_DEPLOY_KEY` lets Netlify automatically deploy functions and set `VITE_CONVEX_URL` on each build.
+The `CONVEX_DEPLOY_KEY` lets Netlify automatically deploy functions and set `VITE_CONVEX_URL` on each build. Edge functions dynamically proxy RSS, sitemap, and API requests to your Convex HTTP endpoints.
 
 **Build issues?** Netlify sets `NODE_ENV=production` which skips devDependencies. The `--include=dev` flag fixes this. See [netlify-deploy-fix.md](./netlify-deploy-fix.md) for detailed troubleshooting.
 
@@ -219,6 +218,11 @@ markdown-site/
 │   ├── rss.ts         # RSS feed generation
 │   └── schema.ts      # Database schema
 ├── netlify/           # Netlify edge functions
+│   └── edge-functions/
+│       ├── rss.ts     # RSS feed proxy
+│       ├── sitemap.ts # Sitemap proxy
+│       ├── api.ts     # API endpoint proxy
+│       └── botMeta.ts # OG crawler detection
 ├── public/            # Static assets
 │   ├── images/        # Blog images and OG images
 │   ├── robots.txt     # Crawler rules

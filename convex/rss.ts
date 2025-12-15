@@ -2,9 +2,10 @@ import { httpAction } from "./_generated/server";
 import { api } from "./_generated/api";
 
 // Site configuration for RSS feed
-const SITE_URL = "https://your-blog.netlify.app";
-const SITE_TITLE = "Wayne Sutton";
-const SITE_DESCRIPTION = "Developer and writer. Building with Convex and AI.";
+const SITE_URL = process.env.SITE_URL || "https://markdowncms.netlify.app";
+const SITE_TITLE = "Markdown Site";
+const SITE_DESCRIPTION =
+  "An open source markdown site powered by Convex and Netlify.";
 
 // Escape XML special characters
 function escapeXml(text: string): string {
