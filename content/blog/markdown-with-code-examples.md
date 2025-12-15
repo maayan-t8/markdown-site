@@ -85,8 +85,11 @@ npm install
 # Start development server
 npm run dev
 
-# Sync posts to Convex
+# Sync posts to Convex (development)
 npm run sync
+
+# Sync posts to Convex (production)
+npm run sync:prod
 
 # Deploy to production
 npm run deploy
@@ -114,12 +117,13 @@ Reference files with inline code: `convex/schema.ts`, `src/pages/Home.tsx`.
 
 ## Tables
 
-| Command          | Description              |
-| ---------------- | ------------------------ |
-| `npm run dev`    | Start development server |
-| `npm run build`  | Build for production     |
-| `npm run sync`   | Sync markdown to Convex  |
-| `npx convex dev` | Start Convex dev server  |
+| Command              | Description                    |
+| -------------------- | ------------------------------ |
+| `npm run dev`        | Start development server       |
+| `npm run build`      | Build for production           |
+| `npm run sync`       | Sync markdown to Convex (dev)  |
+| `npm run sync:prod`  | Sync markdown to Convex (prod) |
+| `npx convex dev`     | Start Convex dev server        |
 
 ## Lists
 
@@ -177,5 +181,5 @@ content/blog/
 
 1. Keep slugs URL-friendly (lowercase, hyphens)
 2. Set `published: false` for drafts
-3. Run `npm run sync` after adding posts
+3. Run `npm run sync` after adding posts (or `npm run sync:prod` for production)
 4. Use descriptive titles for SEO

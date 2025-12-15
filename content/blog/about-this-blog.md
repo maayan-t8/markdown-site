@@ -72,8 +72,10 @@ The setup takes about 10 minutes:
 
 1. Fork the repo
 2. Run `npx convex dev` to set up your backend
-3. Run `npm run sync` to upload posts
+3. Run `npm run sync` to upload posts (development) or `npm run sync:prod` (production)
 4. Deploy to Netlify
+
+**Development vs Production:** Use `npm run sync` when testing locally against your dev Convex deployment. Use `npm run sync:prod` when deploying content to your live production site.
 
 Read the [setup guide](/setup-guide) for detailed steps.
 

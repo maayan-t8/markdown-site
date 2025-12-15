@@ -10,6 +10,25 @@ import {
   Activity,
 } from "lucide-react";
 
+// Site launched Dec 14, 2025 at 1:00 PM (v1.0.0), stats added same day (v1.2.0)
+const SITE_LAUNCH_DATE = "Dec 14, 2025 at 1:00 PM";
+
+// Format tracking start date with time
+function formatTrackingDate(timestamp: number | null): string {
+  if (!timestamp) return "No data yet";
+  const date = new Date(timestamp);
+  const dateStr = date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+  const timeStr = date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+  });
+  return `${dateStr} at ${timeStr}`;
+}
+
 export default function Stats() {
   const navigate = useNavigate();
   const stats = useQuery(api.stats.getStats);
@@ -56,7 +75,10 @@ export default function Stats() {
             <span className="stat-card-label">Total Views</span>
           </div>
           <div className="stat-card-value">{stats.totalPageViews}</div>
-          <div className="stat-card-desc">All-time page views</div>
+          <div className="stat-card-desc">
+            Since {formatTrackingDate(stats.trackingSince)}
+          </div>
+          <div className="stat-card-note">Site launched {SITE_LAUNCH_DATE}</div>
         </div>
 
         {/* Unique visitors card */}
@@ -131,4 +153,3 @@ export default function Stats() {
     </div>
   );
 }
-

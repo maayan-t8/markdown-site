@@ -12,7 +12,7 @@ readTime: "8 min read"
 
 This guide walks you through forking [this markdown site](https://github.com/waynesutton/markdown-site), setting up your Convex backend, and deploying to Netlify. The entire process takes about 10 minutes.
 
-**How publishing works:** Once deployed, you write posts in markdown, run `npm run sync`, and they appear on your live site immediately. No rebuild or redeploy needed. Convex handles real-time data sync, so all connected browsers update automatically.
+**How publishing works:** Once deployed, you write posts in markdown, run `npm run sync` for development or `npm run sync:prod` for production, and they appear on your live site immediately. No rebuild or redeploy needed. Convex handles real-time data sync, so all connected browsers update automatically.
 
 ## Table of Contents
 
@@ -47,6 +47,7 @@ This guide walks you through forking [this markdown site](https://github.com/way
     - [Add Static Pages (Optional)](#add-static-pages-optional)
     - [Update SEO Meta Tags](#update-seo-meta-tags)
     - [Update llms.txt and robots.txt](#update-llmstxt-and-robotstxt)
+  - [Real-time Stats](#real-time-stats)
   - [API Endpoints](#api-endpoints)
   - [Troubleshooting](#troubleshooting)
     - [Posts not appearing](#posts-not-appearing)

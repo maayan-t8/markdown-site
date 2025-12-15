@@ -1,4 +1,4 @@
-# Markdown Site
+# markdown "sync" site
 
 A minimalist markdown site built with React, Convex, and Vite. Optimized for SEO, AI agents, and LLM discovery.
 

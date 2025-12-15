@@ -4,7 +4,7 @@ import PostList from "../components/PostList";
 
 // Site configuration - customize this for your site
 const siteConfig = {
-  name: "Markdown Site",
+  name: 'markdown "sync" site',
   title: "Real-time Site with Convex",
   // Optional logo/header image (place in public/images/, set to null to hide)
   logo: "/images/logo.svg" as string | null,

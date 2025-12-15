@@ -104,6 +104,7 @@ export const getStats = query({
     uniqueVisitors: v.number(),
     publishedPosts: v.number(),
     publishedPages: v.number(),
+    trackingSince: v.union(v.number(), v.null()),
     pageStats: v.array(
       v.object({
         path: v.string(),
@@ -133,8 +134,15 @@ export const getStats = query({
       .map(([path, count]) => ({ path, count }))
       .sort((a, b) => b.count - a.count);
 
-    // Get all page views
-    const allViews = await ctx.db.query("pageViews").collect();
+    // Get all page views ordered by timestamp to find earliest
+    const allViews = await ctx.db
+      .query("pageViews")
+      .withIndex("by_timestamp")
+      .order("asc")
+      .collect();
+
+    // Get tracking start date (earliest view timestamp)
+    const trackingSince = allViews.length > 0 ? allViews[0].timestamp : null;
 
     // Aggregate views by path and count unique sessions
     const viewsByPath: Record<string, number> = {};
@@ -197,6 +205,7 @@ export const getStats = query({
       uniqueVisitors: uniqueSessions.size,
       publishedPosts: posts.length,
       publishedPages: pages.length,
+      trackingSince,
       pageStats,
     };
   },
