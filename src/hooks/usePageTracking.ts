@@ -1,10 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useMutation } from "convex/react";
 import { useLocation } from "react-router-dom";
 import { api } from "../../convex/_generated/api";
 
 // Heartbeat interval: 30 seconds
 const HEARTBEAT_INTERVAL_MS = 30 * 1000;
+
+// Minimum time between heartbeats to prevent write conflicts: 5 seconds
+const HEARTBEAT_DEBOUNCE_MS = 5 * 1000;
 
 // Session ID key in localStorage
 const SESSION_ID_KEY = "markdown_blog_session_id";
@@ -56,16 +59,60 @@ function getPageType(path: string): string {
 export function usePageTracking(): void {
   const location = useLocation();
   const recordPageView = useMutation(api.stats.recordPageView);
-  const heartbeat = useMutation(api.stats.heartbeat);
+  const heartbeatMutation = useMutation(api.stats.heartbeat);
 
   // Track if we've recorded view for current path
   const lastRecordedPath = useRef<string | null>(null);
   const sessionIdRef = useRef<string | null>(null);
 
+  // Track heartbeat state to prevent duplicate calls and write conflicts
+  const isHeartbeatPending = useRef(false);
+  const lastHeartbeatTime = useRef(0);
+  const lastHeartbeatPath = useRef<string | null>(null);
+
   // Initialize session ID
   useEffect(() => {
     sessionIdRef.current = getSessionId();
   }, []);
+
+  // Debounced heartbeat function to prevent write conflicts
+  const sendHeartbeat = useCallback(
+    async (path: string) => {
+      const sessionId = sessionIdRef.current;
+      if (!sessionId) return;
+
+      const now = Date.now();
+
+      // Skip if heartbeat is already pending
+      if (isHeartbeatPending.current) {
+        return;
+      }
+
+      // Skip if same path and sent recently (debounce)
+      if (
+        lastHeartbeatPath.current === path &&
+        now - lastHeartbeatTime.current < HEARTBEAT_DEBOUNCE_MS
+      ) {
+        return;
+      }
+
+      isHeartbeatPending.current = true;
+      lastHeartbeatTime.current = now;
+      lastHeartbeatPath.current = path;
+
+      try {
+        await heartbeatMutation({
+          sessionId,
+          currentPath: path,
+        });
+      } catch {
+        // Silently fail - analytics shouldn't break the app
+      } finally {
+        isHeartbeatPending.current = false;
+      }
+    },
+    [heartbeatMutation]
+  );
 
   // Record page view when path changes
   useEffect(() => {
@@ -91,28 +138,18 @@ export function usePageTracking(): void {
   // Send heartbeat on interval and on path change
   useEffect(() => {
     const path = location.pathname;
-    const sessionId = sessionIdRef.current;
 
-    if (!sessionId) return;
-
-    // Send initial heartbeat
-    const sendHeartbeat = () => {
-      heartbeat({
-        sessionId,
-        currentPath: path,
-      }).catch(() => {
-        // Silently fail
-      });
-    };
-
-    sendHeartbeat();
+    // Send initial heartbeat for this path
+    sendHeartbeat(path);
 
     // Set up interval for ongoing heartbeats
-    const intervalId = setInterval(sendHeartbeat, HEARTBEAT_INTERVAL_MS);
+    const intervalId = setInterval(() => {
+      sendHeartbeat(path);
+    }, HEARTBEAT_INTERVAL_MS);
 
     return () => {
       clearInterval(intervalId);
     };
-  }, [location.pathname, heartbeat]);
+  }, [location.pathname, sendHeartbeat]);
 }
 

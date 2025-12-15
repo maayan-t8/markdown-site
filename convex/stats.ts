@@ -7,6 +7,9 @@ const DEDUP_WINDOW_MS = 30 * 60 * 1000;
 // Session timeout: 2 minutes in milliseconds
 const SESSION_TIMEOUT_MS = 2 * 60 * 1000;
 
+// Heartbeat dedup window: 10 seconds (prevents write conflicts from rapid calls)
+const HEARTBEAT_DEDUP_MS = 10 * 1000;
+
 /**
  * Record a page view event.
  * Idempotent: same session viewing same path within 30min = 1 view.
@@ -51,6 +54,7 @@ export const recordPageView = mutation({
 /**
  * Update active session heartbeat.
  * Creates or updates session with current path and timestamp.
+ * Idempotent: skips update if recently updated with same path (prevents write conflicts).
  */
 export const heartbeat = mutation({
   args: {
@@ -61,26 +65,35 @@ export const heartbeat = mutation({
   handler: async (ctx, args) => {
     const now = Date.now();
 
-    // Find existing session by sessionId
+    // Find existing session by sessionId using index
     const existingSession = await ctx.db
       .query("activeSessions")
       .withIndex("by_sessionId", (q) => q.eq("sessionId", args.sessionId))
       .first();
 
     if (existingSession) {
-      // Update existing session
+      // Early return if same path and recently updated (idempotent - prevents write conflicts)
+      if (
+        existingSession.currentPath === args.currentPath &&
+        now - existingSession.lastSeen < HEARTBEAT_DEDUP_MS
+      ) {
+        return null;
+      }
+
+      // Patch directly with new data
       await ctx.db.patch(existingSession._id, {
         currentPath: args.currentPath,
         lastSeen: now,
       });
-    } else {
-      // Create new session
-      await ctx.db.insert("activeSessions", {
-        sessionId: args.sessionId,
-        currentPath: args.currentPath,
-        lastSeen: now,
-      });
+      return null;
     }
+
+    // Create new session only if none exists
+    await ctx.db.insert("activeSessions", {
+      sessionId: args.sessionId,
+      currentPath: args.currentPath,
+      lastSeen: now,
+    });
 
     return null;
   },
