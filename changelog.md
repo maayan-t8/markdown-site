@@ -4,6 +4,152 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.16.0] - 2025-12-21
+
+### Added
+
+- Public markdown writing page at `/write` (not linked in navigation)
+  - Three-column Cursor docs-style layout
+  - Left sidebar: Home link, content type selector (Blog Post/Page), actions (Clear, Theme, Font)
+  - Center: Full-height writing area with title, Copy All button, and borderless textarea
+  - Right sidebar: Frontmatter reference with copy icon for each field
+- Font switcher in Actions section
+  - Toggle between Serif and Sans-serif fonts
+  - Font preference saved to localStorage
+- Theme toggle matching the rest of the app (Moon, Sun, Half2Icon, Cloud)
+- localStorage persistence for content, type, and font preference
+- Word, line, and character counts in status bar
+- Warning banner: "Refresh loses content"
+- Grammarly and browser spellcheck compatible
+- Works with all four themes (dark, light, tan, cloud)
+
+### Technical
+
+- New component: `src/pages/Write.tsx`
+- Route: `/write` (added to `src/App.tsx`)
+- Three localStorage keys: `markdown_write_content`, `markdown_write_type`, `markdown_write_font`
+- CSS Grid layout (220px | 1fr | 280px)
+- Uses Phosphor icons: House, Article, File, Trash, CopySimple, Warning, Check
+- Uses lucide-react and radix-ui icons for theme toggle (consistent with ThemeToggle.tsx)
+
+## [1.15.1] - 2025-12-21
+
+### Fixed
+
+- Theme toggle icons on `/write` page now match `ThemeToggle.tsx` component
+  - dark: Moon icon (lucide-react)
+  - light: Sun icon (lucide-react)
+  - tan: Half2Icon (radix-ui) - consistent with rest of app
+  - cloud: Cloud icon (lucide-react)
+- Content type switching (Blog Post/Page) now always updates writing area template
+
+### Technical
+
+- Replaced Phosphor icons (Moon, Sun, Leaf, CloudSun) with lucide-react and radix-ui icons
+- `handleTypeChange` now always regenerates template when switching types
+
+## [1.15.0] - 2025-12-21
+
+### Changed
+
+- Redesigned `/write` page with three-column Cursor docs-style layout
+  - Left sidebar: Home link, content type selector (Blog Post/Page), actions (Clear, Theme)
+  - Center: Full-height writing area with title, Copy All button, and borderless textarea
+  - Right sidebar: Frontmatter reference with copy icon for each field
+- Frontmatter fields panel with per-field copy buttons
+  - Each frontmatter field shows name, example value, and copy icon
+  - Click to copy individual field syntax to clipboard
+  - Required fields marked with red asterisk
+  - Fields update dynamically when switching between Blog Post and Page
+- Warning banner for unsaved content
+  - "Refresh loses content" warning in left sidebar with warning icon
+  - Helps users remember localStorage persistence limitations
+- Enhanced status bar
+  - Word, line, and character counts in sticky footer
+  - Save hint with content directory path
+
+### Technical
+
+- Three-column CSS Grid layout (220px sidebar | 1fr main | 280px right sidebar)
+- Theme toggle cycles through dark, light, tan, cloud with matching icons
+- Collapsible sidebars on mobile (stacked layout)
+- Uses Phosphor icons: House, Article, File, Trash, CopySimple, Warning, Check
+
+## [1.14.0] - 2025-12-20
+
+### Changed
+
+- Redesigned `/write` page with Notion-like minimal UI
+  - Full-screen distraction-free writing experience
+  - Removed site header for focused writing environment
+  - Wider writing area (900px max-width centered)
+  - Borderless textarea with transparent background
+  - Own minimal header with home link, type selector, and icon buttons
+- Improved toolbar design
+  - Home icon link to return to main site
+  - Clean dropdown for content type selection (no borders)
+  - Collapsible frontmatter fields panel (hidden by default)
+  - Theme toggle in toolbar (cycles through dark, light, tan, cloud)
+  - Icon buttons with subtle hover states
+  - Copy button with inverted theme colors
+- Enhanced status bar
+  - Sticky footer with word/line/character counts
+  - Save hint with content directory path
+  - Dot separators between stats
+
+### Technical
+
+- Write page now renders without Layout component wrapper
+- Added Phosphor icons: House, Sun, Moon, CloudSun, Leaf, Info, X
+- CSS restructured for minimal aesthetic (`.write-wrapper`, `.write-header`, etc.)
+- Mobile responsive with hidden copy text and save hint on small screens
+
+## [1.13.0] - 2025-12-20
+
+### Added
+
+- Public markdown writing page at `/write` (not linked in navigation)
+  - Dropdown to select between "Blog Post" and "Page" content types
+  - Frontmatter fields reference panel with required/optional indicators
+  - Copy button using Phosphor CopySimple icon
+  - Clear button to reset content to template
+  - Status bar showing lines, words, and characters count
+  - Usage hint with instructions for saving content
+- localStorage persistence for writing session
+  - Content persists across page refreshes within same browser
+  - Each browser has isolated content (session privacy)
+  - Content type selection saved separately
+- Auto-generated frontmatter templates
+  - Blog post template with all common fields
+  - Page template with navigation fields
+  - Current date auto-populated in templates
+
+### Technical
+
+- New component: `src/pages/Write.tsx`
+- Route: `/write` (added to `src/App.tsx`)
+- CSS styles added to `src/styles/global.css`
+- Works with all four themes (dark, light, tan, cloud)
+- Plain textarea for Grammarly and browser spellcheck compatibility
+- Mobile responsive design with adjusted layout for smaller screens
+- No Convex backend required (localStorage only)
+
+## [1.12.2] - 2025-12-20
+
+### Added
+
+- Centralized font-size configuration using CSS variables in `global.css`
+  - Base size scale from 10px to 64px with semantic names
+  - Component-specific variables for consistent sizing
+  - Mobile responsive overrides at 768px breakpoint
+- All hardcoded font sizes converted to CSS variables for easier customization
+
+### Technical
+
+- Font sizes defined in `:root` selector with `--font-size-*` naming convention
+- Mobile breakpoint uses same variables with smaller values
+- Base scale: 3xs (10px), 2xs (11px), xs (12px), sm (13px), md (14px), base (16px), lg (17px), xl (18px), 2xl (20px), 3xl (24px), 4xl (28px), 5xl (32px), 6xl (36px), hero (64px)
+
 ## [1.12.1] - 2025-12-20
 
 ### Fixed

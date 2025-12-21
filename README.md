@@ -29,6 +29,7 @@ npm run sync:prod   # production
 - Logo gallery with continuous marquee scroll
 - Static raw markdown files at `/raw/{slug}.md`
 - Dedicated blog page with configurable navigation order
+- Markdown writing page at `/write` with frontmatter reference
 
 ### SEO and Discovery
 
@@ -570,6 +571,45 @@ body {
 ```
 
 Replace the `font-family` property with your preferred font stack.
+
+### Font Sizes
+
+All font sizes use CSS variables defined in `:root`. Customize sizes by editing the variables:
+
+```css
+:root {
+  /* Base size scale */
+  --font-size-base: 16px;
+  --font-size-sm: 13px;
+  --font-size-lg: 17px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+
+  /* Component-specific (examples) */
+  --font-size-blog-content: 17px;
+  --font-size-post-title: 32px;
+  --font-size-nav-link: 14px;
+}
+```
+
+Mobile responsive sizes are defined in a `@media (max-width: 768px)` block with smaller values.
+
+## Write Page
+
+A public markdown writing page at `/write` (not linked in navigation). Features:
+
+- Three-column Cursor docs-style layout
+- Content type selector (Blog Post or Page) with dynamic frontmatter templates
+- Frontmatter reference panel with copy buttons for each field
+- Font switcher (Serif/Sans-serif) with localStorage persistence
+- Theme toggle matching the site themes (Moon, Sun, Half2Icon, Cloud)
+- Word, line, and character counts
+- localStorage persistence for content, content type, and font preference
+- Works with Grammarly and browser spellcheck
+- Warning message about refresh losing content
+
+Access directly at `yourdomain.com/write`. Content is stored in localStorage only (not synced to database). Use it to draft posts, then copy the content to a markdown file in `content/blog/` or `content/pages/` and run `npm run sync`.
 
 ## Source
 

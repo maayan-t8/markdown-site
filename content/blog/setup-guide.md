@@ -703,6 +703,29 @@ body {
 }
 ```
 
+### Change Font Sizes
+
+All font sizes use CSS variables defined in `:root`. Customize sizes by editing these variables in `src/styles/global.css`:
+
+```css
+:root {
+  /* Base size scale */
+  --font-size-base: 16px;
+  --font-size-sm: 13px;
+  --font-size-lg: 17px;
+  --font-size-xl: 18px;
+  --font-size-2xl: 20px;
+  --font-size-3xl: 24px;
+
+  /* Component-specific (examples) */
+  --font-size-blog-content: 17px;
+  --font-size-post-title: 32px;
+  --font-size-nav-link: 14px;
+}
+```
+
+Mobile responsive sizes are defined in a `@media (max-width: 768px)` block.
+
 ### Add Static Pages (Optional)
 
 Create optional pages like About, Projects, or Contact. These appear as navigation links in the top right corner.
@@ -943,6 +966,32 @@ markdown-site/
 ├── netlify.toml        # Netlify configuration
 └── package.json        # Dependencies
 ```
+
+## Write Page
+
+A markdown writing page is available at `/write` (not linked in navigation). Use it to draft content before saving to your markdown files.
+
+**Features:**
+
+- Three-column Cursor docs-style layout
+- Content type selector (Blog Post or Page) with dynamic frontmatter templates
+- Frontmatter field reference with individual copy buttons
+- Font switcher (Serif/Sans-serif)
+- Theme toggle matching site themes
+- Word, line, and character counts
+- localStorage persistence for content, type, and font preference
+- Works with Grammarly and browser spellcheck
+
+**Workflow:**
+
+1. Go to `yourdomain.com/write`
+2. Select content type (Blog Post or Page)
+3. Write your content using the frontmatter reference
+4. Click "Copy All" to copy the markdown
+5. Save to `content/blog/` or `content/pages/`
+6. Run `npm run sync` or `npm run sync:prod`
+
+Content is stored in localStorage only and not synced to the database. Refreshing the page preserves your content, but clearing browser data will lose it.
 
 ## Next Steps
 

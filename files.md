@@ -41,6 +41,7 @@ A brief description of each file in the codebase.
 | `Blog.tsx`  | Dedicated blog page with post list (configurable via siteConfig.blogPage) |
 | `Post.tsx`  | Individual blog post view (update SITE_URL/SITE_NAME when forking) |
 | `Stats.tsx` | Real-time analytics dashboard with visitor stats                  |
+| `Write.tsx` | Three-column markdown writing page with Cursor docs-style UI, frontmatter reference with copy buttons, theme toggle, font switcher (serif/sans-serif), and localStorage persistence (not linked in nav) |
 
 ### Components (`src/components/`)
 
@@ -71,9 +72,9 @@ A brief description of each file in the codebase.
 
 ### Styles (`src/styles/`)
 
-| File         | Description                                                      |
-| ------------ | ---------------------------------------------------------------- |
-| `global.css` | Global CSS with theme variables, font config for all four themes |
+| File         | Description                                                                          |
+| ------------ | ------------------------------------------------------------------------------------ |
+| `global.css` | Global CSS with theme variables, centralized font-size CSS variables for all themes |
 
 ## Convex Backend (`convex/`)
 

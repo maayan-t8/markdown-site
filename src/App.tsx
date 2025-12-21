@@ -1,8 +1,9 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Post from "./pages/Post";
 import Stats from "./pages/Stats";
 import Blog from "./pages/Blog";
+import Write from "./pages/Write";
 import Layout from "./components/Layout";
 import { usePageTracking } from "./hooks/usePageTracking";
 import siteConfig from "./config/siteConfig";
@@ -10,6 +11,12 @@ import siteConfig from "./config/siteConfig";
 function App() {
   // Track page views and active sessions
   usePageTracking();
+  const location = useLocation();
+
+  // Write page renders without Layout (no header, full-screen writing)
+  if (location.pathname === "/write") {
+    return <Write />;
+  }
 
   return (
     <Layout>

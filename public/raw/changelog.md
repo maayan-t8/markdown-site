@@ -7,6 +7,82 @@ Date: 2025-12-21
 
 All notable changes to this project.
 
+## v1.15.2
+
+Released December 20, 2025
+
+**Write page font switcher**
+
+- Font switcher in `/write` page Actions section
+- Toggle between Serif and Sans-serif fonts in the writing area
+- Font preference saved to localStorage and persists across sessions
+- Uses same font families defined in global.css
+
+## v1.15.1
+
+Released December 20, 2025
+
+**Write page theme and content fixes**
+
+- Fixed theme toggle icons on `/write` page to match `ThemeToggle.tsx` (Moon, Sun, Half2Icon, Cloud)
+- Content type switching now always updates the template in the writing area
+
+## v1.15.0
+
+Released December 20, 2025
+
+**Write page three-column layout**
+
+- Redesigned `/write` page with Cursor docs-style three-column layout
+- Left sidebar: content type selector (Blog Post/Page) and action buttons (Clear, Theme)
+- Center: full-screen writing area with Copy All button
+- Right sidebar: frontmatter field reference with individual copy buttons for each field
+- Warning message about refresh losing content
+- Stats bar showing words, lines, and characters
+
+## v1.14.0
+
+Released December 20, 2025
+
+**Write page Notion-like UI**
+
+- Redesigned `/write` page with full-screen, distraction-free writing experience
+- Floating header with home link, type selector, and action buttons
+- Collapsible frontmatter panel on the right
+- Removed borders from writing area for cleaner look
+- Improved typography and spacing
+
+## v1.13.0
+
+Released December 20, 2025
+
+**Markdown write page**
+
+- New `/write` page for drafting markdown content (not linked in navigation)
+- Content type selector for Blog Post or Page with appropriate frontmatter templates
+- Frontmatter reference with copy buttons for each field
+- Theme toggle matching site themes
+- Word, line, and character counts
+- localStorage persistence for content, type, and font preference
+- Works with Grammarly and browser spellcheck
+- Copy all button for easy content transfer
+- Clear button to reset content
+
+Access at `yourdomain.com/write`. Content stored in localStorage only.
+
+## v1.12.2
+
+Released December 20, 2025
+
+**Centralized font-size CSS variables**
+
+- All font sizes now use CSS variables for easier customization
+- Base scale from `--font-size-3xs` (10px) to `--font-size-hero` (64px)
+- Component-specific variables for blog headings, navigation, search, stats, and more
+- Mobile responsive overrides at 768px breakpoint
+
+Edit `src/styles/global.css` to customize font sizes across the entire site by changing the `:root` variables.
+
 ## v1.12.1
 
 Released December 20, 2025

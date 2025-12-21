@@ -62,6 +62,7 @@ It's a hybrid: developer workflow for publishing + real-time delivery like a dyn
 - Copy to ChatGPT, Claude, and Perplexity sharing
 - Generate Skill option for AI agent training
 - View as Markdown option in share dropdown
+- Markdown writing page at `/write` with frontmatter reference
 
 ## Who this is for
 

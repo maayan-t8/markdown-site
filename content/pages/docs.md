@@ -394,6 +394,22 @@ body {
 }
 ```
 
+### Font Sizes
+
+All font sizes use CSS variables in `:root`. Customize by editing:
+
+```css
+:root {
+  --font-size-base: 16px;
+  --font-size-sm: 13px;
+  --font-size-lg: 17px;
+  --font-size-blog-content: 17px;
+  --font-size-post-title: 32px;
+}
+```
+
+Mobile sizes defined in `@media (max-width: 768px)` block.
+
 ### Images
 
 | Image            | Location                       | Size     |

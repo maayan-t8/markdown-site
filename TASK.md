@@ -2,17 +2,43 @@
 
 ## To Do
 
-- [ ] Add markdown write page with copy option
 - [ ] add github code block
 - [ ] create a ui site config page
-- [ ] create a prompt formator or skill or agent to change everything at once after forking
+- [ ] create a prompt formator or checklidst or skill or agent to change everything at once after forking
 
 ## Current Status
 
-v1.12.1 deployed. OG images now use post/page image from frontmatter instead of always defaulting.
+v1.16.0 deployed. Added public /write page with three-column Cursor docs-style layout, font switcher, theme toggle, and localStorage persistence for markdown writing.
 
 ## Completed
 
+- [x] Public /write page with three-column layout (not linked in nav)
+- [x] Left sidebar: Home link, content type selector, actions (Clear, Theme, Font)
+- [x] Center: Writing area with Copy All button and borderless textarea
+- [x] Right sidebar: Frontmatter reference with per-field copy buttons
+- [x] Font switcher to toggle between Serif and Sans-serif fonts
+- [x] Font preference persistence in localStorage
+- [x] Theme toggle icons matching ThemeToggle.tsx (Moon, Sun, Half2Icon, Cloud)
+- [x] Content type switching (Blog Post/Page) updates writing area template
+- [x] Word, line, and character counts in status bar
+- [x] Warning banner about refresh losing content
+- [x] localStorage persistence for content, type, and font
+- [x] Redesign /write page with three-column Cursor docs-style layout
+- [x] Add per-field copy icons to frontmatter reference panel
+- [x] Add refresh warning message in left sidebar
+- [x] Left sidebar with home link, content type selector, and actions
+- [x] Right sidebar with frontmatter fields and copy buttons
+- [x] Center area with title, Copy All button, and borderless textarea
+- [x] Theme toggle with matching icons for all four themes
+- [x] Redesign /write page with wider layout and modern Notion-like UI
+- [x] Remove header from /write page (standalone writing experience)
+- [x] Add inline theme toggle and home link to Write page toolbar
+- [x] Collapsible frontmatter fields panel
+- [x] Add markdown write page with copy option at /write
+- [x] Centralized font-size CSS variables in global.css
+- [x] Base size scale with semantic naming (3xs to hero)
+- [x] Component-specific font-size variables
+- [x] Mobile responsive font-size overrides
 - [x] Open Graph image fix for posts and pages with frontmatter images
 - [x] Dedicated blog page with configurable display options
 - [x] Blog page navigation order via siteConfig.blogPage.order
