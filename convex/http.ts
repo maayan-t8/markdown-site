@@ -220,21 +220,34 @@ function escapeHtml(text: string): string {
     .replace(/'/g, "&#39;");
 }
 
-// Generate Open Graph HTML for a post
-function generatePostMetaHtml(post: {
+// Generate Open Graph HTML for a post or page
+function generateMetaHtml(content: {
   title: string;
   description: string;
   slug: string;
-  date: string;
+  date?: string;
   readTime?: string;
+  image?: string;
+  type?: "post" | "page";
 }): string {
   const siteUrl = process.env.SITE_URL || "https://markdowncms.netlify.app";
   const siteName = "markdown sync site";
-  const defaultImage = `${siteUrl}/og-image.png`;
-  const canonicalUrl = `${siteUrl}/${post.slug}`;
+  const defaultImage = `${siteUrl}/images/og-default.svg`;
+  const canonicalUrl = `${siteUrl}/${content.slug}`;
 
-  const safeTitle = escapeHtml(post.title);
-  const safeDescription = escapeHtml(post.description);
+  // Resolve image URL: use post image if available, otherwise default
+  let ogImage = defaultImage;
+  if (content.image) {
+    // Handle both absolute URLs and relative paths
+    ogImage = content.image.startsWith("http")
+      ? content.image
+      : `${siteUrl}${content.image}`;
+  }
+
+  const safeTitle = escapeHtml(content.title);
+  const safeDescription = escapeHtml(content.description);
+  const contentType = content.type || "post";
+  const ogType = contentType === "post" ? "article" : "website";
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -250,17 +263,17 @@ function generatePostMetaHtml(post: {
   <!-- Open Graph -->
   <meta property="og:title" content="${safeTitle}">
   <meta property="og:description" content="${safeDescription}">
-  <meta property="og:image" content="${defaultImage}">
+  <meta property="og:image" content="${ogImage}">
   <meta property="og:url" content="${canonicalUrl}">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="${siteName}">
-  <meta property="article:published_time" content="${post.date}">
+  <meta property="og:type" content="${ogType}">
+  <meta property="og:site_name" content="${siteName}">${content.date ? `
+  <meta property="article:published_time" content="${content.date}">` : ""}
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${safeTitle}">
   <meta name="twitter:description" content="${safeDescription}">
-  <meta name="twitter:image" content="${defaultImage}">
+  <meta name="twitter:image" content="${ogImage}">
   
   <!-- Redirect to actual page after a brief delay for crawlers -->
   <script>
@@ -271,14 +284,14 @@ function generatePostMetaHtml(post: {
 </head>
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 680px; margin: 50px auto; padding: 20px; color: #111;">
   <h1 style="font-size: 32px; margin-bottom: 16px;">${safeTitle}</h1>
-  <p style="color: #666; margin-bottom: 24px;">${safeDescription}</p>
-  <p style="font-size: 14px; color: #999;">${post.date}${post.readTime ? ` · ${post.readTime}` : ""}</p>
-  <p style="margin-top: 24px;"><small>Redirecting to full article...</small></p>
+  <p style="color: #666; margin-bottom: 24px;">${safeDescription}</p>${content.date ? `
+  <p style="font-size: 14px; color: #999;">${content.date}${content.readTime ? ` · ${content.readTime}` : ""}</p>` : ""}
+  <p style="margin-top: 24px;"><small>Redirecting to full ${contentType}...</small></p>
 </body>
 </html>`;
 }
 
-// HTTP endpoint for Open Graph metadata
+// HTTP endpoint for Open Graph metadata (supports both posts and pages)
 http.route({
   path: "/meta/post",
   method: "GET",
@@ -291,27 +304,52 @@ http.route({
     }
 
     try {
+      // First try to find a post
       const post = await ctx.runQuery(api.posts.getPostBySlug, { slug });
 
-      if (!post) {
-        return new Response("Post not found", { status: 404 });
+      if (post) {
+        const html = generateMetaHtml({
+          title: post.title,
+          description: post.description,
+          slug: post.slug,
+          date: post.date,
+          readTime: post.readTime,
+          image: post.image,
+          type: "post",
+        });
+
+        return new Response(html, {
+          headers: {
+            "Content-Type": "text/html; charset=utf-8",
+            "Cache-Control":
+              "public, max-age=60, s-maxage=300, stale-while-revalidate=600",
+          },
+        });
       }
 
-      const html = generatePostMetaHtml({
-        title: post.title,
-        description: post.description,
-        slug: post.slug,
-        date: post.date,
-        readTime: post.readTime,
-      });
+      // If no post found, try to find a page
+      const page = await ctx.runQuery(api.pages.getPageBySlug, { slug });
 
-      return new Response(html, {
-        headers: {
-          "Content-Type": "text/html; charset=utf-8",
-          "Cache-Control":
-            "public, max-age=60, s-maxage=300, stale-while-revalidate=600",
-        },
-      });
+      if (page) {
+        const html = generateMetaHtml({
+          title: page.title,
+          description: page.excerpt || `${page.title} - ${SITE_NAME}`,
+          slug: page.slug,
+          image: page.image,
+          type: "page",
+        });
+
+        return new Response(html, {
+          headers: {
+            "Content-Type": "text/html; charset=utf-8",
+            "Cache-Control":
+              "public, max-age=60, s-maxage=300, stale-while-revalidate=600",
+          },
+        });
+      }
+
+      // Neither post nor page found
+      return new Response("Content not found", { status: 404 });
     } catch {
       return new Response("Internal server error", { status: 500 });
     }

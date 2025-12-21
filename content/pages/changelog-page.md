@@ -7,6 +7,48 @@ order: 5
 
 All notable changes to this project.
 
+## v1.12.1
+
+Released December 20, 2025
+
+**Open Graph image fix**
+
+- Posts with `image` in frontmatter now display their specific OG image when shared
+- Posts without images fall back to `og-default.svg`
+- Pages now supported with `og:type` set to "website" instead of "article"
+- Relative image paths (like `/images/v17.png`) resolve to absolute URLs
+
+The `/meta/post` endpoint in `convex/http.ts` now passes the `image` field from posts and pages to the meta HTML generator. If no post matches the slug, it checks for a page with that slug.
+
+## v1.12.0
+
+Released December 20, 2025
+
+**Dedicated blog page with configurable navigation**
+
+- New `/blog` page for dedicated post listing
+- Enable/disable via `siteConfig.blogPage.enabled`
+- Control navigation position with `siteConfig.blogPage.order`
+- Centralized site configuration in `src/config/siteConfig.ts`
+- Flexible post display: homepage only, blog page only, or both
+
+Configuration options:
+
+```typescript
+// src/config/siteConfig.ts
+blogPage: {
+  enabled: true,         // Enable /blog route
+  showInNav: true,       // Show in navigation
+  title: "Blog",         // Page title
+  order: 0,              // Nav order (lower = first)
+},
+displayOnHomepage: true, // Show posts on homepage
+```
+
+The Blog link now integrates with page navigation ordering. Set `order: 5` to place it after pages with order 0-4, or `order: 0` to keep it first.
+
+New files: `src/config/siteConfig.ts`, `src/pages/Blog.tsx`
+
 ## v1.11.1
 
 Released December 20, 2025

@@ -4,6 +4,62 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.12.1] - 2025-12-20
+
+### Fixed
+
+- Open Graph images now use post/page `image` field from frontmatter
+  - Posts with images in frontmatter display their specific OG image
+  - Posts without images fall back to `og-default.svg`
+  - Pages now supported with appropriate `og:type` set to "website"
+  - Relative image paths resolved to absolute URLs
+
+### Changed
+
+- Renamed `generatePostMetaHtml` to `generateMetaHtml` in `convex/http.ts`
+- `/meta/post` endpoint now checks for pages if no post found
+- Meta HTML generation accepts optional `image` and `type` parameters
+
+### Technical
+
+- Updated `convex/http.ts` with image resolution logic
+- Handles both absolute URLs and relative paths for images
+- Deployed to production Convex
+
+## [1.12.0] - 2025-12-20
+
+### Added
+
+- Dedicated blog page at `/blog` with configurable display
+  - Enable/disable via `siteConfig.blogPage.enabled`
+  - Show/hide from navigation via `siteConfig.blogPage.showInNav`
+  - Custom page title via `siteConfig.blogPage.title`
+  - Navigation order via `siteConfig.blogPage.order` (lower = first)
+- Centralized site configuration in `src/config/siteConfig.ts`
+  - Moved all site settings from `Home.tsx` to dedicated config file
+  - Easier to customize when forking
+- Flexible post display options
+  - `displayOnHomepage`: Show posts on the homepage
+  - `blogPage.enabled`: Show posts on dedicated `/blog` page
+  - Both can be enabled for dual display
+
+### Changed
+
+- Navigation now combines Blog link with pages and sorts by order
+  - Blog link position controlled by `siteConfig.blogPage.order`
+  - Pages sorted by frontmatter `order` field (lower = first)
+  - Items without order default to 999 (appear last, alphabetically)
+- `Home.tsx` imports siteConfig instead of defining inline
+- `Layout.tsx` uses unified nav item sorting for desktop and mobile
+
+### Technical
+
+- New file: `src/config/siteConfig.ts`
+- New page: `src/pages/Blog.tsx`
+- Updated: `src/App.tsx` (conditional blog route)
+- Updated: `src/components/Layout.tsx` (nav item ordering)
+- Updated: `src/styles/global.css` (blog page styles)
+
 ## [1.11.1] - 2025-12-20
 
 ### Fixed

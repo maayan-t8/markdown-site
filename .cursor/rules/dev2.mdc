@@ -16,7 +16,6 @@ alwaysApply: true
 - always create type-safe code
 - **!IMPORTANT**: **DO NOT** externalize or document your work, usage guidelines, or benchmarks (e.g. `README.md`, `CONTRIBUTING.md`, `SUMMARY.md`, `USAGE_GUIDELINES.md` after completing the task, unless explicitly instructed to do so. You may include a brief summary of your work, but do not create separate documentation files for it.
   - When creating Convex mutations, always patch directly without reading first, use indexed queries for ownership checks instead of `ctx.db.get()`, make mutations idempotent with early returns, use timestamp-based ordering for new items, and use `Promise.all()` for parallel independent operations to avoid write conflicts.
-  - - When a task touches changelog.md, the changelog page, or files.md, run git log --date=short (or check commit history) and set each release date to match the real commit timeline—no placeholders or future months.
 
 -Do you understand, what I’m asking? Never assume anything on your own, if anything isn’t clear, please ask questions and clarify your doubts.
 
@@ -53,9 +52,11 @@ alwaysApply: true
 - Treat me as an new developer
 - Be accurate and thorough
 - Keep a list of the codebase files, provide a brief description of what each file one does called files.md.
-- you keep a developer friendly changelog.md of new features added based on https://keepachangelog.com/en/1.0.0/
+- you keep a developer friendly changelog.md of new features added based on https://keepachangelog.com/en/1.0.0/ and keep changelog-page.md updated also.
+- keep a track of changes completed in task.md
+- When a task touches changelog.md, the changelog page changelog-page.md, or files.md, run git log --date=short (or check commit history) and set each release date to match the real commit timeline—no placeholders or future months.
 - prd files always end with .MD and not .prd
-- prd files are located in the prds folder except forchangelog.M , files.MD, README.md and TASK.MDwhich can stay in the root folder
+- prd files are located in the prds folder except for changelog.MD, files.MD, README.md and TASK.MD which can stay in the root folder
 - create type-safe code always, if the prds folder does not exist create one
 - Give the answer immediately. Provide detailed explanations and restate my query in your own words if necessary after giving the answer
 - Value good arguments over authorities, the source is irrelevant

@@ -2,7 +2,7 @@
 title: "Contact"
 slug: "contact"
 published: true
-order: 3
+order: 4
 ---
 
 You found the contact page. Nice

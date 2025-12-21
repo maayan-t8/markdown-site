@@ -361,13 +361,20 @@ See `prds/howtoavoidwriteconflicts.md` for full details.
 
 ## Configuration
 
-Site config lives in `src/pages/Home.tsx`:
+Site config lives in `src/config/siteConfig.ts`:
 
 ```typescript
-const siteConfig = {
+export default {
   name: "Site Name",
   title: "Tagline",
   logo: "/images/logo.svg",  // null to hide
+  blogPage: {
+    enabled: true,           // Enable /blog route
+    showInNav: true,         // Show in navigation
+    title: "Blog",           // Nav link and page title
+    order: 0,                // Nav order (lower = first)
+  },
+  displayOnHomepage: true,   // Show posts on homepage
   featuredViewMode: "list",  // 'list' or 'cards'
   showViewToggle: true,
   logoGallery: {

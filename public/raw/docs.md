@@ -2,7 +2,7 @@
 
 ---
 Type: page
-Date: 2025-12-20
+Date: 2025-12-21
 ---
 
 Reference documentation for setting up, customizing, and deploying this markdown site.
@@ -154,7 +154,7 @@ When you fork this project, update these files with your site information:
 
 | File | What to update |
 |------|----------------|
-| `src/pages/Home.tsx` | Site name, title, intro, bio, featured config, logo gallery |
+| `src/config/siteConfig.ts` | Site name, title, intro, bio, blog page, logo gallery |
 | `convex/http.ts` | `SITE_URL`, `SITE_NAME` (API responses, sitemap) |
 | `convex/rss.ts` | `SITE_URL`, `SITE_TITLE`, `SITE_DESCRIPTION` (RSS feeds) |
 | `src/pages/Post.tsx` | `SITE_URL`, `SITE_NAME`, `DEFAULT_OG_IMAGE` (OG tags) |
@@ -203,23 +203,30 @@ const DEFAULT_OG_IMAGE = "/images/og-default.svg";
 
 These constants affect RSS feeds, API responses, sitemaps, and social sharing metadata.
 
-### Homepage settings
+### Site settings
 
-Edit `src/pages/Home.tsx`:
+Edit `src/config/siteConfig.ts`:
 
 ```typescript
-const siteConfig = {
+export default {
   name: "Site Name",
   title: "Tagline",
   logo: "/images/logo.svg", // null to hide
   intro: "Introduction text...",
   bio: "Bio text...",
 
+  // Blog page configuration
+  blogPage: {
+    enabled: true,         // Enable /blog route
+    showInNav: true,       // Show in navigation
+    title: "Blog",         // Nav link and page title
+    order: 0,              // Nav order (lower = first)
+  },
+  displayOnHomepage: true, // Show posts on homepage
+
   // Featured section
   featuredViewMode: "list", // 'list' or 'cards'
   showViewToggle: true,
-  featuredItems: [{ slug: "post-slug", type: "post" }],
-  featuredEssays: [{ title: "Post Title", slug: "post-slug" }],
 
   // Logo gallery (with clickable links)
   logoGallery: {
@@ -311,6 +318,36 @@ logoGallery: {
 **To disable:** Set `enabled: false`
 
 **To remove samples:** Delete files from `public/images/logos/` or clear the images array.
+
+### Blog page
+
+The site supports a dedicated blog page at `/blog`. Configure in `src/config/siteConfig.ts`:
+
+```typescript
+blogPage: {
+  enabled: true,         // Enable /blog route
+  showInNav: true,       // Show in navigation
+  title: "Blog",         // Nav link and page title
+  order: 0,              // Nav order (lower = first)
+},
+displayOnHomepage: true, // Show posts on homepage
+```
+
+| Option              | Description                            |
+| ------------------- | -------------------------------------- |
+| `enabled`           | Enable the `/blog` route               |
+| `showInNav`         | Show Blog link in navigation           |
+| `title`             | Text for nav link and page heading     |
+| `order`             | Position in navigation (lower = first) |
+| `displayOnHomepage` | Show post list on homepage             |
+
+**Display options:**
+
+- Homepage only: `displayOnHomepage: true`, `blogPage.enabled: false`
+- Blog page only: `displayOnHomepage: false`, `blogPage.enabled: true`
+- Both: `displayOnHomepage: true`, `blogPage.enabled: true`
+
+**Navigation order:** The Blog link merges with page links and sorts by order. Pages use the `order` field in frontmatter. Set `blogPage.order: 5` to position Blog after pages with order 0-4.
 
 ### Scroll-to-top button
 

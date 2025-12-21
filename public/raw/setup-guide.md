@@ -397,7 +397,7 @@ When you fork this project, update these files with your site information:
 
 | File                                | What to update                                              |
 | ----------------------------------- | ----------------------------------------------------------- |
-| `src/pages/Home.tsx`                | Site name, title, intro, bio, featured config, logo gallery |
+| `src/config/siteConfig.ts`          | Site name, title, intro, bio, blog page, logo gallery       |
 | `convex/http.ts`                    | `SITE_URL`, `SITE_NAME` (API responses, sitemap)            |
 | `convex/rss.ts`                     | `SITE_URL`, `SITE_TITLE`, `SITE_DESCRIPTION` (RSS feeds)    |
 | `src/pages/Post.tsx`                | `SITE_URL`, `SITE_NAME`, `DEFAULT_OG_IMAGE` (OG tags)       |
@@ -490,23 +490,27 @@ const DEFAULT_OG_IMAGE = "/images/og-default.svg";
 
 ### Update Site Configuration
 
-Edit `src/pages/Home.tsx` to customize:
+Edit `src/config/siteConfig.ts` to customize:
 
 ```typescript
-const siteConfig = {
+export default {
   name: "Your Name",
   title: "Your Title",
   intro: "Your introduction...",
   bio: "Your bio...",
 
+  // Blog page configuration
+  blogPage: {
+    enabled: true,         // Enable /blog route
+    showInNav: true,       // Show in navigation
+    title: "Blog",         // Nav link and page title
+    order: 0,              // Nav order (lower = first)
+  },
+  displayOnHomepage: true, // Show posts on homepage
+
   // Featured section options
   featuredViewMode: "list", // 'list' or 'cards'
   showViewToggle: true, // Let users switch between views
-  featuredItems: [
-    { slug: "post-slug", type: "post" },
-    { slug: "page-slug", type: "page" },
-  ],
-  featuredEssays: [{ title: "Post Title", slug: "post-slug" }],
 
   // Logo gallery (marquee scroll with clickable links)
   logoGallery: {
@@ -617,6 +621,36 @@ Delete the sample files from `public/images/logos/` and clear the images array, 
 | `title`    | Text above gallery (set to `undefined` to hide)      |
 
 The gallery uses CSS animations for smooth infinite scrolling. Logos display in grayscale and colorize on hover.
+
+### Blog page
+
+The site supports a dedicated blog page at `/blog`. Configure in `src/config/siteConfig.ts`:
+
+```typescript
+blogPage: {
+  enabled: true,         // Enable /blog route
+  showInNav: true,       // Show in navigation
+  title: "Blog",         // Nav link and page title
+  order: 0,              // Nav order (lower = first)
+},
+displayOnHomepage: true, // Show posts on homepage
+```
+
+| Option | Description |
+| ------ | ----------- |
+| `enabled` | Enable the `/blog` route |
+| `showInNav` | Show Blog link in navigation |
+| `title` | Text for nav link and page heading |
+| `order` | Position in navigation (lower = first) |
+| `displayOnHomepage` | Show post list on homepage |
+
+**Display options:**
+
+- Homepage only: `displayOnHomepage: true`, `blogPage.enabled: false`
+- Blog page only: `displayOnHomepage: false`, `blogPage.enabled: true`
+- Both: `displayOnHomepage: true`, `blogPage.enabled: true`
+
+**Navigation order:** The Blog link merges with page links and sorts by order. Pages use the `order` field in frontmatter. Set `blogPage.order: 5` to position Blog after pages with order 0-4.
 
 ### Scroll-to-top button
 

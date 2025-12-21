@@ -2,21 +2,23 @@
 
 ## To Do
 
-- [ ] add componet fork fix for stats
-- [ ] Add blog page list and config
-- [ ] add github code block
-- [ ] add home to mobile menu
 - [ ] Add markdown write page with copy option
+- [ ] add github code block
 - [ ] create a ui site config page
 - [ ] create a prompt formator or skill or agent to change everything at once after forking
-- [ ] Add app background image option
 
 ## Current Status
 
-v1.10.0 ready for deployment. Build passes. TypeScript verified. Documentation updated.
+v1.12.1 deployed. OG images now use post/page image from frontmatter instead of always defaulting.
 
 ## Completed
 
+- [x] Open Graph image fix for posts and pages with frontmatter images
+- [x] Dedicated blog page with configurable display options
+- [x] Blog page navigation order via siteConfig.blogPage.order
+- [x] Centralized siteConfig.ts for site configuration
+- [x] Posts display toggle for homepage and/or blog page
+- [x] move home to the top of the mobile menu
 - [x] Fork configuration documentation in docs.md and setup-guide.md
 - [x] "Files to Update When Forking" section with all 9 configuration files
 - [x] Backend configuration examples for Convex files
@@ -71,6 +73,12 @@ v1.10.0 ready for deployment. Build passes. TypeScript verified. Documentation u
 - [x] Perplexity added to AI service options
 - [x] Featured image support with square thumbnails in card view
 - [x] Improved markdown table CSS styling
+- [x] Aggregate component integration for efficient stats counting (O(log n) vs O(n))
+- [x] Three aggregate components: pageViewsByPath, totalPageViews, uniqueVisitors
+- [x] Chunked backfilling mutation for existing page view data
+- [x] Aggregate component registration in convex.config.ts
+- [x] Stats query updated to use aggregate counts
+- [x] Aggregate component documentation in prds/howstatsworks.md
 
 ## Deployment Steps
 

@@ -94,15 +94,15 @@ export default function MobileMenu({
           </svg>
         </button>
 
-        {/* Menu content */}
-        <div className="mobile-menu-content">{children}</div>
-
-        {/* Home link at bottom */}
-        <div className="mobile-menu-footer">
+        {/* Home link at top */}
+        <div className="mobile-menu-header">
           <Link to="/" className="mobile-menu-home-link" onClick={onClose}>
             Home
           </Link>
         </div>
+
+        {/* Menu content */}
+        <div className="mobile-menu-content">{children}</div>
       </div>
     </>
   );
@@ -141,4 +141,3 @@ export function HamburgerButton({ onClick, isOpen }: HamburgerButtonProps) {
     </button>
   );
 }
-

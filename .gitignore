@@ -30,3 +30,6 @@ dist-ssr
 
 # Cursor rules
 .cursor/rules/write.mdc
+
+# PRD files
+prds/metadataforsubs.md

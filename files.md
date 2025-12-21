@@ -27,11 +27,18 @@ A brief description of each file in the codebase.
 | `App.tsx`       | Main app component with routing            |
 | `vite-env.d.ts` | Vite environment type definitions          |
 
+### Config (`src/config/`)
+
+| File            | Description                                                                      |
+| --------------- | -------------------------------------------------------------------------------- |
+| `siteConfig.ts` | Centralized site configuration (name, logo, blog page, posts display, nav order) |
+
 ### Pages (`src/pages/`)
 
 | File        | Description                                                       |
 | ----------- | ----------------------------------------------------------------- |
-| `Home.tsx`  | Landing page with siteConfig (update name/title/bio when forking) |
+| `Home.tsx`  | Landing page with featured content and optional post list         |
+| `Blog.tsx`  | Dedicated blog page with post list (configurable via siteConfig.blogPage) |
 | `Post.tsx`  | Individual blog post view (update SITE_URL/SITE_NAME when forking) |
 | `Stats.tsx` | Real-time analytics dashboard with visitor stats                  |
 

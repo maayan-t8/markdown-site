@@ -28,6 +28,7 @@ npm run sync:prod   # production
 - Featured section with list/card view toggle
 - Logo gallery with continuous marquee scroll
 - Static raw markdown files at `/raw/{slug}.md`
+- Dedicated blog page with configurable navigation order
 
 ### SEO and Discovery
 
@@ -61,7 +62,7 @@ When you fork this project, update these files with your site information:
 
 | File                                | What to update                                              |
 | ----------------------------------- | ----------------------------------------------------------- |
-| `src/pages/Home.tsx`                | Site name, title, intro, bio, featured config, logo gallery |
+| `src/config/siteConfig.ts`          | Site name, title, intro, bio, blog page, logo gallery       |
 | `convex/http.ts`                    | `SITE_URL`, `SITE_NAME` (API responses, sitemap)            |
 | `convex/rss.ts`                     | `SITE_URL`, `SITE_TITLE`, `SITE_DESCRIPTION` (RSS feeds)    |
 | `src/pages/Post.tsx`                | `SITE_URL`, `SITE_NAME`, `DEFAULT_OG_IMAGE` (OG tags)       |
@@ -221,6 +222,36 @@ const siteConfig = {
 In card view, the `image` field displays as a square thumbnail above the title. Non-square images are automatically cropped to center. The list view shows links only (no images).
 
 Square thumbnails: 400x400px minimum (800x800px for retina). The same image can serve as both the OG image for social sharing and the featured card thumbnail.
+
+## Blog Page
+
+The site supports a dedicated blog page at `/blog`. Configure in `src/config/siteConfig.ts`:
+
+```typescript
+blogPage: {
+  enabled: true,         // Enable /blog route
+  showInNav: true,       // Show in navigation
+  title: "Blog",         // Nav link and page title
+  order: 0,              // Nav order (lower = first)
+},
+displayOnHomepage: true, // Show posts on homepage
+```
+
+| Option | Description |
+| ------ | ----------- |
+| `enabled` | Enable the `/blog` route |
+| `showInNav` | Show Blog link in navigation |
+| `title` | Text for nav link and page heading |
+| `order` | Position in navigation (lower = first) |
+| `displayOnHomepage` | Show post list on homepage |
+
+**Display options:**
+
+- Homepage only: `displayOnHomepage: true`, `blogPage.enabled: false`
+- Blog page only: `displayOnHomepage: false`, `blogPage.enabled: true`
+- Both: `displayOnHomepage: true`, `blogPage.enabled: true`
+
+**Navigation order:** The Blog link merges with page links and sorts by order. Pages use the `order` field in frontmatter. Set `blogPage.order: 5` to position Blog after pages with order 0-4.
 
 ## Logo Gallery
 

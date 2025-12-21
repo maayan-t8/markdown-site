@@ -916,6 +916,52 @@ body {
   text-decoration: underline;
 }
 
+/* ============================================
+   Blog Page Styles
+   Dedicated /blog page that shows all posts
+   ============================================ */
+.blog-page {
+  padding-top: 20px;
+}
+
+.blog-header {
+  margin-bottom: 40px;
+}
+
+.blog-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.blog-description {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+.blog-posts {
+  margin-top: 20px;
+}
+
+.blog-disabled-message {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  padding: 20px;
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  border: 1px dashed var(--border-color);
+}
+
+.blog-disabled-message code {
+  background: var(--inline-code-bg);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .main-content {
@@ -939,6 +985,15 @@ body {
 
   .home-name {
     font-size: 28px;
+  }
+
+  /* Blog page responsive */
+  .blog-title {
+    font-size: 1.75rem;
+  }
+
+  .blog-header {
+    margin-bottom: 24px;
   }
 
   .post-link .post-title {
@@ -2041,7 +2096,13 @@ body {
   background-color: var(--bg-hover);
 }
 
-/* Menu footer with home link */
+/* Menu header with home link */
+.mobile-menu-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Menu footer (kept for backwards compatibility) */
 .mobile-menu-footer {
   padding: 16px 24px;
   border-top: 1px solid var(--border-color);

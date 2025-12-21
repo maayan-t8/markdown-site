@@ -7,6 +7,7 @@ import ThemeToggle from "./ThemeToggle";
 import SearchModal from "./SearchModal";
 import MobileMenu, { HamburgerButton } from "./MobileMenu";
 import ScrollToTop, { ScrollToTopConfig } from "./ScrollToTop";
+import siteConfig from "../config/siteConfig";
 
 // Scroll-to-top configuration - enabled by default
 // Customize threshold (pixels) to control when button appears
@@ -69,6 +70,48 @@ export default function Layout({ children }: LayoutProps) {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isSearchOpen]);
 
+  // Check if Blog link should be shown in nav
+  const showBlogInNav =
+    siteConfig.blogPage.enabled && siteConfig.blogPage.showInNav;
+
+  // Combine Blog link with pages and sort by order
+  // This allows Blog to be positioned anywhere in the nav via siteConfig.blogPage.order
+  type NavItem = {
+    slug: string;
+    title: string;
+    order: number;
+    isBlog?: boolean;
+  };
+
+  const navItems: NavItem[] = [];
+
+  // Add Blog link if enabled
+  if (showBlogInNav) {
+    navItems.push({
+      slug: "blog",
+      title: siteConfig.blogPage.title,
+      order: siteConfig.blogPage.order ?? 0,
+      isBlog: true,
+    });
+  }
+
+  // Add pages from Convex
+  if (pages && pages.length > 0) {
+    pages.forEach((page) => {
+      navItems.push({
+        slug: page.slug,
+        title: page.title,
+        order: page.order ?? 999,
+      });
+    });
+  }
+
+  // Sort by order (lower numbers first), then alphabetically by title
+  navItems.sort((a, b) => {
+    if (a.order !== b.order) return a.order - b.order;
+    return a.title.localeCompare(b.title);
+  });
+
   return (
     <div className="layout">
       {/* Top navigation bar with page links, search, and theme toggle */}
@@ -82,19 +125,19 @@ export default function Layout({ children }: LayoutProps) {
         </div>
 
         {/* Page navigation links (visible on desktop only) */}
-        {pages && pages.length > 0 && (
-          <nav className="page-nav desktop-only">
-            {pages.map((page) => (
-              <Link
-                key={page.slug}
-                to={`/${page.slug}`}
-                className="page-nav-link"
-              >
-                {page.title}
-              </Link>
-            ))}
-          </nav>
-        )}
+        <nav className="page-nav desktop-only">
+          {/* Nav links sorted by order (Blog + pages combined) */}
+          {navItems.map((item) => (
+            <Link
+              key={item.slug}
+              to={`/${item.slug}`}
+              className="page-nav-link"
+            >
+              {item.title}
+            </Link>
+          ))}
+        </nav>
+
         {/* Search button with icon */}
         <button
           onClick={openSearch}
@@ -112,21 +155,19 @@ export default function Layout({ children }: LayoutProps) {
 
       {/* Mobile menu drawer */}
       <MobileMenu isOpen={isMobileMenuOpen} onClose={closeMobileMenu}>
-        {/* Page navigation links in mobile menu */}
-        {pages && pages.length > 0 && (
-          <nav className="mobile-nav-links">
-            {pages.map((page) => (
-              <Link
-                key={page.slug}
-                to={`/${page.slug}`}
-                className="mobile-nav-link"
-                onClick={closeMobileMenu}
-              >
-                {page.title}
-              </Link>
-            ))}
-          </nav>
-        )}
+        {/* Page navigation links in mobile menu (same order as desktop) */}
+        <nav className="mobile-nav-links">
+          {navItems.map((item) => (
+            <Link
+              key={item.slug}
+              to={`/${item.slug}`}
+              className="mobile-nav-link"
+              onClick={closeMobileMenu}
+            >
+              {item.title}
+            </Link>
+          ))}
+        </nav>
       </MobileMenu>
 
       <main className="main-content">{children}</main>

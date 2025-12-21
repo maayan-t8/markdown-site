@@ -2,7 +2,7 @@
 title: "Projects"
 slug: "projects"
 published: true
-order: 2
+order: 3
 ---
 
 This markdown site is open source and built to be extended. Here is what ships out of the box.

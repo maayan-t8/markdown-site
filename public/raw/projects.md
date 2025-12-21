@@ -2,7 +2,7 @@
 
 ---
 Type: page
-Date: 2025-12-20
+Date: 2025-12-21
 ---
 
 This markdown site is open source and built to be extended. Here is what ships out of the box.
