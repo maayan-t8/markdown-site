@@ -1,6 +1,6 @@
 # Using Images in Blog Posts
 
-> Learn how to add header images, inline images, and Open Graph images to your markdown blog posts.
+> Learn how to add header images, inline images, and Open Graph images to your markdown posts.
 
 ---
 Type: post

@@ -1,6 +1,6 @@
 # New features: search, featured section, and logo gallery
 
-> Three updates that make your markdown site more useful: Command+K search, frontmatter-controlled featured items, and a scrolling logo gallery.
+> Three updates that make your markdown framework more useful: Command+K search, frontmatter-controlled featured items, and a scrolling logo gallery.
 
 ---
 Type: post

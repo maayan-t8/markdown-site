@@ -5,7 +5,7 @@ Type: page
 Date: 2025-12-21
 ---
 
-An open-source markdown sync site for developers and AI agents. Publish from the terminal with `npm run sync`. Write locally, sync instantly with real-time updates. Powered by Convex and Netlify.
+An open-source publishing framework for AI agents and developers. Write markdown, sync from the terminal. Your content is instantly available to browsers, LLMs, and AI agents. Built on Convex and Netlify.
 
 ## What makes it a dev sync system
 
@@ -54,6 +54,7 @@ It's a hybrid: developer workflow for publishing + real-time delivery like a dyn
 - Full text search with Command+K shortcut
 - Featured section with list/card view toggle and excerpts
 - Logo gallery with clickable links and marquee scroll
+- GitHub contributions graph with year navigation
 - Dedicated blog page with configurable navigation order
 - Real-time analytics at `/stats`
 - RSS feeds and sitemap for SEO

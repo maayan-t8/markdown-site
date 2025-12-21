@@ -5,7 +5,7 @@ Type: page
 Date: 2025-12-21
 ---
 
-Reference documentation for setting up, customizing, and deploying this markdown site.
+Reference documentation for setting up, customizing, and deploying this markdown framework.
 
 **How publishing works:** Write posts in markdown, run `npm run sync` for development or `npm run sync:prod` for production, and they appear on your live site immediately. No rebuild or redeploy needed. Convex handles real-time data sync, so connected browsers update automatically.
 
@@ -155,14 +155,15 @@ When you fork this project, update these files with your site information:
 
 | File | What to update |
 |------|----------------|
-| `src/config/siteConfig.ts` | Site name, title, intro, bio, blog page, logo gallery |
-| `convex/http.ts` | `SITE_URL`, `SITE_NAME` (API responses, sitemap) |
+| `src/config/siteConfig.ts` | Site name, title, intro, bio, blog page, logo gallery, GitHub contributions |
+| `src/pages/Home.tsx` | Intro paragraph text (hardcoded JSX) |
+| `convex/http.ts` | `SITE_URL`, `SITE_NAME`, description strings (3 locations) |
 | `convex/rss.ts` | `SITE_URL`, `SITE_TITLE`, `SITE_DESCRIPTION` (RSS feeds) |
 | `src/pages/Post.tsx` | `SITE_URL`, `SITE_NAME`, `DEFAULT_OG_IMAGE` (OG tags) |
 | `index.html` | Title, meta description, OG tags, JSON-LD |
-| `public/llms.txt` | Site name, URL, description |
-| `public/robots.txt` | Sitemap URL |
-| `public/openapi.yaml` | Server URL, site name in examples |
+| `public/llms.txt` | Site name, URL, description, topics |
+| `public/robots.txt` | Sitemap URL and header comment |
+| `public/openapi.yaml` | API title, server URL, site name in examples |
 | `public/.well-known/ai-plugin.json` | Site name, descriptions |
 
 ### Site title and description metadata
@@ -173,13 +174,16 @@ These files contain the main site description text. Update them with your own ta
 |------|----------------|
 | `index.html` | meta description, og:description, twitter:description, JSON-LD |
 | `README.md` | Main description at top of file |
-| `src/pages/Home.tsx` | intro and bio text in siteConfig |
-| `convex/http.ts` | description field in API responses (2 locations) |
-| `convex/rss.ts` | SITE_DESCRIPTION constant |
-| `public/llms.txt` | Header quote and Description field |
+| `src/config/siteConfig.ts` | name, title, and bio fields |
+| `src/pages/Home.tsx` | Intro paragraph (hardcoded JSX with links) |
+| `convex/http.ts` | SITE_NAME constant and description strings (3 locations) |
+| `convex/rss.ts` | SITE_TITLE and SITE_DESCRIPTION constants |
+| `public/llms.txt` | Header quote, Name, and Description fields |
+| `public/openapi.yaml` | API title and example site name |
 | `AGENTS.md` | Project overview section |
-| `content/blog/about-this-blog.md` | Opening paragraph |
+| `content/blog/about-this-blog.md` | Title, description, excerpt, and opening paragraph |
 | `content/pages/about.md` | excerpt field and opening paragraph |
+| `content/pages/docs.md` | Opening description paragraph |
 
 **Backend constants** (`convex/http.ts` and `convex/rss.ts`):
 
@@ -285,6 +289,30 @@ const siteConfig = {
   showViewToggle: true, // Let users switch views
 };
 ```
+
+### GitHub contributions graph
+
+Display your GitHub contribution activity on the homepage. Configure in `siteConfig`:
+
+```typescript
+gitHubContributions: {
+  enabled: true,           // Set to false to hide
+  username: "yourusername", // Your GitHub username
+  showYearNavigation: true, // Show arrows to navigate between years
+  linkToProfile: true,      // Click graph to open GitHub profile
+  title: "GitHub Activity", // Optional title above the graph
+},
+```
+
+| Option | Description |
+| ------ | ----------- |
+| `enabled` | `true` to show, `false` to hide |
+| `username` | Your GitHub username |
+| `showYearNavigation` | Show prev/next year navigation |
+| `linkToProfile` | Click graph to visit GitHub profile |
+| `title` | Text above graph (`undefined` to hide) |
+
+Theme-aware colors match each site theme. Uses public API (no GitHub token required).
 
 ### Logo gallery
 

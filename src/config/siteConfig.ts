@@ -89,23 +89,23 @@ export const siteConfig: SiteConfig = {
     images: [
       {
         src: "/images/logos/convex-wordmark-black.svg",
-        href: "https://markdowncms.netlify.app/",
-      },
-      {
-        src: "/images/logos/netlify.svg",
         href: "/about#the-real-time-twist",
       },
       {
+        src: "/images/logos/netlify.svg",
+        href: "https://www.netlify.com/",
+      },
+      {
         src: "/images/logos/markdown.svg",
-        href: "https://markdowncms.netlify.app/",
+        href: "https://markdowncms.netlify.app/docs",
       },
       {
         src: "/images/logos/react.svg",
-        href: "https://markdowncms.netlify.app/",
+        href: "https://markdowncms.netlify.app/setup-guide",
       },
       {
         src: "/images/logos/sample-logo-5.svg",
-        href: "https://markdowncms.netlify.app/",
+        href: "https://markdowncms.netlify.app/setup-guide",
       },
     ],
     position: "above-footer",
