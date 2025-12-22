@@ -168,14 +168,14 @@ npm run sync:prod
 
 Both files are gitignored.
 
-## Quick Workflow in Cursor
+## Quick Workflow in Cursor or other IDE
 
 Here is the full workflow:
 
 1. **Create file**: `content/blog/my-post.md`
 2. **Add frontmatter**: Title, description, date, slug, published, tags
 3. **Write content**: Markdown with headings, lists, code blocks
-4. **Sync**: Run `npm run sync` in terminal
+4. **Sync**: Run `npm run sync` in developmnet and `npm run sync:prod` in production in terminal
 5. **View**: Open your site and navigate to `/your-slug`
 
 ## Tips
