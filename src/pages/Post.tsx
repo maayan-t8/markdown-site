@@ -3,6 +3,8 @@ import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import BlogPost from "../components/BlogPost";
 import CopyPageDropdown from "../components/CopyPageDropdown";
+import PageSidebar from "../components/PageSidebar";
+import { extractHeadings } from "../utils/extractHeadings";
 import { format, parseISO } from "date-fns";
 import { ArrowLeft, Link as LinkIcon, Twitter, Rss } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -143,14 +145,18 @@ export default function Post() {
 
   // If it's a static page, render simplified view
   if (page) {
+    // Extract headings for sidebar TOC (only for pages with layout: "sidebar")
+    const headings = page.layout === "sidebar" ? extractHeadings(page.content) : [];
+    const hasSidebar = headings.length > 0;
+
     return (
-      <div className="post-page">
-        <nav className="post-nav">
+      <div className={`post-page ${hasSidebar ? "post-page-with-sidebar" : ""}`}>
+        <nav className={`post-nav ${hasSidebar ? "post-nav-with-sidebar" : ""}`}>
           <button onClick={() => navigate("/")} className="back-button">
             <ArrowLeft size={16} />
             <span>Back</span>
           </button>
-          {/* Copy page dropdown for static pages */}
+          {/* CopyPageDropdown in nav */}
           <CopyPageDropdown
             title={page.title}
             content={page.content}
@@ -160,30 +166,40 @@ export default function Post() {
           />
         </nav>
 
-        <article className="post-article">
-          <header className="post-header">
-            <h1 className="post-title">{page.title}</h1>
-            {/* Author avatar and name for pages (optional) */}
-            {(page.authorImage || page.authorName) && (
-              <div className="post-meta-header">
-                <div className="post-author">
-                  {page.authorImage && (
-                    <img
-                      src={page.authorImage}
-                      alt={page.authorName || "Author"}
-                      className="post-author-image"
-                    />
-                  )}
-                  {page.authorName && (
-                    <span className="post-author-name">{page.authorName}</span>
-                  )}
+        <div className={hasSidebar ? "post-content-with-sidebar" : ""}>
+          {/* Left sidebar - TOC */}
+          {hasSidebar && (
+            <aside className="post-sidebar-wrapper post-sidebar-left">
+              <PageSidebar headings={headings} activeId={location.hash.slice(1)} />
+            </aside>
+          )}
+          
+          {/* Main content */}
+          <article className={`post-article ${hasSidebar ? "post-article-with-sidebar" : ""}`}>
+            <header className="post-header">
+              <h1 className="post-title">{page.title}</h1>
+              {/* Author avatar and name for pages (optional) */}
+              {(page.authorImage || page.authorName) && (
+                <div className="post-meta-header">
+                  <div className="post-author">
+                    {page.authorImage && (
+                      <img
+                        src={page.authorImage}
+                        alt={page.authorName || "Author"}
+                        className="post-author-image"
+                      />
+                    )}
+                    {page.authorName && (
+                      <span className="post-author-name">{page.authorName}</span>
+                    )}
+                  </div>
                 </div>
-              </div>
-            )}
-          </header>
+              )}
+            </header>
 
-          <BlogPost content={page.content} />
-        </article>
+            <BlogPost content={page.content} />
+          </article>
+        </div>
       </div>
     );
   }

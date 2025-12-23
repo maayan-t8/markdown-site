@@ -4,6 +4,86 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.23.0] - 2025-12-23
+
+### Added
+
+- Collapsible sections in markdown using HTML `<details>` and `<summary>` tags
+  - Create expandable/collapsible content in blog posts and pages
+  - Use `<details open>` attribute for sections that start expanded
+  - Supports nested collapsible sections
+  - Theme-aware styling for all four themes (dark, light, tan, cloud)
+  - Works with all markdown content inside: lists, code blocks, bold, italic, etc.
+
+### Technical
+
+- Added `rehype-raw` package to allow raw HTML pass-through in react-markdown
+- Added `rehype-sanitize` package to strip dangerous tags while allowing safe ones
+- Custom sanitize schema allows `details`, `summary` tags and the `open` attribute
+- Updated `src/components/BlogPost.tsx` with rehype plugins
+- CSS styles for collapsible sections in `src/styles/global.css`
+
+### Documentation
+
+- Updated `markdown-with-code-examples.md` with collapsible section examples
+- Updated `docs.md` with collapsible sections documentation
+- Updated `files.md` with BlogPost.tsx description change
+
+## [1.22.0] - 2025-12-21
+
+### Added
+
+- Sidebar layout for pages with table of contents
+  - Add `layout: "sidebar"` to page frontmatter to enable docs-style layout
+  - Left sidebar displays table of contents extracted from H1, H2, H3 headings
+  - Two-column grid layout: 220px sidebar + flexible content area
+  - Sidebar only appears if headings exist in the page content
+  - Active heading highlighting on scroll
+  - Smooth scroll navigation to sections
+  - CopyPageDropdown remains in top navigation for sidebar pages
+  - Mobile responsive: stacks to single column below 1024px
+
+### Technical
+
+- New utility: `src/utils/extractHeadings.ts` for parsing markdown headings
+- New component: `src/components/PageSidebar.tsx` for TOC navigation
+- Updated `convex/schema.ts`: Added optional `layout` field to pages table
+- Updated `scripts/sync-posts.ts`: Parses `layout` field from page frontmatter
+- Updated `convex/pages.ts`: Includes `layout` field in queries and mutations
+- Updated `src/pages/Post.tsx`: Conditionally renders sidebar layout
+- CSS grid layout with sticky sidebar positioning
+- Full-width container breaks out of main-content constraints
+
+## [1.21.0] - 2025-12-21
+
+### Added
+
+- Blog page view mode toggle (list and card views)
+  - Toggle button in blog header to switch between list and card views
+  - Card view displays posts in a 3-column grid with thumbnails, titles, excerpts, and metadata
+  - List view shows year-grouped posts (existing behavior)
+  - View preference saved to localStorage
+  - Default view mode configurable via `siteConfig.blogPage.viewMode`
+  - Toggle visibility controlled by `siteConfig.blogPage.showViewToggle`
+- Post cards component
+  - Displays post thumbnails, titles, excerpts, read time, and dates
+  - Responsive grid: 3 columns (desktop), 2 columns (tablet), 1 column (mobile)
+  - Theme-aware styling for all four themes (dark, light, tan, cloud)
+  - Square thumbnails with hover zoom effect
+  - Cards without images display with adjusted padding
+
+### Changed
+
+- Updated `PostList` component to support both list and card view modes
+- Updated `Blog.tsx` to include view toggle button and state management
+- Updated `siteConfig.ts` with `blogPage.viewMode` and `blogPage.showViewToggle` options
+
+### Technical
+
+- New CSS classes: `.post-cards`, `.post-card`, `.post-card-image-wrapper`, `.post-card-content`, `.post-card-meta`
+- Reuses featured card styling patterns for consistency
+- Mobile responsive with adjusted grid columns and image aspect ratios
+
 ## [1.20.3] - 2025-12-21
 
 ### Fixed

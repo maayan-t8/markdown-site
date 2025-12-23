@@ -2,10 +2,78 @@
 
 ---
 Type: page
-Date: 2025-12-22
+Date: 2025-12-23
 ---
 
 All notable changes to this project.
+
+## v1.23.0
+
+Released December 23, 2025
+
+**Collapsible sections in markdown**
+
+- Create expandable/collapsible content using HTML `<details>` and `<summary>` tags
+- Use `<details open>` attribute for sections that start expanded by default
+- Supports nested collapsible sections for multi-level content
+- Theme-aware styling for all four themes (dark, light, tan, cloud)
+- Works with all markdown content inside: lists, code blocks, bold, italic, links, etc.
+
+Example usage:
+
+```html
+<details>
+  <summary>Click to expand</summary>
+
+  Hidden content here with **markdown** support.
+</details>
+```
+
+New packages: `rehype-raw`, `rehype-sanitize`
+
+Updated files: `src/components/BlogPost.tsx`, `src/styles/global.css`
+
+Documentation updated: `markdown-with-code-examples.md`, `docs.md`
+
+## v1.22.0
+
+Released December 21, 2025
+
+**Sidebar layout for pages**
+
+- Pages can now use a docs-style layout with table of contents sidebar
+- Add `layout: "sidebar"` to page frontmatter to enable
+- Left sidebar displays TOC extracted from H1, H2, H3 headings automatically
+- Two-column grid layout: 220px sidebar + flexible content area
+- Active heading highlighting on scroll
+- Smooth scroll navigation to sections
+- Sidebar only appears if headings exist in content
+- Mobile responsive: stacks to single column below 1024px
+- CopyPageDropdown remains in top navigation for sidebar pages
+
+New files: `src/utils/extractHeadings.ts`, `src/components/PageSidebar.tsx`
+
+Updated files: `convex/schema.ts`, `scripts/sync-posts.ts`, `convex/pages.ts`, `src/pages/Post.tsx`, `src/styles/global.css`
+
+## v1.21.0
+
+Released December 21, 2025
+
+**Blog page view mode toggle**
+
+- Blog page now supports two view modes: list view and card view
+- Toggle button in blog header switches between views
+- List view: year-grouped posts with titles, read time, and dates
+- Card view: 3-column grid with thumbnails, titles, excerpts, and metadata
+- Default view configurable via `siteConfig.blogPage.viewMode`
+- Toggle visibility controlled by `siteConfig.blogPage.showViewToggle`
+- View preference saved to localStorage and persists across visits
+- Responsive grid: 3 columns (desktop), 2 columns (tablet), 1 column (mobile)
+- Theme-aware styling for all four themes (dark, light, tan, cloud)
+- Cards display post thumbnails from `image` frontmatter field
+- Posts without images show cards without thumbnail areas
+
+Updated files: `src/pages/Blog.tsx`, `src/components/PostList.tsx`, `src/config/siteConfig.ts`, `src/styles/global.css`
 
 ## v1.20.3
 

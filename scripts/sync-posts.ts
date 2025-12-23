@@ -67,6 +67,7 @@ interface PageFrontmatter {
   featuredOrder?: number; // Order in featured section (lower = first)
   authorName?: string; // Author display name
   authorImage?: string; // Author avatar image URL (round)
+  layout?: string; // Layout type: "sidebar" for docs-style layout
 }
 
 interface ParsedPage {
@@ -81,6 +82,7 @@ interface ParsedPage {
   featuredOrder?: number; // Order in featured section (lower = first)
   authorName?: string; // Author display name
   authorImage?: string; // Author avatar image URL (round)
+  layout?: string; // Layout type: "sidebar" for docs-style layout
 }
 
 // Calculate reading time based on word count
@@ -169,6 +171,7 @@ function parsePageFile(filePath: string): ParsedPage | null {
       featuredOrder: frontmatter.featuredOrder, // Order in featured section
       authorName: frontmatter.authorName, // Author display name
       authorImage: frontmatter.authorImage, // Author avatar image URL
+      layout: frontmatter.layout, // Layout type: "sidebar" for docs-style layout
     };
   } catch (error) {
     console.error(`Error parsing page ${filePath}:`, error);

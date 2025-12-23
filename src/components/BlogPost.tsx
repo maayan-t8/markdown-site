@@ -2,9 +2,21 @@ import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
+import rehypeRaw from "rehype-raw";
+import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { Copy, Check } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+
+// Sanitize schema that allows collapsible sections (details/summary)
+const sanitizeSchema = {
+  ...defaultSchema,
+  tagNames: [...(defaultSchema.tagNames || []), "details", "summary"],
+  attributes: {
+    ...defaultSchema.attributes,
+    details: ["open"], // Allow the 'open' attribute for expanded by default
+  },
+};
 
 // Copy button component for code blocks
 function CodeCopyButton({ code }: { code: string }) {
@@ -293,6 +305,7 @@ export default function BlogPost({ content }: BlogPostProps) {
     <article className="blog-post-content">
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkBreaks]}
+        rehypePlugins={[rehypeRaw, [rehypeSanitize, sanitizeSchema]]}
         components={{
           code({ className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || "");

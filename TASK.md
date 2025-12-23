@@ -2,12 +2,30 @@
 
 ## To Do
 
+- [ ] fix netlify markdown bug
+- [ ] add MIT Licensed. Do whatevs.
+- [ ] add mcp
+- [ ] https://www.npmjs.com/package/remark-rehype
+- [ ] https://github.com/remarkjs/remark-rehype
+- [ ] https://github.com/remarkjs/remark-rehype
+- [ ] https://remark.js.org/
+- [ ] https://unifiedjs.com/explore/package/rehype-raw/
+- [ ] - add markdown html https://gist.github.com/pierrejoubert73/902cc94d79424356a8d20be2b382e1ab
+- [ ]
+
 ## Current Status
 
-v1.20.3 deployed. SEO/AEO/GEO improvements for AI crawlers and search engines.
+v1.21.0 deployed. Blog page view mode toggle with list and card views.
 
 ## Completed
 
+- [x] Blog page view mode toggle (list and card views)
+- [x] Post cards component with thumbnails, titles, excerpts, and metadata
+- [x] View preference saved to localStorage
+- [x] Default view mode configurable in siteConfig.blogPage.viewMode
+- [x] Toggle visibility controlled by siteConfig.blogPage.showViewToggle
+- [x] Responsive grid: 3 columns (desktop), 2 columns (tablet), 1 column (mobile)
+- [x] Theme-aware styling for all four themes
 - [x] Raw markdown files now accessible to AI crawlers (ChatGPT, Perplexity)
 - [x] Added /raw/ path bypass in botMeta edge function
 - [x] Sitemap now includes static pages (about, docs, contact, etc.)

@@ -783,7 +783,7 @@ Logos display in grayscale and colorize on hover.
 
 ### Blog page
 
-The site supports a dedicated blog page at `/blog`. Configure in `src/config/siteConfig.ts`:
+The site supports a dedicated blog page at `/blog` with two view modes: list view (year-grouped posts) and card view (thumbnail grid). Configure in `src/config/siteConfig.ts`:
 
 ```typescript
 blogPage: {
@@ -791,6 +791,8 @@ blogPage: {
   showInNav: true,       // Show in navigation
   title: "Blog",         // Nav link and page title
   order: 0,              // Nav order (lower = first)
+  viewMode: "list",      // Default view: "list" or "cards"
+  showViewToggle: true,  // Show toggle button to switch views
 },
 displayOnHomepage: true, // Show posts on homepage
 ```
@@ -801,7 +803,18 @@ displayOnHomepage: true, // Show posts on homepage
 | `showInNav`         | Show Blog link in navigation           |
 | `title`             | Text for nav link and page heading     |
 | `order`             | Position in navigation (lower = first) |
+| `viewMode`          | Default view: `"list"` or `"cards"`    |
+| `showViewToggle`    | Show toggle button to switch views     |
 | `displayOnHomepage` | Show post list on homepage             |
+
+**View modes:**
+
+- **List view:** Year-grouped posts with titles, read time, and dates
+- **Card view:** Grid of cards showing thumbnails, titles, excerpts, and metadata
+
+**Card view details:**
+
+Cards display post thumbnails (from `image` frontmatter field), titles, excerpts (or descriptions), read time, and dates. Posts without images show cards without thumbnail areas. Grid is responsive: 3 columns on desktop, 2 on tablet, 1 on mobile.
 
 **Display options:**
 
@@ -810,6 +823,8 @@ displayOnHomepage: true, // Show posts on homepage
 - Both: `displayOnHomepage: true`, `blogPage.enabled: true`
 
 **Navigation order:** The Blog link merges with page links and sorts by order. Pages use the `order` field in frontmatter. Set `blogPage.order: 5` to position Blog after pages with order 0-4.
+
+**View preference:** User's view mode choice is saved to localStorage and persists across page visits.
 
 ### Scroll-to-top button
 
@@ -908,10 +923,13 @@ Your page content here...
 | `order`       | No       | Display order (lower = first)          |
 | `authorName`  | No       | Author display name shown next to date |
 | `authorImage` | No       | Round author avatar image URL          |
+| `layout`      | No       | Set to `"sidebar"` for docs-style layout with TOC |
 
 3. Run `npm run sync` to sync pages
 
 Pages appear automatically in the navigation when published.
+
+**Sidebar layout:** Add `layout: "sidebar"` to any page frontmatter to enable a docs-style layout with a table of contents sidebar. The sidebar extracts headings (H1, H2, H3) automatically and provides smooth scroll navigation. Only appears if headings exist in the page content.
 
 ### Update SEO Meta Tags
 

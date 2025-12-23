@@ -51,6 +51,7 @@ const PAGE_FIELDS = [
   { name: "featuredOrder", required: false, example: "1" },
   { name: "authorName", required: false, example: '"Jane Doe"' },
   { name: "authorImage", required: false, example: '"/images/authors/jane.png"' },
+  { name: "layout", required: false, example: '"sidebar"' },
 ];
 
 // Generate frontmatter template based on content type
@@ -94,6 +95,7 @@ title: "Page Title"
 slug: "page-url"
 published: true
 order: 1
+layout: "sidebar"
 ---
 
 # Page Title
@@ -103,6 +105,10 @@ Your page content goes here...
 ## Section
 
 Add your markdown content.
+
+## Another Section
+
+With sidebar layout enabled, headings automatically appear in the table of contents.
 `;
 }
 

@@ -3,6 +3,7 @@ title: "Docs"
 slug: "docs"
 published: true
 order: 0
+layout: "sidebar"
 ---
 
 Reference documentation for setting up, customizing, and deploying this markdown framework.
@@ -82,15 +83,15 @@ image: "/images/og-image.png"
 Content here...
 ```
 
-| Field           | Required | Description                          |
-| --------------- | -------- | ------------------------------------ |
-| `title`         | Yes      | Post title                           |
-| `description`   | Yes      | SEO description                      |
-| `date`          | Yes      | YYYY-MM-DD format                    |
-| `slug`          | Yes      | URL path (unique)                    |
-| `published`     | Yes      | `true` to show                       |
-| `tags`          | Yes      | Array of strings                     |
-| `readTime`      | No       | Display time estimate                |
+| Field           | Required | Description                            |
+| --------------- | -------- | -------------------------------------- |
+| `title`         | Yes      | Post title                             |
+| `description`   | Yes      | SEO description                        |
+| `date`          | Yes      | YYYY-MM-DD format                      |
+| `slug`          | Yes      | URL path (unique)                      |
+| `published`     | Yes      | `true` to show                         |
+| `tags`          | Yes      | Array of strings                       |
+| `readTime`      | No       | Display time estimate                  |
 | `image`         | No       | OG image and featured card thumbnail   |
 | `excerpt`       | No       | Short text for card view               |
 | `featured`      | No       | `true` to show in featured section     |
@@ -113,18 +114,51 @@ order: 1
 Content here...
 ```
 
-| Field           | Required | Description                        |
-| --------------- | -------- | ---------------------------------- |
-| `title`         | Yes      | Nav link text                      |
-| `slug`          | Yes      | URL path                           |
-| `published`     | Yes      | `true` to show                     |
-| `order`         | No       | Nav order (lower = first)              |
-| `excerpt`       | No       | Short text for card view               |
-| `image`         | No       | Thumbnail for featured card view       |
-| `featured`      | No       | `true` to show in featured section     |
-| `featuredOrder` | No       | Order in featured (lower = first)      |
-| `authorName`    | No       | Author display name shown next to date |
-| `authorImage`   | No       | Round author avatar image URL          |
+| Field           | Required | Description                                       |
+| --------------- | -------- | ------------------------------------------------- |
+| `title`         | Yes      | Nav link text                                     |
+| `slug`          | Yes      | URL path                                          |
+| `published`     | Yes      | `true` to show                                    |
+| `order`         | No       | Nav order (lower = first)                         |
+| `excerpt`       | No       | Short text for card view                          |
+| `image`         | No       | Thumbnail for featured card view                  |
+| `featured`      | No       | `true` to show in featured section                |
+| `featuredOrder` | No       | Order in featured (lower = first)                 |
+| `authorName`    | No       | Author display name shown next to date            |
+| `authorImage`   | No       | Round author avatar image URL                     |
+| `layout`        | No       | Set to `"sidebar"` for docs-style layout with TOC |
+
+### Sidebar layout
+
+Pages can use a docs-style layout with a table of contents sidebar. Add `layout: "sidebar"` to the page frontmatter:
+
+```markdown
+---
+title: "Documentation"
+slug: "docs"
+published: true
+layout: "sidebar"
+---
+
+# Introduction
+
+## Section One
+
+### Subsection
+
+## Section Two
+```
+
+**Features:**
+
+- Left sidebar displays table of contents extracted from H1, H2, H3 headings
+- Two-column layout: 220px sidebar + flexible content area
+- Sidebar only appears if headings exist in the page content
+- Active heading highlighting as you scroll
+- Smooth scroll navigation when clicking TOC links
+- Mobile responsive: stacks to single column below 1024px
+
+The sidebar extracts headings automatically from your markdown content. No manual TOC needed.
 
 ### How frontmatter works
 
@@ -216,20 +250,20 @@ Follow the step-by-step guide in `FORK_CONFIG.md` to update each file manually.
 
 These files contain the main site description text. Update them with your own tagline:
 
-| File | What to change |
-|------|----------------|
-| `index.html` | meta description, og:description, twitter:description, JSON-LD |
-| `README.md` | Main description at top of file |
-| `src/config/siteConfig.ts` | name, title, and bio fields |
-| `src/pages/Home.tsx` | Intro paragraph (hardcoded JSX with links) |
-| `convex/http.ts` | SITE_NAME constant and description strings (3 locations) |
-| `convex/rss.ts` | SITE_TITLE and SITE_DESCRIPTION constants |
-| `public/llms.txt` | Header quote, Name, and Description fields |
-| `public/openapi.yaml` | API title and example site name |
-| `AGENTS.md` | Project overview section |
-| `content/blog/about-this-blog.md` | Title, description, excerpt, and opening paragraph |
-| `content/pages/about.md` | excerpt field and opening paragraph |
-| `content/pages/docs.md` | Opening description paragraph |
+| File                              | What to change                                                 |
+| --------------------------------- | -------------------------------------------------------------- |
+| `index.html`                      | meta description, og:description, twitter:description, JSON-LD |
+| `README.md`                       | Main description at top of file                                |
+| `src/config/siteConfig.ts`        | name, title, and bio fields                                    |
+| `src/pages/Home.tsx`              | Intro paragraph (hardcoded JSX with links)                     |
+| `convex/http.ts`                  | SITE_NAME constant and description strings (3 locations)       |
+| `convex/rss.ts`                   | SITE_TITLE and SITE_DESCRIPTION constants                      |
+| `public/llms.txt`                 | Header quote, Name, and Description fields                     |
+| `public/openapi.yaml`             | API title and example site name                                |
+| `AGENTS.md`                       | Project overview section                                       |
+| `content/blog/about-this-blog.md` | Title, description, excerpt, and opening paragraph             |
+| `content/pages/about.md`          | excerpt field and opening paragraph                            |
+| `content/pages/docs.md`           | Opening description paragraph                                  |
 
 **Backend constants** (`convex/http.ts` and `convex/rss.ts`):
 
@@ -268,10 +302,10 @@ export default {
 
   // Blog page configuration
   blogPage: {
-    enabled: true,         // Enable /blog route
-    showInNav: true,       // Show in navigation
-    title: "Blog",         // Nav link and page title
-    order: 0,              // Nav order (lower = first)
+    enabled: true, // Enable /blog route
+    showInNav: true, // Show in navigation
+    title: "Blog", // Nav link and page title
+    order: 0, // Nav order (lower = first)
   },
   displayOnHomepage: true, // Show posts on homepage
 
@@ -350,13 +384,13 @@ gitHubContributions: {
 },
 ```
 
-| Option | Description |
-| ------ | ----------- |
-| `enabled` | `true` to show, `false` to hide |
-| `username` | Your GitHub username |
-| `showYearNavigation` | Show prev/next year navigation |
-| `linkToProfile` | Click graph to visit GitHub profile |
-| `title` | Text above graph (`undefined` to hide) |
+| Option               | Description                            |
+| -------------------- | -------------------------------------- |
+| `enabled`            | `true` to show, `false` to hide        |
+| `username`           | Your GitHub username                   |
+| `showYearNavigation` | Show prev/next year navigation         |
+| `linkToProfile`      | Click graph to visit GitHub profile    |
+| `title`              | Text above graph (`undefined` to hide) |
 
 Theme-aware colors match each site theme. Uses public API (no GitHub token required).
 
@@ -371,10 +405,10 @@ visitorMap: {
 },
 ```
 
-| Option    | Description                                 |
-| --------- | ------------------------------------------- |
-| `enabled` | `true` to show, `false` to hide             |
-| `title`   | Text above map (`undefined` to hide)        |
+| Option    | Description                          |
+| --------- | ------------------------------------ |
+| `enabled` | `true` to show, `false` to hide      |
+| `title`   | Text above map (`undefined` to hide) |
 
 The map displays with theme-aware colors. Visitor dots pulse to indicate live sessions. Location data comes from Netlify's automatic geo headers at the edge.
 
@@ -398,14 +432,14 @@ logoGallery: {
 },
 ```
 
-| Option      | Description                                        |
-| ----------- | -------------------------------------------------- |
-| `enabled`   | `true` to show, `false` to hide                    |
-| `images`    | Array of `{ src, href }` objects                   |
-| `position`  | `'above-footer'` or `'below-featured'`             |
-| `speed`     | Seconds for one scroll cycle (lower = faster)      |
-| `title`     | Text above gallery (`undefined` to hide)           |
-| `scrolling` | `true` for infinite scroll, `false` for static grid |
+| Option      | Description                                                |
+| ----------- | ---------------------------------------------------------- |
+| `enabled`   | `true` to show, `false` to hide                            |
+| `images`    | Array of `{ src, href }` objects                           |
+| `position`  | `'above-footer'` or `'below-featured'`                     |
+| `speed`     | Seconds for one scroll cycle (lower = faster)              |
+| `title`     | Text above gallery (`undefined` to hide)                   |
+| `scrolling` | `true` for infinite scroll, `false` for static grid        |
 | `maxItems`  | Max logos to show when `scrolling` is `false` (default: 4) |
 
 **Display modes:**
@@ -425,7 +459,7 @@ logoGallery: {
 
 ### Blog page
 
-The site supports a dedicated blog page at `/blog`. Configure in `src/config/siteConfig.ts`:
+The site supports a dedicated blog page at `/blog` with two view modes: list view (year-grouped posts) and card view (thumbnail grid). Configure in `src/config/siteConfig.ts`:
 
 ```typescript
 blogPage: {
@@ -433,6 +467,8 @@ blogPage: {
   showInNav: true,       // Show in navigation
   title: "Blog",         // Nav link and page title
   order: 0,              // Nav order (lower = first)
+  viewMode: "list",      // Default view: "list" or "cards"
+  showViewToggle: true,  // Show toggle button to switch views
 },
 displayOnHomepage: true, // Show posts on homepage
 ```
@@ -443,7 +479,18 @@ displayOnHomepage: true, // Show posts on homepage
 | `showInNav`         | Show Blog link in navigation           |
 | `title`             | Text for nav link and page heading     |
 | `order`             | Position in navigation (lower = first) |
+| `viewMode`          | Default view: `"list"` or `"cards"`    |
+| `showViewToggle`    | Show toggle button to switch views     |
 | `displayOnHomepage` | Show post list on homepage             |
+
+**View modes:**
+
+- **List view:** Year-grouped posts with titles, read time, and dates
+- **Card view:** Grid of cards showing thumbnails, titles, excerpts, and metadata
+
+**Card view details:**
+
+Cards display post thumbnails (from `image` frontmatter field), titles, excerpts (or descriptions), read time, and dates. Posts without images show cards without thumbnail areas. Grid is responsive: 3 columns on desktop, 2 on tablet, 1 on mobile.
 
 **Display options:**
 
@@ -452,6 +499,8 @@ displayOnHomepage: true, // Show posts on homepage
 - Both: `displayOnHomepage: true`, `blogPage.enabled: true`
 
 **Navigation order:** The Blog link merges with page links and sorts by order. Pages use the `order` field in frontmatter. Set `blogPage.order: 5` to position Blog after pages with order 0-4.
+
+**View preference:** User's view mode choice is saved to localStorage and persists across page visits.
 
 ### Scroll-to-top button
 
@@ -559,14 +608,14 @@ The menu appears automatically on screens under 768px wide.
 
 Each post and page includes a share dropdown with options:
 
-| Option           | Description                                      |
-| ---------------- | ------------------------------------------------ |
-| Copy page        | Copies formatted markdown to clipboard           |
-| Open in ChatGPT  | Opens ChatGPT with raw markdown URL              |
-| Open in Claude   | Opens Claude with raw markdown URL               |
-| Open in Perplexity | Opens Perplexity with raw markdown URL         |
-| View as Markdown | Opens raw `.md` file in new tab                  |
-| Generate Skill   | Downloads `{slug}-skill.md` for AI agent training |
+| Option             | Description                                       |
+| ------------------ | ------------------------------------------------- |
+| Copy page          | Copies formatted markdown to clipboard            |
+| Open in ChatGPT    | Opens ChatGPT with raw markdown URL               |
+| Open in Claude     | Opens Claude with raw markdown URL                |
+| Open in Perplexity | Opens Perplexity with raw markdown URL            |
+| View as Markdown   | Opens raw `.md` file in new tab                   |
+| Generate Skill     | Downloads `{slug}-skill.md` for AI agent training |
 
 **Raw markdown URLs:** AI services receive the URL to the raw markdown file (e.g., `/raw/setup-guide.md`) instead of the page URL. This provides direct access to clean markdown content with metadata headers for better AI parsing.
 
@@ -629,6 +678,33 @@ Example:
 | Borders | Clean  |
 | Mobile  | Scroll |
 | Themes  | All    |
+
+## Collapsible sections
+
+Create expandable/collapsible content using HTML `<details>` and `<summary>` tags:
+
+```html
+<details>
+  <summary>Click to expand</summary>
+
+  Hidden content here. Supports markdown: - Lists - **Bold** and _italic_ - Code
+  blocks
+</details>
+```
+
+**Expanded by default:** Add the `open` attribute:
+
+```html
+<details open>
+  <summary>Already expanded</summary>
+
+  This section starts open.
+</details>
+```
+
+**Nested sections:** You can nest `<details>` inside other `<details>` for multi-level collapsible content.
+
+Collapsible sections work with all four themes and are styled to match the site design.
 
 ## Import external content
 

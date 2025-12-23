@@ -378,6 +378,124 @@ Control column alignment with colons:
 | :--- | :----: | ----: |
 | L    |   C    |     R |
 
+## Collapsible sections
+
+Use HTML `<details>` and `<summary>` tags to create expandable/collapsible content:
+
+### Basic toggle
+
+```html
+<details>
+<summary>Click to expand</summary>
+
+Hidden content goes here. You can include:
+
+- Lists
+- **Bold** and _italic_ text
+- Code blocks
+- Any markdown content
+
+</details>
+```
+
+<details>
+<summary>Click to expand</summary>
+
+Hidden content goes here. You can include:
+
+- Lists
+- **Bold** and _italic_ text
+- Code blocks
+- Any markdown content
+
+</details>
+
+### Expanded by default
+
+Add the `open` attribute to start expanded:
+
+```html
+<details open>
+<summary>Already expanded</summary>
+
+This section starts open. Users can click to collapse it.
+
+</details>
+```
+
+<details open>
+<summary>Already expanded</summary>
+
+This section starts open. Users can click to collapse it.
+
+</details>
+
+### Toggle with code
+
+```html
+<details>
+<summary>View the code example</summary>
+
+```typescript
+export const getPosts = query({
+  args: {},
+  handler: async (ctx) => {
+    return await ctx.db.query("posts").collect();
+  },
+});
+```
+
+</details>
+```
+
+<details>
+<summary>View the code example</summary>
+
+```typescript
+export const getPosts = query({
+  args: {},
+  handler: async (ctx) => {
+    return await ctx.db.query("posts").collect();
+  },
+});
+```
+
+</details>
+
+### Nested toggles
+
+You can nest collapsible sections:
+
+```html
+<details>
+<summary>Outer section</summary>
+
+Some content here.
+
+<details>
+<summary>Inner section</summary>
+
+Nested content inside.
+
+</details>
+
+</details>
+```
+
+<details>
+<summary>Outer section</summary>
+
+Some content here.
+
+<details>
+<summary>Inner section</summary>
+
+Nested content inside.
+
+</details>
+
+</details>
+
 ## Multi-line code in lists
 
 Indent code blocks with 4 spaces inside list items:

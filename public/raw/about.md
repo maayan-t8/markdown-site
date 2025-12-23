@@ -2,12 +2,12 @@
 
 ---
 Type: page
-Date: 2025-12-22
+Date: 2025-12-23
 ---
 
 An open-source publishing framework for AI agents and developers. Write markdown, sync from the terminal. Your content is instantly available to browsers, LLMs, and AI agents. Built on Convex and Netlify.
 
-## What makes it a dev sync system
+## What makes it a dev sync system?
 
 **File-based content.** All posts and pages live in `content/blog/` and `content/pages/` as markdown files with frontmatter. No database UI. No admin panel. Just files in your repo.
 

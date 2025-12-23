@@ -28,6 +28,8 @@ export interface BlogPageConfig {
   title: string; // Page title for the blog page
   description?: string; // Optional description shown on blog page
   order?: number; // Nav order (lower = first, matches page frontmatter order)
+  viewMode: "list" | "cards"; // Default view mode (list or cards)
+  showViewToggle: boolean; // Show toggle button to switch between views
 }
 
 // Posts display configuration
@@ -150,6 +152,8 @@ export const siteConfig: SiteConfig = {
     title: "Blog", // Page title
     description: "All posts from the blog, sorted by date.", // Optional description
     order: 2, // Nav order (lower = first, e.g., 0 = first, 5 = after pages with order 0-4)
+    viewMode: "list", // Default view mode: "list" or "cards"
+    showViewToggle: true, // Show toggle button to switch between list and card views
   },
 
   // Posts display configuration

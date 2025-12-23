@@ -9,10 +9,13 @@ interface Post {
   date: string;
   readTime?: string;
   tags: string[];
+  excerpt?: string;
+  image?: string;
 }
 
 interface PostListProps {
   posts: Post[];
+  viewMode?: "list" | "cards";
 }
 
 // Group posts by year
@@ -30,12 +33,52 @@ function groupByYear(posts: Post[]): Record<string, Post[]> {
   );
 }
 
-export default function PostList({ posts }: PostListProps) {
+export default function PostList({ posts, viewMode = "list" }: PostListProps) {
   // Sort posts by date descending
   const sortedPosts = [...posts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
 
+  // Card view: render all posts in a grid
+  if (viewMode === "cards") {
+    return (
+      <div className="post-cards">
+        {sortedPosts.map((post) => (
+          <Link key={post._id} to={`/${post.slug}`} className="post-card">
+            {/* Thumbnail image displayed as square using object-fit: cover */}
+            {post.image && (
+              <div className="post-card-image-wrapper">
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="post-card-image"
+                  loading="lazy"
+                />
+              </div>
+            )}
+            <div className="post-card-content">
+              <h3 className="post-card-title">{post.title}</h3>
+              {(post.excerpt || post.description) && (
+                <p className="post-card-excerpt">
+                  {post.excerpt || post.description}
+                </p>
+              )}
+              <div className="post-card-meta">
+                {post.readTime && (
+                  <span className="post-card-read-time">{post.readTime}</span>
+                )}
+                <span className="post-card-date">
+                  {format(parseISO(post.date), "MMMM d, yyyy")}
+                </span>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    );
+  }
+
+  // List view: group by year
   const groupedPosts = groupByYear(sortedPosts);
   const years = Object.keys(groupedPosts).sort((a, b) => Number(b) - Number(a));
 

@@ -40,7 +40,7 @@ A brief description of each file in the codebase.
 | File        | Description                                                       |
 | ----------- | ----------------------------------------------------------------- |
 | `Home.tsx`  | Landing page with featured content and optional post list         |
-| `Blog.tsx`  | Dedicated blog page with post list (configurable via siteConfig.blogPage) |
+| `Blog.tsx`  | Dedicated blog page with post list or card grid view (configurable via siteConfig.blogPage, supports view toggle) |
 | `Post.tsx`  | Individual blog post view (update SITE_URL/SITE_NAME when forking) |
 | `Stats.tsx` | Real-time analytics dashboard with visitor stats and GitHub stars |
 | `Write.tsx` | Three-column markdown writing page with Cursor docs-style UI, frontmatter reference with copy buttons, theme toggle, font switcher (serif/sans-serif), and localStorage persistence (not linked in nav) |
@@ -51,8 +51,8 @@ A brief description of each file in the codebase.
 | ------------------------- | ---------------------------------------------------------- |
 | `Layout.tsx`              | Page wrapper with search button, theme toggle, mobile menu, and scroll-to-top |
 | `ThemeToggle.tsx`         | Theme switcher (dark/light/tan/cloud)                      |
-| `PostList.tsx`            | Year-grouped blog post list                                |
-| `BlogPost.tsx`            | Markdown renderer with syntax highlighting                 |
+| `PostList.tsx`            | Year-grouped blog post list or card grid (supports list/cards view modes) |
+| `BlogPost.tsx`            | Markdown renderer with syntax highlighting and collapsible sections (details/summary) |
 | `CopyPageDropdown.tsx`    | Share dropdown for LLMs (ChatGPT, Claude, Perplexity) using raw markdown URLs for better AI parsing, with View as Markdown and Generate Skill options |
 | `SearchModal.tsx`         | Full text search modal with keyboard navigation            |
 | `FeaturedCards.tsx`       | Card grid for featured posts/pages with excerpts           |
