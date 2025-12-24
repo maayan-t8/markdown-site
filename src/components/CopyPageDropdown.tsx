@@ -327,10 +327,23 @@ export default function CopyPageDropdown(props: CopyPageDropdownProps) {
   const handleOpenInAI = async (service: AIService) => {
     // Use raw markdown URL for better AI parsing
     if (service.buildUrlFromRawMarkdown) {
-      // Build raw markdown URL from page URL and slug
-      const origin = new URL(props.url).origin;
-      const rawMarkdownUrl = `${origin}/raw/${props.slug}.md`;
+      // Build absolute raw markdown URL using current origin (not props.url)
+      // This ensures correct URL even if props.url points to canonical/deploy preview domain
+      const rawMarkdownUrl = new URL(
+        `/raw/${props.slug}.md`,
+        window.location.origin,
+      ).toString();
       const targetUrl = service.buildUrlFromRawMarkdown(rawMarkdownUrl);
+
+      // For ChatGPT, add fallback if URL fetch fails
+      if (service.id === "chatgpt") {
+        // Open ChatGPT with raw URL
+        window.open(targetUrl, "_blank");
+        setIsOpen(false);
+        // Optional: Could add error handling here if needed
+        return;
+      }
+
       window.open(targetUrl, "_blank");
       setIsOpen(false);
       return;
@@ -511,7 +524,12 @@ export default function CopyPageDropdown(props: CopyPageDropdownProps) {
           <button
             className="copy-page-item"
             onClick={() => {
-              window.open(`/raw/${props.slug}.md`, "_blank");
+              // Build absolute URL using current origin for consistency
+              const rawMarkdownUrl = new URL(
+                `/raw/${props.slug}.md`,
+                window.location.origin,
+              ).toString();
+              window.open(rawMarkdownUrl, "_blank");
               setIsOpen(false);
             }}
             role="menuitem"

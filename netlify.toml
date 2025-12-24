@@ -76,7 +76,7 @@
     "/openapi.yaml"
   ]
 
-# Security and SEO headers
+# Security and SEO headers (global, excludes /raw/*)
 [[headers]]
   for = "/*"
   [headers.values]
@@ -84,16 +84,23 @@
     X-Content-Type-Options = "nosniff"
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    # Link header removed from global scope to avoid applying to /raw/*
+
+# Link header for SPA entry point only
+[[headers]]
+  for = "/index.html"
+  [headers.values]
     Link = "</llms.txt>; rel=\"author\""
 
 # Raw markdown files - AI friendly headers
+# No Link header, no noindex - optimized for AI crawlers
 [[headers]]
   for = "/raw/*"
   [headers.values]
     Content-Type = "text/markdown; charset=utf-8"
     Access-Control-Allow-Origin = "*"
     Cache-Control = "public, max-age=3600"
-    X-Robots-Tag = "noindex"
+    # Removed X-Robots-Tag = "noindex" - AI crawlers need to index raw content
 
 [context.production.environment]
   NODE_ENV = "production"

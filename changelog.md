@@ -4,6 +4,34 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.24.8] - 2025-12-23
+
+### Fixed
+
+- Raw markdown URL construction now uses `window.location.origin` instead of `props.url`
+  - Prevents incorrect URLs when `props.url` points to canonical/deploy preview domains
+  - Uses `new URL()` constructor for proper absolute URL building
+  - Ensures raw URLs always match the current page origin
+  - Applied to both AI service links and "View as Markdown" option
+
+### Technical
+
+- `src/components/CopyPageDropdown.tsx`: Changed raw URL construction from `new URL(props.url).origin` to `window.location.origin` with `new URL()` constructor
+
+## [1.24.7] - 2025-12-23
+
+### Fixed
+
+- Removed `Link` header from `/raw/*` endpoints to fix AI crawler fetch failures
+  - Netlify merges headers, so global `Link` header was being applied to `/raw/*` despite specific block
+  - Moved `Link` header from global `/*` scope to `/index.html` only
+  - Removed `X-Robots-Tag = "noindex"` from `/raw/*` to allow AI crawlers to index raw content
+  - Raw markdown files now have clean headers optimized for AI consumption
+
+### Technical
+
+- `netlify.toml`: Removed `Link` from global headers, added specific `/index.html` block, removed `noindex` from `/raw/*`
+
 ## [1.24.6] - 2025-12-23
 
 ### Added
