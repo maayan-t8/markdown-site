@@ -4,6 +4,33 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.27.0] - 2025-12-24
+
+### Added
+
+- Homepage post limit configuration
+  - Configurable limit for number of posts shown on homepage via `siteConfig.postsDisplay.homePostsLimit`
+  - Default limit set to 10 most recent posts
+  - Set to `undefined` to show all posts (no limit)
+- Optional "read more" link below limited post list
+  - Configurable via `siteConfig.postsDisplay.homePostsReadMore`
+  - Customizable link text and destination URL
+  - Only appears when posts are limited and there are more posts than the limit
+  - Default links to `/blog` page
+  - Can be disabled by setting `enabled: false`
+
+### Changed
+
+- `src/config/siteConfig.ts`: Added `homePostsLimit` and `homePostsReadMore` to `PostsDisplayConfig` interface
+- `src/pages/Home.tsx`: Post list now respects `homePostsLimit` configuration and shows "read more" link when applicable
+- `src/styles/global.css`: Added styles for `.home-posts-read-more` and `.home-posts-read-more-link` with centered button styling and hover effects
+
+### Technical
+
+- New interface: `HomePostsReadMoreConfig` in `src/config/siteConfig.ts`
+- Post limiting logic uses `.slice()` to limit array before passing to `PostList` component
+- Conditional rendering ensures "read more" link only shows when needed
+
 ## [1.26.0] - 2025-12-24
 
 ### Added

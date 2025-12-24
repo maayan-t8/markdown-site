@@ -4,7 +4,7 @@ description: "Learn how to add header images, inline images, and Open Graph imag
 date: "2025-12-14"
 slug: "using-images-in-posts"
 published: true
-featured: true
+featured: false
 featuredOrder: 4
 tags: ["images", "tutorial", "markdown", "open-graph"]
 readTime: "4 min read"

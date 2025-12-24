@@ -420,7 +420,7 @@ export default function CopyPageDropdown(props: CopyPageDropdownProps) {
           </button>
 
           {/* Divider */}
-          <div className="copy-page-divider" role="separator" />
+          {/* <div className="copy-page-divider" role="separator" /> */}
 
           {/* AI service links using GitHub raw URLs */}
           {/* Note: Requires git push to work - npm sync alone is not sufficient */}
@@ -451,7 +451,9 @@ export default function CopyPageDropdown(props: CopyPageDropdownProps) {
                   ↗
                 </span>
               </span>
-              <span className="copy-page-item-desc">Requires git push</span>
+              <span className="copy-page-item-desc">
+                Ask AI about this link
+              </span>
             </div>
           </button>
 
@@ -482,7 +484,9 @@ export default function CopyPageDropdown(props: CopyPageDropdownProps) {
                   ↗
                 </span>
               </span>
-              <span className="copy-page-item-desc">Requires git push</span>
+              <span className="copy-page-item-desc">
+                Ask AI about this link
+              </span>
             </div>
           </button>
 
@@ -513,7 +517,9 @@ export default function CopyPageDropdown(props: CopyPageDropdownProps) {
                   ↗
                 </span>
               </span>
-              <span className="copy-page-item-desc">Requires git push</span>
+              <span className="copy-page-item-desc">
+                Ask AI about this link
+              </span>
             </div>
           </button>
         </div>

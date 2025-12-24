@@ -33,13 +33,13 @@ A brief description of each file in the codebase.
 
 | File            | Description                                                                                               |
 | --------------- | --------------------------------------------------------------------------------------------------------- |
-| `siteConfig.ts` | Centralized site configuration (name, logo, blog page, posts display, GitHub contributions, nav order, inner page logo settings, hardcoded navigation items for React routes, GitHub repository config for AI service raw URLs) |
+| `siteConfig.ts` | Centralized site configuration (name, logo, blog page, posts display with homepage post limit and read more link, GitHub contributions, nav order, inner page logo settings, hardcoded navigation items for React routes, GitHub repository config for AI service raw URLs) |
 
 ### Pages (`src/pages/`)
 
 | File        | Description                                                       |
 | ----------- | ----------------------------------------------------------------- |
-| `Home.tsx`  | Landing page with featured content and optional post list         |
+| `Home.tsx`  | Landing page with featured content and optional post list. Supports configurable post limit (homePostsLimit) and optional "read more" link (homePostsReadMore) via siteConfig.postsDisplay |
 | `Blog.tsx`  | Dedicated blog page with post list or card grid view (configurable via siteConfig.blogPage, supports view toggle). Includes back button in navigation |
 | `Post.tsx`  | Individual blog post or page view with optional sidebar layout. Includes back button, CopyPageDropdown, tag links, and related posts section in footer for blog posts (update SITE_URL/SITE_NAME when forking) |
 | `Stats.tsx` | Real-time analytics dashboard with visitor stats and GitHub stars |

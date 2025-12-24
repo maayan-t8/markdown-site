@@ -6,7 +6,7 @@ slug: "raw-markdown-and-copy-improvements"
 published: true
 tags: ["release", "features", "updates", "developer-tools"]
 readTime: "8 min read"
-featured: true
+featured: false
 featuredOrder: 2
 image: "/images/v17.png"
 authorName: "Markdown"

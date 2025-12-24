@@ -536,6 +536,29 @@ body {
   margin-top: 20px;
 }
 
+.home-posts-read-more {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.home-posts-read-more-link {
+  display: inline-block;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  padding: 12px 24px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.home-posts-read-more-link:hover {
+  background-color: var(--bg-hover);
+  border-color: var(--text-muted);
+  color: var(--text-primary);
+}
+
 .post-year-group {
   margin-bottom: 24px;
 }

@@ -190,7 +190,28 @@ export default function Home() {
           {posts === undefined ? null : posts.length === 0 ? (
             <p className="no-posts">No posts yet. Check back soon!</p>
           ) : (
-            <PostList posts={posts} />
+            <>
+              <PostList
+                posts={
+                  siteConfig.postsDisplay.homePostsLimit
+                    ? posts.slice(0, siteConfig.postsDisplay.homePostsLimit)
+                    : posts
+                }
+              />
+              {/* Show "read more" link if enabled and there are more posts than the limit */}
+              {siteConfig.postsDisplay.homePostsReadMore?.enabled &&
+                siteConfig.postsDisplay.homePostsLimit &&
+                posts.length > siteConfig.postsDisplay.homePostsLimit && (
+                  <div className="home-posts-read-more">
+                    <Link
+                      to={siteConfig.postsDisplay.homePostsReadMore.link}
+                      className="home-posts-read-more-link"
+                    >
+                      {siteConfig.postsDisplay.homePostsReadMore.text}
+                    </Link>
+                  </div>
+                )}
+            </>
           )}
         </section>
       )}

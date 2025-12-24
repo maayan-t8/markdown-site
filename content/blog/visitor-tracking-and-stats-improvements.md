@@ -6,7 +6,7 @@ slug: "visitor-tracking-and-stats-improvements"
 published: true
 tags: ["features", "stats", "convex", "updates", "analytics"]
 readTime: "5 min read"
-featured: true
+featured: false
 featuredOrder: 1
 authorName: "Markdown"
 authorImage: "/images/authors/markdown.png"

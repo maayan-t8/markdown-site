@@ -40,11 +40,21 @@ export interface BlogPageConfig {
   showViewToggle: boolean; // Show toggle button to switch between views
 }
 
+// Homepage posts read more link configuration
+// Optional link shown below limited post list on homepage
+export interface HomePostsReadMoreConfig {
+  enabled: boolean; // Show "read more" link when posts are limited
+  text: string; // Link text (e.g., "Read more blog posts")
+  link: string; // URL to link to (e.g., "/blog")
+}
+
 // Posts display configuration
 // Controls where the post list appears
 export interface PostsDisplayConfig {
   showOnHome: boolean; // Show post list on homepage
   showOnBlogPage: boolean; // Show post list on /blog page (requires blogPage.enabled)
+  homePostsLimit?: number; // Limit number of posts shown on homepage (undefined = show all)
+  homePostsReadMore?: HomePostsReadMoreConfig; // Optional "read more" link configuration
 }
 
 // Hardcoded navigation item configuration
@@ -224,6 +234,12 @@ export const siteConfig: SiteConfig = {
   postsDisplay: {
     showOnHome: true, // Show post list on homepage
     showOnBlogPage: true, // Show post list on /blog page
+    homePostsLimit: 10, // Limit number of posts on homepage (undefined = show all)
+    homePostsReadMore: {
+      enabled: true, // Show "read more" link when posts are limited
+      text: "Read more blog posts", // Customizable link text
+      link: "/blog", // URL to link to (usually "/blog")
+    },
   },
 
   // Links for footer section

@@ -8,10 +8,15 @@
 
 ## Current Status
 
-v1.26.0 ready. Added tag pages, related posts, and re-enabled AI service links using GitHub raw URLs.
+v1.27.0 ready. Added homepage post limit and optional "read more" link configuration.
 
 ## Completed
 
+- [x] Homepage post limit configuration (homePostsLimit in siteConfig.postsDisplay)
+- [x] Optional "read more" link below limited post list (homePostsReadMore config)
+- [x] Customizable link text and destination URL
+- [x] CSS styling for read more link with hover effects
+- [x] Conditional rendering logic to show link only when posts are limited
 - [x] Tag pages at `/tags/[tag]` route with view mode toggle
 - [x] Related posts component for blog post footers (up to 3 related posts by shared tags)
 - [x] Tag links in post footers now navigate to tag archive pages
