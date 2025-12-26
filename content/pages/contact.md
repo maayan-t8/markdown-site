@@ -2,6 +2,7 @@
 title: "Contact"
 slug: "contact"
 published: true
+layout: "sidebar"
 order: 4
 ---
 

@@ -19,6 +19,7 @@ export default defineSchema({
     authorName: v.optional(v.string()), // Author display name
     authorImage: v.optional(v.string()), // Author avatar image URL (round)
     layout: v.optional(v.string()), // Layout type: "sidebar" for docs-style layout
+    rightSidebar: v.optional(v.boolean()), // Enable right sidebar with CopyPageDropdown
     lastSyncedAt: v.number(),
   })
     .index("by_slug", ["slug"])
@@ -49,11 +50,12 @@ export default defineSchema({
     authorName: v.optional(v.string()), // Author display name
     authorImage: v.optional(v.string()), // Author avatar image URL (round)
     layout: v.optional(v.string()), // Layout type: "sidebar" for docs-style layout
+    rightSidebar: v.optional(v.boolean()), // Enable right sidebar with CopyPageDropdown
     lastSyncedAt: v.number(),
   })
-    .index("by_slug", ["slug"])
-    .index("by_published", ["published"])
-    .index("by_featured", ["featured"])
+  .index("by_slug", ["slug"])
+  .index("by_published", ["published"])
+  .index("by_featured", ["featured"])
     .searchIndex("search_content", {
       searchField: "content",
       filterFields: ["published"],

@@ -9,6 +9,57 @@ layout: "sidebar"
 All notable changes to this project.
 ![](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+## v1.30.2
+
+Released December 25, 2025
+
+**Right sidebar default behavior fix**
+
+- Right sidebar no longer appears on pages/posts without explicit `rightSidebar: true` in frontmatter
+  - Changed default behavior: right sidebar is now opt-in only
+  - Pages like About and Contact now render without the right sidebar as expected
+  - `CopyPageDropdown` correctly appears in nav bar when right sidebar is disabled
+- Logic in `Post.tsx` changed from `(page.rightSidebar ?? true)` to `page.rightSidebar === true`
+
+Updated files: `src/pages/Post.tsx`
+
+## v1.30.1
+
+Released December 25, 2025
+
+**TypeScript error fix**
+
+- TypeScript error in `convex/posts.ts` where `rightSidebar` was used in mutation handlers but missing from args validators
+  - Added `rightSidebar: v.optional(v.boolean())` to `syncPosts` args validator
+  - Added `rightSidebar: v.optional(v.boolean())` to `syncPostsPublic` args validator
+
+Updated files: `convex/posts.ts`
+
+## v1.30.0
+
+Released December 25, 2025
+
+**Right sidebar feature for posts and pages**
+
+- New `RightSidebar` component that displays `CopyPageDropdown` in a right sidebar
+  - Appears at 1135px+ viewport width when enabled
+  - Controlled by `siteConfig.rightSidebar.enabled` (global toggle)
+  - Per-post/page control via `rightSidebar: true` frontmatter field (opt-in only)
+  - Three-column layout support: left sidebar (TOC), main content, right sidebar (CopyPageDropdown)
+  - CopyPageDropdown automatically moves from nav to right sidebar when enabled
+  - Responsive: right sidebar hidden below 1135px, CopyPageDropdown returns to nav
+- Right sidebar configuration in siteConfig
+  - `rightSidebar.enabled`: Global toggle for right sidebar feature
+  - `rightSidebar.minWidth`: Minimum viewport width to show sidebar (default: 1135px)
+- `rightSidebar` frontmatter field
+  - Available for both blog posts and pages
+  - Optional boolean field to enable/disable right sidebar per post/page
+  - Added to Write page frontmatter reference with copy button
+
+Updated files: `src/components/RightSidebar.tsx`, `src/pages/Post.tsx`, `src/config/siteConfig.ts`, `src/styles/global.css`, `convex/schema.ts`, `convex/posts.ts`, `convex/pages.ts`, `scripts/sync-posts.ts`, `src/pages/Write.tsx`
+
+Documentation updated: `content/blog/setup-guide.md`, `content/pages/docs.md`, `files.md`, `changelog.md`
+
 ## v1.29.0
 
 Released December 25, 2025

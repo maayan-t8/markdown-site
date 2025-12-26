@@ -4,11 +4,13 @@ import { api } from "../../convex/_generated/api";
 import BlogPost from "../components/BlogPost";
 import CopyPageDropdown from "../components/CopyPageDropdown";
 import PageSidebar from "../components/PageSidebar";
+import RightSidebar from "../components/RightSidebar";
 import { extractHeadings } from "../utils/extractHeadings";
 import { useSidebar } from "../context/SidebarContext";
 import { format, parseISO } from "date-fns";
 import { ArrowLeft, Link as LinkIcon, Twitter, Rss, Tag } from "lucide-react";
 import { useState, useEffect } from "react";
+import siteConfig from "../config/siteConfig";
 
 // Site configuration
 const SITE_URL = "https://markdown.fast";
@@ -185,35 +187,40 @@ export default function Post() {
   if (page) {
     // Extract headings for sidebar TOC (only for pages with layout: "sidebar")
     const headings = page.layout === "sidebar" ? extractHeadings(page.content) : [];
-    const hasSidebar = headings.length > 0;
+    const hasLeftSidebar = headings.length > 0;
+    // Check if right sidebar is enabled (only when explicitly set in frontmatter)
+    const hasRightSidebar = siteConfig.rightSidebar.enabled && page.rightSidebar === true;
+    const hasAnySidebar = hasLeftSidebar || hasRightSidebar;
 
     return (
-      <div className={`post-page ${hasSidebar ? "post-page-with-sidebar" : ""}`}>
-        <nav className={`post-nav ${hasSidebar ? "post-nav-with-sidebar" : ""}`}>
+      <div className={`post-page ${hasAnySidebar ? "post-page-with-sidebar" : ""}`}>
+        <nav className={`post-nav ${hasAnySidebar ? "post-nav-with-sidebar" : ""}`}>
           <button onClick={() => navigate("/")} className="back-button">
             <ArrowLeft size={16} />
             <span>Back</span>
           </button>
-          {/* CopyPageDropdown in nav */}
-          <CopyPageDropdown
-            title={page.title}
-            content={page.content}
-            url={window.location.href}
-            slug={page.slug}
-            description={page.excerpt}
-          />
+          {/* Only show CopyPageDropdown in nav if right sidebar is disabled */}
+          {!hasRightSidebar && (
+            <CopyPageDropdown
+              title={page.title}
+              content={page.content}
+              url={window.location.href}
+              slug={page.slug}
+              description={page.excerpt}
+            />
+          )}
         </nav>
 
-        <div className={hasSidebar ? "post-content-with-sidebar" : ""}>
+        <div className={hasAnySidebar ? "post-content-with-sidebar" : ""}>
           {/* Left sidebar - TOC */}
-          {hasSidebar && (
+          {hasLeftSidebar && (
             <aside className="post-sidebar-wrapper post-sidebar-left">
               <PageSidebar headings={headings} activeId={location.hash.slice(1)} />
             </aside>
           )}
           
           {/* Main content */}
-          <article className={`post-article ${hasSidebar ? "post-article-with-sidebar" : ""}`}>
+          <article className={`post-article ${hasAnySidebar ? "post-article-with-sidebar" : ""}`}>
             <header className="post-header">
               <h1 className="post-title">{page.title}</h1>
               {/* Author avatar and name for pages (optional) */}
@@ -237,6 +244,17 @@ export default function Post() {
 
             <BlogPost content={page.content} />
           </article>
+
+          {/* Right sidebar - CopyPageDropdown */}
+          {hasRightSidebar && (
+            <RightSidebar
+              title={page.title}
+              content={page.content}
+              url={window.location.href}
+              slug={page.slug}
+              description={page.excerpt}
+            />
+          )}
         </div>
       </div>
     );
@@ -276,38 +294,43 @@ export default function Post() {
 
   // Extract headings for sidebar TOC (only for posts with layout: "sidebar")
   const headings = post?.layout === "sidebar" ? extractHeadings(post.content) : [];
-  const hasSidebar = headings.length > 0;
+  const hasLeftSidebar = headings.length > 0;
+  // Check if right sidebar is enabled (only when explicitly set in frontmatter)
+  const hasRightSidebar = siteConfig.rightSidebar.enabled && post.rightSidebar === true;
+  const hasAnySidebar = hasLeftSidebar || hasRightSidebar;
 
   // Render blog post with full metadata
   return (
-    <div className={`post-page ${hasSidebar ? "post-page-with-sidebar" : ""}`}>
-      <nav className={`post-nav ${hasSidebar ? "post-nav-with-sidebar" : ""}`}>
+    <div className={`post-page ${hasAnySidebar ? "post-page-with-sidebar" : ""}`}>
+      <nav className={`post-nav ${hasAnySidebar ? "post-nav-with-sidebar" : ""}`}>
         <button onClick={() => navigate("/")} className="back-button">
           <ArrowLeft size={16} />
           <span>Back</span>
         </button>
-        {/* Copy page dropdown for sharing with full metadata */}
-        <CopyPageDropdown
-          title={post.title}
-          content={post.content}
-          url={window.location.href}
-          slug={post.slug}
-          description={post.description}
-          date={post.date}
-          tags={post.tags}
-          readTime={post.readTime}
-        />
+        {/* Only show CopyPageDropdown in nav if right sidebar is disabled */}
+        {!hasRightSidebar && (
+          <CopyPageDropdown
+            title={post.title}
+            content={post.content}
+            url={window.location.href}
+            slug={post.slug}
+            description={post.description}
+            date={post.date}
+            tags={post.tags}
+            readTime={post.readTime}
+          />
+        )}
       </nav>
 
-      <div className={hasSidebar ? "post-content-with-sidebar" : ""}>
+      <div className={hasAnySidebar ? "post-content-with-sidebar" : ""}>
         {/* Left sidebar - TOC */}
-        {hasSidebar && (
+        {hasLeftSidebar && (
           <aside className="post-sidebar-wrapper post-sidebar-left">
             <PageSidebar headings={headings} activeId={location.hash.slice(1)} />
           </aside>
         )}
 
-        <article className={`post-article ${hasSidebar ? "post-article-with-sidebar" : ""}`}>
+        <article className={`post-article ${hasAnySidebar ? "post-article-with-sidebar" : ""}`}>
         <header className="post-header">
           <h1 className="post-title">{post.title}</h1>
           <div className="post-meta-header">
@@ -409,6 +432,20 @@ export default function Post() {
           )}
         </footer>
       </article>
+
+      {/* Right sidebar - CopyPageDropdown */}
+      {hasRightSidebar && (
+        <RightSidebar
+          title={post.title}
+          content={post.content}
+          url={window.location.href}
+          slug={post.slug}
+          description={post.description}
+          date={post.date}
+          tags={post.tags}
+          readTime={post.readTime}
+        />
+      )}
       </div>
     </div>
   );

@@ -8,9 +8,24 @@
 
 ## Current Status
 
-v1.29.0 ready. Added font family configuration system with monospace option.
+v1.30.2 ready. Right sidebar now opt-in only via frontmatter.
 
 ## Completed
+
+- [x] Fixed right sidebar default behavior: now requires explicit `rightSidebar: true` in frontmatter
+- [x] Pages/posts without rightSidebar frontmatter render normally with CopyPageDropdown in nav
+- [x] Fixed TypeScript errors: Added rightSidebar to syncPosts and syncPostsPublic args validators
+- [x] Right sidebar feature with CopyPageDropdown support
+- [x] RightSidebar component created
+- [x] Three-column layout CSS (left sidebar, main content, right sidebar)
+- [x] Right sidebar configuration in siteConfig.ts
+- [x] rightSidebar frontmatter field for posts and pages
+- [x] Updated Post.tsx to conditionally render right sidebar
+- [x] Updated schema.ts, posts.ts, pages.ts to handle rightSidebar field
+- [x] Updated sync-posts.ts to parse rightSidebar frontmatter
+- [x] Updated Write.tsx to include rightSidebar option
+- [x] Responsive behavior: right sidebar hidden below 1135px
+- [x] CopyPageDropdown automatically moves from nav to right sidebar when enabled
 
 - [x] Font family configuration system with siteConfig integration
 - [x] Added FontContext.tsx for global font state management

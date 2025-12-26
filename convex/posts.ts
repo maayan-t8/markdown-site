@@ -21,6 +21,8 @@ export const getAllPosts = query({
       featuredOrder: v.optional(v.number()),
       authorName: v.optional(v.string()),
       authorImage: v.optional(v.string()),
+      layout: v.optional(v.string()),
+      rightSidebar: v.optional(v.boolean()),
     }),
   ),
   handler: async (ctx) => {
@@ -51,6 +53,8 @@ export const getAllPosts = query({
       featuredOrder: post.featuredOrder,
       authorName: post.authorName,
       authorImage: post.authorImage,
+      layout: post.layout,
+      rightSidebar: post.rightSidebar,
     }));
   },
 });
@@ -120,6 +124,7 @@ export const getPostBySlug = query({
       authorName: v.optional(v.string()),
       authorImage: v.optional(v.string()),
       layout: v.optional(v.string()),
+      rightSidebar: v.optional(v.boolean()),
     }),
     v.null(),
   ),
@@ -151,6 +156,7 @@ export const getPostBySlug = query({
       authorName: post.authorName,
       authorImage: post.authorImage,
       layout: post.layout,
+      rightSidebar: post.rightSidebar,
     };
   },
 });
@@ -175,6 +181,7 @@ export const syncPosts = internalMutation({
         authorName: v.optional(v.string()),
         authorImage: v.optional(v.string()),
         layout: v.optional(v.string()),
+        rightSidebar: v.optional(v.boolean()),
       }),
     ),
   },
@@ -216,6 +223,7 @@ export const syncPosts = internalMutation({
           authorName: post.authorName,
           authorImage: post.authorImage,
           layout: post.layout,
+          rightSidebar: post.rightSidebar,
           lastSyncedAt: now,
         });
         updated++;
@@ -261,6 +269,7 @@ export const syncPostsPublic = mutation({
         authorName: v.optional(v.string()),
         authorImage: v.optional(v.string()),
         layout: v.optional(v.string()),
+        rightSidebar: v.optional(v.boolean()),
       }),
     ),
   },
@@ -302,6 +311,7 @@ export const syncPostsPublic = mutation({
           authorName: post.authorName,
           authorImage: post.authorImage,
           layout: post.layout,
+          rightSidebar: post.rightSidebar,
           lastSyncedAt: now,
         });
         updated++;

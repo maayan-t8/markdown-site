@@ -37,6 +37,7 @@ interface PostFrontmatter {
   authorName?: string; // Author display name
   authorImage?: string; // Author avatar image URL (round)
   layout?: string; // Layout type: "sidebar" for docs-style layout
+  rightSidebar?: boolean; // Enable right sidebar with CopyPageDropdown (default: true when siteConfig.rightSidebar.enabled)
 }
 
 interface ParsedPost {
@@ -55,6 +56,7 @@ interface ParsedPost {
   authorName?: string; // Author display name
   authorImage?: string; // Author avatar image URL (round)
   layout?: string; // Layout type: "sidebar" for docs-style layout
+  rightSidebar?: boolean; // Enable right sidebar with CopyPageDropdown (default: true when siteConfig.rightSidebar.enabled)
 }
 
 // Page frontmatter (for static pages like About, Projects, Contact)
@@ -71,6 +73,7 @@ interface PageFrontmatter {
   authorName?: string; // Author display name
   authorImage?: string; // Author avatar image URL (round)
   layout?: string; // Layout type: "sidebar" for docs-style layout
+  rightSidebar?: boolean; // Enable right sidebar with CopyPageDropdown (default: true when siteConfig.rightSidebar.enabled)
 }
 
 interface ParsedPage {
@@ -87,6 +90,7 @@ interface ParsedPage {
   authorName?: string; // Author display name
   authorImage?: string; // Author avatar image URL (round)
   layout?: string; // Layout type: "sidebar" for docs-style layout
+  rightSidebar?: boolean; // Enable right sidebar with CopyPageDropdown (default: true when siteConfig.rightSidebar.enabled)
 }
 
 // Calculate reading time based on word count
@@ -127,6 +131,7 @@ function parseMarkdownFile(filePath: string): ParsedPost | null {
       authorName: frontmatter.authorName, // Author display name
       authorImage: frontmatter.authorImage, // Author avatar image URL
       layout: frontmatter.layout, // Layout type: "sidebar" for docs-style layout
+      rightSidebar: frontmatter.rightSidebar, // Enable right sidebar with CopyPageDropdown
     };
   } catch (error) {
     console.error(`Error parsing ${filePath}:`, error);
@@ -178,6 +183,7 @@ function parsePageFile(filePath: string): ParsedPage | null {
       authorName: frontmatter.authorName, // Author display name
       authorImage: frontmatter.authorImage, // Author avatar image URL
       layout: frontmatter.layout, // Layout type: "sidebar" for docs-style layout
+      rightSidebar: frontmatter.rightSidebar, // Enable right sidebar with CopyPageDropdown
     };
   } catch (error) {
     console.error(`Error parsing page ${filePath}:`, error);

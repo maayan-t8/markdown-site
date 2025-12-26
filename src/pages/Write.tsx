@@ -39,6 +39,7 @@ const POST_FIELDS = [
   { name: "authorName", required: false, example: '"Jane Doe"' },
   { name: "authorImage", required: false, example: '"/images/authors/jane.png"' },
   { name: "layout", required: false, example: '"sidebar"' },
+  { name: "rightSidebar", required: false, example: "true" },
 ];
 
 // Frontmatter field definitions for pages
@@ -55,6 +56,7 @@ const PAGE_FIELDS = [
   { name: "authorName", required: false, example: '"Jane Doe"' },
   { name: "authorImage", required: false, example: '"/images/authors/jane.png"' },
   { name: "layout", required: false, example: '"sidebar"' },
+  { name: "rightSidebar", required: false, example: "true" },
 ];
 
 // Generate frontmatter template based on content type

@@ -80,6 +80,13 @@ export interface GitHubRepoConfig {
 // default font family options: "serif" (New York), "sans" (system fonts), "monospace" (IBM Plex Mono)
 export type FontFamily = "serif" | "sans" | "monospace";
 
+// Right sidebar configuration
+// Shows CopyPageDropdown in a right sidebar on posts/pages at 1135px+ viewport width
+export interface RightSidebarConfig {
+  enabled: boolean; // Enable/disable the right sidebar globally
+  minWidth?: number; // Minimum viewport width to show sidebar (default: 1135)
+}
+
 // Site configuration interface
 export interface SiteConfig {
   // Basic site info
@@ -126,6 +133,9 @@ export interface SiteConfig {
 
   // GitHub repository configuration for AI service links
   gitHubRepo: GitHubRepoConfig;
+
+  // Right sidebar configuration
+  rightSidebar: RightSidebarConfig;
 }
 
 // Default site configuration
@@ -270,6 +280,14 @@ export const siteConfig: SiteConfig = {
     repo: "markdown-site", // Repository name
     branch: "main", // Default branch
     contentPath: "public/raw", // Path to raw markdown files
+  },
+
+  // Right sidebar configuration
+  // Shows CopyPageDropdown in a right sidebar on posts/pages at 1135px+ viewport width
+  // When enabled, CopyPageDropdown moves from nav to right sidebar on wide screens
+  rightSidebar: {
+    enabled: true, // Set to false to disable right sidebar globally
+    minWidth: 1135, // Minimum viewport width in pixels to show sidebar
   },
 };
 

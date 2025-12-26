@@ -19,6 +19,7 @@ export const getAllPages = query({
       authorName: v.optional(v.string()),
       authorImage: v.optional(v.string()),
       layout: v.optional(v.string()),
+      rightSidebar: v.optional(v.boolean()),
     }),
   ),
   handler: async (ctx) => {
@@ -55,6 +56,7 @@ export const getAllPages = query({
       authorName: page.authorName,
       authorImage: page.authorImage,
       layout: page.layout,
+      rightSidebar: page.rightSidebar,
     }));
   },
 });
@@ -119,6 +121,7 @@ export const getPageBySlug = query({
       authorName: v.optional(v.string()),
       authorImage: v.optional(v.string()),
       layout: v.optional(v.string()),
+      rightSidebar: v.optional(v.boolean()),
     }),
     v.null(),
   ),
@@ -147,6 +150,7 @@ export const getPageBySlug = query({
       authorName: page.authorName,
       authorImage: page.authorImage,
       layout: page.layout,
+      rightSidebar: page.rightSidebar,
     };
   },
 });
@@ -169,6 +173,7 @@ export const syncPagesPublic = mutation({
         authorName: v.optional(v.string()),
         authorImage: v.optional(v.string()),
         layout: v.optional(v.string()),
+        rightSidebar: v.optional(v.boolean()),
       }),
     ),
   },
@@ -208,6 +213,7 @@ export const syncPagesPublic = mutation({
           authorName: page.authorName,
           authorImage: page.authorImage,
           layout: page.layout,
+          rightSidebar: page.rightSidebar,
           lastSyncedAt: now,
         });
         updated++;

@@ -33,7 +33,7 @@ A brief description of each file in the codebase.
 
 | File            | Description                                                                                               |
 | --------------- | --------------------------------------------------------------------------------------------------------- |
-| `siteConfig.ts` | Centralized site configuration (name, logo, blog page, posts display with homepage post limit and read more link, GitHub contributions, nav order, inner page logo settings, hardcoded navigation items for React routes, GitHub repository config for AI service raw URLs, font family configuration) |
+| `siteConfig.ts` | Centralized site configuration (name, logo, blog page, posts display with homepage post limit and read more link, GitHub contributions, nav order, inner page logo settings, hardcoded navigation items for React routes, GitHub repository config for AI service raw URLs, font family configuration, right sidebar configuration) |
 
 ### Pages (`src/pages/`)
 
@@ -41,7 +41,7 @@ A brief description of each file in the codebase.
 | ----------- | ----------------------------------------------------------------- |
 | `Home.tsx`  | Landing page with featured content and optional post list. Supports configurable post limit (homePostsLimit) and optional "read more" link (homePostsReadMore) via siteConfig.postsDisplay |
 | `Blog.tsx`  | Dedicated blog page with post list or card grid view (configurable via siteConfig.blogPage, supports view toggle). Includes back button in navigation |
-| `Post.tsx`  | Individual blog post or page view with optional sidebar layout. Includes back button, CopyPageDropdown, tag links, and related posts section in footer for blog posts (update SITE_URL/SITE_NAME when forking) |
+| `Post.tsx`  | Individual blog post or page view with optional left sidebar (TOC) and right sidebar (CopyPageDropdown). Includes back button, tag links, and related posts section in footer for blog posts. Supports 3-column layout at 1135px+ (update SITE_URL/SITE_NAME when forking) |
 | `Stats.tsx` | Real-time analytics dashboard with visitor stats and GitHub stars |
 | `TagPage.tsx` | Tag archive page displaying posts filtered by a specific tag. Includes view mode toggle (list/cards) with localStorage persistence |
 | `Write.tsx` | Three-column markdown writing page with Cursor docs-style UI, frontmatter reference with copy buttons, theme toggle, font switcher (serif/sans/monospace), and localStorage persistence (not linked in nav) |
@@ -63,6 +63,7 @@ A brief description of each file in the codebase.
 | `GitHubContributions.tsx` | GitHub activity graph with theme-aware colors and year navigation |
 | `VisitorMap.tsx`          | Real-time visitor location map with dotted world display and theme-aware colors |
 | `PageSidebar.tsx`         | Collapsible table of contents sidebar for pages/posts with sidebar layout, extracts headings (H1-H6), active heading highlighting, smooth scroll navigation, localStorage persistence for expanded/collapsed state |
+| `RightSidebar.tsx`        | Right sidebar component that displays CopyPageDropdown on posts/pages at 1135px+ viewport width, controlled by siteConfig.rightSidebar.enabled and frontmatter rightSidebar field |
 
 ### Context (`src/context/`)
 
@@ -88,7 +89,7 @@ A brief description of each file in the codebase.
 
 | File         | Description                                                                          |
 | ------------ | ------------------------------------------------------------------------------------ |
-| `global.css` | Global CSS with theme variables, centralized font-size CSS variables for all themes, sidebar styling with alternate background colors, hidden scrollbar, and consistent borders using box-shadow for docs-style layout |
+| `global.css` | Global CSS with theme variables, centralized font-size CSS variables for all themes, sidebar styling with alternate background colors, hidden scrollbar, and consistent borders using box-shadow for docs-style layout. Left sidebar (`.post-sidebar-wrapper`) and right sidebar (`.post-sidebar-right`) have separate, independent styles |
 
 ## Convex Backend (`convex/`)
 
@@ -157,6 +158,7 @@ Markdown files for static pages like About, Projects, Contact, Changelog.
 | `featuredOrder` | Order in featured section (optional)     |
 | `authorName`    | Author display name (optional)           |
 | `authorImage`   | Round author avatar image URL (optional)  |
+| `rightSidebar`  | Enable right sidebar with CopyPageDropdown (optional) |
 
 ## Scripts (`scripts/`)
 

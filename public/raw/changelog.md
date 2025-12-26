@@ -2,11 +2,34 @@
 
 ---
 Type: page
-Date: 2025-12-25
+Date: 2025-12-26
 ---
 
 All notable changes to this project.
 ![](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+## v1.29.0
+
+Released December 25, 2025
+
+**Font family configuration system**
+
+- Font family configuration via siteConfig.ts
+  - Three font options: "serif" (New York), "sans" (system fonts), "monospace" (IBM Plex Mono)
+  - Configure default font in `src/config/siteConfig.ts` with `fontFamily` option
+  - Font preference persists in localStorage across page reloads
+  - SiteConfig default font overrides localStorage when siteConfig changes
+- Monospace font option added
+  - Added monospace to FONT SWITCHER options in global.css
+  - Uses "IBM Plex Mono", "Liberation Mono", ui-monospace, monospace
+  - Write page font switcher now cycles through all three options
+- Fork configuration support
+  - Added fontFamily field to fork-config.json.example
+  - Automated fork configuration script supports fontFamily option
+
+Updated files: `src/config/siteConfig.ts`, `src/context/FontContext.tsx`, `src/main.tsx`, `src/pages/Write.tsx`, `src/styles/global.css`, `scripts/configure-fork.ts`, `fork-config.json.example`
+
+Documentation updated: `content/blog/setup-guide.md`, `content/pages/docs.md`, `files.md`
 
 ## v1.28.2
 

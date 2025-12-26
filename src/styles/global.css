@@ -871,7 +871,20 @@ body {
   width: 100%;
 }
 
-/* Sidebar wrapper - docs-style with alt background and borders */
+/* Three-column layout when right sidebar is enabled */
+@media (min-width: 1135px) {
+  .post-content-with-sidebar:has(.post-sidebar-right) {
+    grid-template-columns: 240px 1fr 280px;
+  }
+
+  /* Adjust main content padding when right sidebar exists */
+  .post-content-with-sidebar:has(.post-sidebar-right)
+    .post-article-with-sidebar {
+    padding-right: 48px;
+  }
+}
+
+/* Left sidebar wrapper - docs-style with alt background and borders */
 .post-sidebar-wrapper {
   position: sticky;
   top: 80px;
@@ -884,10 +897,11 @@ body {
   background-color: var(--bg-sidebar);
   margin-left: -24px;
   padding-left: 24px;
+  padding-right: 24px;
   padding-top: 24px;
   padding-bottom: 24px;
   margin-top: -24px;
-  border-radius: 8px;
+  border-radius: 6px;
   /* Extend background to fill height */
   min-height: calc(100vh - 80px);
   /* Top border using CSS variable for theme consistency */
@@ -903,10 +917,50 @@ body {
 }
 
 /* Left sidebar - flush left with internal padding */
-.post-sidebar-left {
+/* All styles inherited from .post-sidebar-wrapper */
+
+/* Right sidebar - complete styles based on left sidebar wrapper */
+.post-sidebar-right {
+  position: sticky;
+  top: 80px;
+  align-self: flex-start;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  /* Hide scrollbar while keeping scroll functionality */
+  -ms-overflow-style: none; /* IE */
+  scrollbar-width: none; /* Firefox */
+  background-color: var(--bg-sidebar);
+  margin-right: -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  margin-top: -24px;
+  border-radius: 6px;
+  /* Extend background to fill height */
+  min-height: calc(100vh - 80px);
   /* Top border using CSS variable for theme consistency */
   border-top: 1px solid var(--border-sidebar);
-  padding-right: 24px;
+  /* Left border using box-shadow for consistent 1px width regardless of scrollbar */
+  box-shadow: inset 1px 0 0 var(--border-sidebar);
+}
+
+/* Hide scrollbar for Chrome/Safari/Edge */
+.post-sidebar-right::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.right-sidebar-content {
+  position: sticky;
+  top: 0px;
+}
+
+/* Hide right sidebar below 1135px */
+@media (max-width: 1134px) {
+  .post-sidebar-right {
+    display: none;
+  }
 }
 
 /* Content area - flexible width with left padding for gap from sidebar */
@@ -1040,8 +1094,13 @@ body {
     gap: 24px;
   }
 
-  /* Hide sidebar on mobile - it's now in the hamburger menu */
+  /* Hide sidebars on mobile - left sidebar is now in the hamburger menu */
   .post-sidebar-wrapper {
+    display: none;
+  }
+
+  /* Ensure right sidebar is hidden on mobile */
+  .post-sidebar-right {
     display: none;
   }
 

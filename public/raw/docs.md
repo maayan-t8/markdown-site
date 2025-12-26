@@ -2,7 +2,7 @@
 
 ---
 Type: page
-Date: 2025-12-25
+Date: 2025-12-26
 ---
 
 Reference documentation for setting up, customizing, and deploying this markdown framework.
@@ -128,20 +128,21 @@ order: 1
 Content here...
 ```
 
-| Field           | Required | Description                                       |
-| --------------- | -------- | ------------------------------------------------- |
-| `title`         | Yes      | Nav link text                                     |
-| `slug`          | Yes      | URL path                                          |
-| `published`     | Yes      | `true` to show                                    |
-| `order`         | No       | Nav order (lower = first)                         |
-| `showInNav`     | No       | Show in navigation menu (default: `true`)         |
-| `excerpt`       | No       | Short text for card view                          |
-| `image`         | No       | Thumbnail for featured card view                  |
-| `featured`      | No       | `true` to show in featured section                |
-| `featuredOrder` | No       | Order in featured (lower = first)                 |
-| `authorName`    | No       | Author display name shown next to date            |
-| `authorImage`   | No       | Round author avatar image URL                     |
-| `layout`        | No       | Set to `"sidebar"` for docs-style layout with TOC |
+| Field           | Required | Description                                                                   |
+| --------------- | -------- | ----------------------------------------------------------------------------- |
+| `title`         | Yes      | Nav link text                                                                 |
+| `slug`          | Yes      | URL path                                                                      |
+| `published`     | Yes      | `true` to show                                                                |
+| `order`         | No       | Nav order (lower = first)                                                     |
+| `showInNav`     | No       | Show in navigation menu (default: `true`)                                     |
+| `excerpt`       | No       | Short text for card view                                                      |
+| `image`         | No       | Thumbnail for featured card view                                              |
+| `featured`      | No       | `true` to show in featured section                                            |
+| `featuredOrder` | No       | Order in featured (lower = first)                                             |
+| `authorName`    | No       | Author display name shown next to date                                        |
+| `authorImage`   | No       | Round author avatar image URL                                                 |
+| `layout`        | No       | Set to `"sidebar"` for docs-style layout with TOC                             |
+| `rightSidebar`  | No       | Enable right sidebar with CopyPageDropdown (opt-in, requires explicit `true`) |
 
 **Hide pages from navigation:** Set `showInNav: false` to keep a page published and accessible via direct URL, but hidden from the navigation menu. Pages with `showInNav: false` remain searchable and available via API endpoints. Useful for pages you want to link directly but not show in the main nav.
 
@@ -177,6 +178,46 @@ layout: "sidebar"
 - Works for both blog posts and static pages
 
 The sidebar extracts headings automatically from your markdown content. No manual TOC needed.
+
+### Right sidebar
+
+When enabled in `siteConfig.rightSidebar.enabled`, posts and pages can display a right sidebar containing the CopyPageDropdown at 1135px+ viewport width.
+
+**Configuration:**
+
+Enable globally in `src/config/siteConfig.ts`:
+
+```typescript
+rightSidebar: {
+  enabled: true, // Set to false to disable right sidebar globally
+  minWidth: 1135, // Minimum viewport width to show sidebar
+},
+```
+
+Control per post/page with frontmatter:
+
+```markdown
+---
+title: "My Post"
+rightSidebar: true # Enable right sidebar for this post
+---
+```
+
+**Features:**
+
+- Right sidebar appears at 1135px+ viewport width
+- Contains CopyPageDropdown with all sharing options
+- Three-column layout: left sidebar (TOC), main content, right sidebar
+- CopyPageDropdown automatically moves from nav to right sidebar when enabled
+- Hidden below 1135px breakpoint, CopyPageDropdown returns to nav
+- Per-post/page control via `rightSidebar: true` frontmatter field
+- Opt-in only: right sidebar only appears when explicitly enabled in frontmatter
+
+**Use cases:**
+
+- Keep CopyPageDropdown accessible on wide screens without cluttering the nav
+- Provide quick access to sharing options while reading long content
+- Works alongside left sidebar TOC for comprehensive navigation
 
 **Example for blog post:**
 
@@ -288,19 +329,19 @@ Follow the step-by-step guide in `FORK_CONFIG.md` to update each file manually.
 
 ### Files updated by configuration
 
-| File                                | What to update                                                              |
-| ----------------------------------- | --------------------------------------------------------------------------- |
-| `src/config/siteConfig.ts`          | Site name, title, intro, bio, blog page, logo gallery, GitHub contributions |
-| `src/pages/Home.tsx`                | Intro paragraph text, footer links                                          |
-| `convex/http.ts`                    | `SITE_URL`, `SITE_NAME`, description strings (3 locations)                  |
-| `convex/rss.ts`                     | `SITE_URL`, `SITE_TITLE`, `SITE_DESCRIPTION` (RSS feeds)                    |
-| `src/pages/Post.tsx`                | `SITE_URL`, `SITE_NAME`, `DEFAULT_OG_IMAGE` (OG tags)                       |
-| `index.html`                        | Title, meta description, OG tags, JSON-LD                                   |
-| `public/llms.txt`                   | Site name, URL, description, topics                                         |
-| `public/robots.txt`                 | Sitemap URL and header comment                                              |
-| `public/openapi.yaml`               | API title, server URL, site name in examples                                |
-| `public/.well-known/ai-plugin.json` | Site name, descriptions                                                     |
-| `src/context/ThemeContext.tsx`      | Default theme                                                               |
+| File                                | What to update                                                                                           |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `src/config/siteConfig.ts`          | Site name, title, intro, bio, blog page, logo gallery, GitHub contributions, right sidebar configuration |
+| `src/pages/Home.tsx`                | Intro paragraph text, footer links                                                                       |
+| `convex/http.ts`                    | `SITE_URL`, `SITE_NAME`, description strings (3 locations)                                               |
+| `convex/rss.ts`                     | `SITE_URL`, `SITE_TITLE`, `SITE_DESCRIPTION` (RSS feeds)                                                 |
+| `src/pages/Post.tsx`                | `SITE_URL`, `SITE_NAME`, `DEFAULT_OG_IMAGE` (OG tags)                                                    |
+| `index.html`                        | Title, meta description, OG tags, JSON-LD                                                                |
+| `public/llms.txt`                   | Site name, URL, description, topics                                                                      |
+| `public/robots.txt`                 | Sitemap URL and header comment                                                                           |
+| `public/openapi.yaml`               | API title, server URL, site name in examples                                                             |
+| `public/.well-known/ai-plugin.json` | Site name, descriptions                                                                                  |
+| `src/context/ThemeContext.tsx`      | Default theme                                                                                            |
 
 ### Site title and description metadata
 

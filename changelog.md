@@ -4,6 +4,65 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.30.2] - 2025-12-25
+
+### Fixed
+
+- Right sidebar no longer appears on pages/posts without explicit `rightSidebar: true` in frontmatter
+  - Changed default behavior: right sidebar is now opt-in only
+  - Pages like About and Contact now render without the right sidebar as expected
+  - `CopyPageDropdown` correctly appears in nav bar when right sidebar is disabled
+- Logic in `Post.tsx` changed from `(page.rightSidebar ?? true)` to `page.rightSidebar === true`
+
+## [1.30.1] - 2025-12-25
+
+### Fixed
+
+- TypeScript error in `convex/posts.ts` where `rightSidebar` was used in mutation handlers but missing from args validators
+  - Added `rightSidebar: v.optional(v.boolean())` to `syncPosts` args validator
+  - Added `rightSidebar: v.optional(v.boolean())` to `syncPostsPublic` args validator
+
+## [1.30.0] - 2025-12-25
+
+### Added
+
+- Right sidebar feature for posts and pages
+  - New `RightSidebar` component that displays `CopyPageDropdown` in a right sidebar
+  - Appears at 1135px+ viewport width when enabled
+  - Controlled by `siteConfig.rightSidebar.enabled` (global toggle)
+  - Per-post/page control via `rightSidebar: true` frontmatter field (opt-in only)
+  - Three-column layout support: left sidebar (TOC), main content, right sidebar (CopyPageDropdown)
+  - CopyPageDropdown automatically moves from nav to right sidebar when enabled
+  - Responsive: right sidebar hidden below 1135px, CopyPageDropdown returns to nav
+- Right sidebar configuration in siteConfig
+  - `rightSidebar.enabled`: Global toggle for right sidebar feature
+  - `rightSidebar.minWidth`: Minimum viewport width to show sidebar (default: 1135px)
+- `rightSidebar` frontmatter field
+  - Available for both blog posts and pages
+  - Optional boolean field to enable/disable right sidebar per post/page
+  - Defaults to true when `siteConfig.rightSidebar.enabled` is true
+  - Added to Write page frontmatter reference with copy button
+
+### Changed
+
+- `Post.tsx`: Updated to support three-column layout with conditional right sidebar rendering
+- CSS refactoring: Separated left and right sidebar styles
+  - `.post-sidebar-wrapper` is now left-specific with `margin-left` and right border
+  - `.post-sidebar-right` has complete independent styles with `margin-right` and left border
+  - Both sidebars maintain consistent styling (sticky positioning, background, borders, scrollbar hiding)
+- `src/styles/global.css`: Added CSS for right sidebar positioning and 3-column grid layout
+- `convex/schema.ts`: Added `rightSidebar` field to posts and pages tables
+- `convex/posts.ts` and `convex/pages.ts`: Updated queries and mutations to handle `rightSidebar` field
+- `scripts/sync-posts.ts`: Updated parsing logic to include `rightSidebar` frontmatter field
+- `src/pages/Write.tsx`: Added `rightSidebar` field to POST_FIELDS and PAGE_FIELDS arrays
+
+### Technical
+
+- Right sidebar uses sticky positioning with top offset matching left sidebar
+- CSS grid automatically adjusts from 2-column to 3-column layout when right sidebar is present
+- Main content padding adjusts when right sidebar is enabled
+- Mobile responsive: right sidebar hidden below 1135px breakpoint
+
 ## [1.29.0] - 2025-12-25
 
 ### Added
