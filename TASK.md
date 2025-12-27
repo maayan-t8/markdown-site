@@ -3,14 +3,24 @@
 ## To Do
 
 - [ ] Newsletter signup
-- [ ] Comments system
 - [ ] Draft preview mode
 
 ## Current Status
 
-v1.34.0 ready. Blog page featured layout with hero post, featured row, and regular posts grid. Uses `blogFeatured` frontmatter field to control featured posts display.
+v1.35.0 ready. Added `showImageAtTop` frontmatter field to display images at the top of posts and pages above the header. Image appears full-width when enabled, otherwise only used for Open Graph and featured cards.
 
 ## Completed
+
+- [x] showImageAtTop frontmatter field for posts and pages
+  - [x] Added showImageAtTop optional boolean field to convex/schema.ts for posts and pages
+  - [x] Updated scripts/sync-posts.ts to parse showImageAtTop from frontmatter
+  - [x] Updated convex/posts.ts and convex/pages.ts queries and mutations to include showImageAtTop
+  - [x] Updated src/pages/Post.tsx to conditionally render image at top when showImageAtTop: true
+  - [x] Added CSS styles for .post-header-image and .post-header-image-img
+  - [x] Updated src/pages/Write.tsx to include showImageAtTop in POST_FIELDS and PAGE_FIELDS
+  - [x] Updated documentation: docs.md, how-to-publish.md, using-images-in-posts.md, files.md
+  - [x] Image displays full-width above post header with rounded corners
+  - [x] Default behavior: image only used for OG and featured cards when showImageAtTop not set
 
 - [x] Blog page featured layout with hero post
   - [x] `blogFeatured` frontmatter field for posts to mark as featured on blog page

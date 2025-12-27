@@ -32,6 +32,7 @@ const POST_FIELDS = [
   { name: "tags", required: true, example: '["tag1", "tag2"]' },
   { name: "readTime", required: false, example: '"5 min read"' },
   { name: "image", required: false, example: '"/images/my-image.png"' },
+  { name: "showImageAtTop", required: false, example: "true" },
   {
     name: "excerpt",
     required: false,
@@ -65,6 +66,7 @@ const PAGE_FIELDS = [
   { name: "showInNav", required: false, example: "true" },
   { name: "excerpt", required: false, example: '"Short description"' },
   { name: "image", required: false, example: '"/images/thumbnail.png"' },
+  { name: "showImageAtTop", required: false, example: "true" },
   { name: "featured", required: false, example: "true" },
   { name: "featuredOrder", required: false, example: "1" },
   { name: "authorName", required: false, example: '"Jane Doe"' },
@@ -180,7 +182,7 @@ export default function Write() {
   const [content, setContent] = useState("");
   const [copied, setCopied] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
-  const [font, setFont] = useState<"serif" | "sans" | "monospace">("serif");
+  const [font, setFont] = useState<"serif" | "sans" | "monospace">("sans");
   const [isAIChatMode, setIsAIChatMode] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -210,7 +212,7 @@ export default function Write() {
       setContentType(savedType);
     }
 
-    // Use saved font preference, or fall back to global font, or default to serif
+    // Use saved font preference, or fall back to global font, or default to sans
     if (
       savedFont &&
       (savedFont === "serif" ||
@@ -218,9 +220,16 @@ export default function Write() {
         savedFont === "monospace")
     ) {
       setFont(savedFont);
-    } else {
+    } else if (
+      globalFont === "serif" ||
+      globalFont === "sans" ||
+      globalFont === "monospace"
+    ) {
       // Sync with global font on first load
       setFont(globalFont);
+    } else {
+      // Default to sans if no saved preference and global font is not valid
+      setFont("sans");
     }
   }, [globalFont]);
 

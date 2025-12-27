@@ -31,6 +31,7 @@ interface PostFrontmatter {
   tags: string[];
   readTime?: string;
   image?: string; // Header/OG image URL
+  showImageAtTop?: boolean; // Display image at top of post (default: false)
   excerpt?: string; // Short excerpt for card view
   featured?: boolean; // Show in featured section
   featuredOrder?: number; // Order in featured section (lower = first)
@@ -52,6 +53,7 @@ interface ParsedPost {
   tags: string[];
   readTime?: string;
   image?: string; // Header/OG image URL
+  showImageAtTop?: boolean; // Display image at top of post (default: false)
   excerpt?: string; // Short excerpt for card view
   featured?: boolean; // Show in featured section
   featuredOrder?: number; // Order in featured section (lower = first)
@@ -74,6 +76,7 @@ interface PageFrontmatter {
   showInNav?: boolean; // Show in navigation menu (default: true)
   excerpt?: string; // Short excerpt for card view
   image?: string; // Thumbnail/OG image URL for featured cards
+  showImageAtTop?: boolean; // Display image at top of page (default: false)
   featured?: boolean; // Show in featured section
   featuredOrder?: number; // Order in featured section (lower = first)
   authorName?: string; // Author display name
@@ -93,6 +96,7 @@ interface ParsedPage {
   showInNav?: boolean; // Show in navigation menu (default: true)
   excerpt?: string; // Short excerpt for card view
   image?: string; // Thumbnail/OG image URL for featured cards
+  showImageAtTop?: boolean; // Display image at top of page (default: false)
   featured?: boolean; // Show in featured section
   featuredOrder?: number; // Order in featured section (lower = first)
   authorName?: string; // Author display name
@@ -135,6 +139,7 @@ function parseMarkdownFile(filePath: string): ParsedPost | null {
       tags: frontmatter.tags || [],
       readTime: frontmatter.readTime || calculateReadTime(content),
       image: frontmatter.image, // Header/OG image URL
+      showImageAtTop: frontmatter.showImageAtTop, // Display image at top of post
       excerpt: frontmatter.excerpt, // Short excerpt for card view
       featured: frontmatter.featured, // Show in featured section
       featuredOrder: frontmatter.featuredOrder, // Order in featured section
@@ -192,6 +197,7 @@ function parsePageFile(filePath: string): ParsedPage | null {
       showInNav: frontmatter.showInNav, // Show in navigation menu (default: true)
       excerpt: frontmatter.excerpt, // Short excerpt for card view
       image: frontmatter.image, // Thumbnail/OG image URL for featured cards
+      showImageAtTop: frontmatter.showImageAtTop, // Display image at top of page
       featured: frontmatter.featured, // Show in featured section
       featuredOrder: frontmatter.featuredOrder, // Order in featured section
       authorName: frontmatter.authorName, // Author display name

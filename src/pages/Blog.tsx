@@ -54,8 +54,14 @@ export default function Blog() {
     siteConfig.footer.enabled && siteConfig.footer.showOnBlogPage;
 
   // Split featured posts: first one is hero, rest go to featured row
-  const heroPost = blogFeaturedPosts && blogFeaturedPosts.length > 0 ? blogFeaturedPosts[0] : null;
-  const featuredRowPosts = blogFeaturedPosts && blogFeaturedPosts.length > 1 ? blogFeaturedPosts.slice(1) : [];
+  const heroPost =
+    blogFeaturedPosts && blogFeaturedPosts.length > 0
+      ? blogFeaturedPosts[0]
+      : null;
+  const featuredRowPosts =
+    blogFeaturedPosts && blogFeaturedPosts.length > 1
+      ? blogFeaturedPosts.slice(1)
+      : [];
 
   // Get slugs of all featured posts for filtering
   const featuredSlugs = new Set(blogFeaturedPosts?.map((p) => p.slug) || []);
@@ -76,14 +82,12 @@ export default function Blog() {
 
   return (
     <div className={blogPageClass}>
-      {/* Navigation with back button */}
       <nav className="post-nav">
-        <button onClick={() => navigate("/")} className="back-button">
+        {/* Navigation with back button commented out  <button onClick={() => navigate("/")} className="back-button">
           <ArrowLeft size={16} />
           <span>Back</span>
-        </button>
+        </button>*/}
       </nav>
-
       {/* Blog page header */}
       <header className="blog-header">
         <div className="blog-header-top">
@@ -144,7 +148,6 @@ export default function Blog() {
             )}
         </div>
       </header>
-
       {/* Hero featured post section (only in cards view) */}
       {showPosts && hasFeaturedContent && viewMode === "cards" && heroPost && (
         <section className="blog-hero-section">
@@ -162,7 +165,6 @@ export default function Blog() {
           />
         </section>
       )}
-
       {/* Featured row: remaining featured posts in 2 columns (only in cards view) */}
       {showPosts && featuredRowPosts.length > 0 && viewMode === "cards" && (
         <section className="blog-featured-row">
@@ -174,7 +176,6 @@ export default function Blog() {
           />
         </section>
       )}
-
       {/* Regular posts section: non-featured posts in 3 columns */}
       {showPosts && (
         <section className="blog-posts">
@@ -192,7 +193,6 @@ export default function Blog() {
           )}
         </section>
       )}
-
       {/* Message when posts are disabled on blog page */}
       {!showPosts && (
         <p className="blog-disabled-message">
@@ -200,7 +200,6 @@ export default function Blog() {
           <code>postsDisplay.showOnBlogPage</code> in siteConfig to enable.
         </p>
       )}
-
       {/* Footer section */}
       {showFooter && <Footer />}
     </div>

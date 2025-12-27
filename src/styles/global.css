@@ -25,7 +25,7 @@
   --font-size-xs: 12px;
   --font-size-sm: 13px;
   --font-size-md: 16px;
-  --font-size-base: 18px;
+  --font-size-base: 16px;
   --font-size-lg: 17px;
   --font-size-xl: 18px;
   --font-size-2xl: 20px;
@@ -55,7 +55,7 @@
   --font-size-post-description: var(--font-size-xl);
 
   /* Blog content font sizes (article body) */
-  --font-size-blog-content: var(--font-size-lg);
+  --font-size-blog-content: var(--font-size-md);
   --font-size-blog-h1: var(--font-size-3xl);
   --font-size-blog-h2: var(--font-size-2xl);
   --font-size-blog-h3: var(--font-size-xl);
@@ -77,7 +77,7 @@
   /* Footer and tags font sizes */
   --font-size-post-tag: var(--font-size-sm);
   --font-size-share-button: var(--font-size-md);
-  --font-size-footer-text: 18px;
+  --font-size-footer-text: var(--font-size-base);
 
   /* Blog page font sizes */
   --font-size-blog-page-title: 2rem;
@@ -874,6 +874,21 @@ body {
 
 .post-header {
   margin-bottom: 48px;
+}
+
+/* Header image displayed at top of post/page */
+.post-header-image {
+  width: 100%;
+  margin-bottom: 32px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.post-header-image-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
 }
 
 /* Title row container - flex layout for title and CopyPageDropdown */

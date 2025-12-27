@@ -9,6 +9,7 @@ featuredOrder: 4
 tags: ["images", "tutorial", "markdown", "open-graph"]
 readTime: "4 min read"
 blogFeatured: true
+showImageAtTop: true
 authorName: "Markdown"
 authorImage: "/images/authors/markdown.png"
 image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
@@ -20,19 +21,41 @@ This post demonstrates how to add images to your blog posts. You can use header 
 
 ## Header/Open Graph Images
 
-The `image` field in your frontmatter serves two purposes:
+The `image` field in your frontmatter serves multiple purposes:
 
 1. **Open Graph image** for social media previews (Twitter, LinkedIn, Slack)
 2. **Thumbnail image** for featured section card view on the homepage
+3. **Header image** displayed at the top of the post/page (when `showImageAtTop: true`)
 
 ```yaml
 ---
 title: "Your Post Title"
 image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+showImageAtTop: true
 ---
 ```
 
 **Recommended dimensions:** 1200x630 pixels (1.91:1 ratio) for social sharing
+
+## Displaying Image at Top of Post/Page
+
+To display the `image` field at the top of your post or page (above the header), add `showImageAtTop: true` to your frontmatter:
+
+```yaml
+---
+title: "My Post"
+image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=630&fit=crop"
+showImageAtTop: true
+---
+```
+
+**Default behavior:** If `showImageAtTop` is not set or set to `false`, the image will only be used for Open Graph previews and featured card thumbnails, not displayed in the post content.
+
+**Use cases:**
+
+- Hero images for blog posts
+- Featured images that introduce the content
+- Visual headers for documentation pages
 
 ## Featured Section Thumbnails
 

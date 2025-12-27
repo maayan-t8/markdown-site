@@ -141,6 +141,7 @@ Markdown files with frontmatter for blog posts. Each file becomes a blog post.
 | `tags`          | Array of topic tags                                                     |
 | `readTime`      | Estimated reading time                                                  |
 | `image`         | Header/Open Graph image URL (optional)                                  |
+| `showImageAtTop` | Display image at top of post above header (optional, default: false)   |
 | `excerpt`       | Short excerpt for card view (optional)                                  |
 | `featured`      | Show in featured section (optional)                                     |
 | `featuredOrder` | Order in featured section (optional)                                    |
@@ -164,6 +165,8 @@ Markdown files for static pages like About, Projects, Contact, Changelog.
 | `order`         | Display order in navigation (lower first)                               |
 | `showInNav`     | Show in navigation menu (default: true)                                 |
 | `excerpt`       | Short excerpt for card view (optional)                                  |
+| `image`         | Thumbnail/OG image URL (optional)                                       |
+| `showImageAtTop` | Display image at top of page above header (optional, default: false) |
 | `featured`      | Show in featured section (optional)                                     |
 | `featuredOrder` | Order in featured section (optional)                                    |
 | `authorName`    | Author display name (optional)                                          |

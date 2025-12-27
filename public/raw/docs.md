@@ -108,6 +108,7 @@ Content here...
 | `tags`          | Yes      | Array of strings                                                                                                            |
 | `readTime`      | No       | Display time estimate                                                                                                       |
 | `image`         | No       | OG image and featured card thumbnail. See [Using Images in Blog Posts](/using-images-in-posts) for markdown and HTML syntax |
+| `showImageAtTop` | No       | Set `true` to display the image at the top of the post above the header (default: `false`)                                |
 | `excerpt`       | No       | Short text for card view                                                                                                    |
 | `featured`      | No       | `true` to show in featured section                                                                                          |
 | `featuredOrder` | No       | Order in featured (lower = first)                                                                                           |
@@ -139,6 +140,7 @@ Content here...
 | `showInNav`     | No       | Show in navigation menu (default: `true`)                                     |
 | `excerpt`       | No       | Short text for card view                                                      |
 | `image`         | No       | Thumbnail for featured card view                                              |
+| `showImageAtTop` | No       | Set `true` to display the image at the top of the page above the header (default: `false`) |
 | `featured`      | No       | `true` to show in featured section                                            |
 | `featuredOrder` | No       | Order in featured (lower = first)                                             |
 | `authorName`    | No       | Author display name shown next to date                                        |

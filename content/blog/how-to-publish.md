@@ -76,20 +76,21 @@ readTime: "5 min read"
 ---
 ```
 
-| Field           | Required | What It Does                                        |
-| --------------- | -------- | --------------------------------------------------- |
-| `title`         | Yes      | Displays as the post heading                        |
-| `description`   | Yes      | Shows in search results and sharing                 |
-| `date`          | Yes      | Publication date (YYYY-MM-DD)                       |
-| `slug`          | Yes      | Becomes the URL path                                |
-| `published`     | Yes      | Set `true` to show, `false` to hide                 |
-| `tags`          | Yes      | Topic labels for the post                           |
-| `readTime`      | No       | Estimated reading time                              |
-| `image`         | No       | OG image for social sharing and featured card thumb |
-| `featured`      | No       | Set `true` to show in featured section              |
-| `featuredOrder` | No       | Order in featured section (lower first)             |
-| `excerpt`       | No       | Short description for card view                     |
-| `layout`        | No       | Set to `"sidebar"` for docs-style layout with TOC   |
+| Field            | Required | What It Does                                                                               |
+| ---------------- | -------- | ------------------------------------------------------------------------------------------ |
+| `title`          | Yes      | Displays as the post heading                                                               |
+| `description`    | Yes      | Shows in search results and sharing                                                        |
+| `date`           | Yes      | Publication date (YYYY-MM-DD)                                                              |
+| `slug`           | Yes      | Becomes the URL path                                                                       |
+| `published`      | Yes      | Set `true` to show, `false` to hide                                                        |
+| `tags`           | Yes      | Topic labels for the post                                                                  |
+| `readTime`       | No       | Estimated reading time                                                                     |
+| `image`          | No       | OG image for social sharing and featured card thumb                                        |
+| `showImageAtTop` | No       | Set `true` to display the image at the top of the post above the header (default: `false`) |
+| `featured`       | No       | Set `true` to show in featured section                                                     |
+| `featuredOrder`  | No       | Order in featured section (lower first)                                                    |
+| `excerpt`        | No       | Short description for card view                                                            |
+| `layout`         | No       | Set to `"sidebar"` for docs-style layout with TOC                                          |
 
 ## Write Your Content
 

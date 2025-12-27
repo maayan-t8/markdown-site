@@ -4,11 +4,39 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.35.0] - 2025-12-26
+
+### Added
+
+- `showImageAtTop` frontmatter field for posts and pages
+  - Set `showImageAtTop: true` to display the `image` field at the top of the post/page above the header
+  - Image displays full-width with rounded corners above the post header
+  - Default behavior: if `showImageAtTop` is not set or `false`, image only used for Open Graph previews and featured card thumbnails
+  - Works for both blog posts and static pages
+  - Image appears above the post header when enabled
+
+### Changed
+
+- `convex/schema.ts`: Added `showImageAtTop` optional boolean field to posts and pages tables
+- `scripts/sync-posts.ts`: Updated to parse `showImageAtTop` from frontmatter for both posts and pages
+- `convex/posts.ts` and `convex/pages.ts`: Updated queries and mutations to include `showImageAtTop` field
+- `src/pages/Post.tsx`: Added conditional rendering to display image at top when `showImageAtTop: true`
+- `src/pages/Write.tsx`: Added `showImageAtTop` to POST_FIELDS and PAGE_FIELDS frontmatter reference
+- `src/styles/global.css`: Added `.post-header-image` and `.post-header-image-img` styles for header image display
+- Documentation updated: `content/pages/docs.md`, `content/blog/how-to-publish.md`, `content/blog/using-images-in-posts.md`, `files.md`
+
+### Technical
+
+- Header image displays with full-width responsive layout
+- Image appears above post header with 32px bottom margin
+- Rounded corners (8px border-radius) for modern appearance
+- Maintains aspect ratio with `object-fit: cover`
+
 ## [1.34.0] - 2025-12-26
 
 ### Added
 
-- Blog page featured layout with hero post 
+- Blog page featured layout with hero post
   - `blogFeatured` frontmatter field for posts to mark as featured on blog page
   - First `blogFeatured` post displays as hero card with landscape image, tags, date, title, excerpt, author info, and read more link
   - Remaining `blogFeatured` posts display in 2-column featured row with excerpts

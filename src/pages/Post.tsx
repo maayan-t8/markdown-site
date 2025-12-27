@@ -241,6 +241,16 @@ export default function Post({
           
           {/* Main content */}
           <article className={`post-article ${hasAnySidebar ? "post-article-with-sidebar" : ""} ${hasOnlyRightSidebar ? "post-article-centered" : ""}`}>
+            {/* Display image at top if showImageAtTop is true */}
+            {page.showImageAtTop && page.image && (
+              <div className="post-header-image">
+                <img
+                  src={page.image}
+                  alt={page.title}
+                  className="post-header-image-img"
+                />
+              </div>
+            )}
             <header className="post-header">
               <div className="post-title-row">
                 <h1 className="post-title">{page.title}</h1>
@@ -374,6 +384,16 @@ export default function Post({
         )}
 
         <article className={`post-article ${hasAnySidebar ? "post-article-with-sidebar" : ""} ${hasOnlyRightSidebar ? "post-article-centered" : ""}`}>
+        {/* Display image at top if showImageAtTop is true */}
+        {post.showImageAtTop && post.image && (
+          <div className="post-header-image">
+            <img
+              src={post.image}
+              alt={post.title}
+              className="post-header-image-img"
+            />
+          </div>
+        )}
         <header className="post-header">
           <div className="post-title-row">
             <h1 className="post-title">{post.title}</h1>

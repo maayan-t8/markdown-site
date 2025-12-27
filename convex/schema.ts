@@ -13,6 +13,7 @@ export default defineSchema({
     tags: v.array(v.string()),
     readTime: v.optional(v.string()),
     image: v.optional(v.string()), // Header/OG image URL
+    showImageAtTop: v.optional(v.boolean()), // Display image at top of post (default: false)
     excerpt: v.optional(v.string()), // Short excerpt for card view
     featured: v.optional(v.boolean()), // Show in featured section
     featuredOrder: v.optional(v.number()), // Order in featured section (lower = first)
@@ -50,6 +51,7 @@ export default defineSchema({
     showInNav: v.optional(v.boolean()), // Show in navigation menu (default: true)
     excerpt: v.optional(v.string()), // Short excerpt for card view
     image: v.optional(v.string()), // Thumbnail/OG image URL for featured cards
+    showImageAtTop: v.optional(v.boolean()), // Display image at top of page (default: false)
     featured: v.optional(v.boolean()), // Show in featured section
     featuredOrder: v.optional(v.number()), // Order in featured section (lower = first)
     authorName: v.optional(v.string()), // Author display name
