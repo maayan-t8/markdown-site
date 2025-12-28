@@ -21,8 +21,8 @@ Your content is instantly available to browsers, LLMs, and AI agents.. Write mar
 - **Site URL**: https://markdown.fast
 - **Total Posts**: 14
 - **Total Pages**: 5
-- **Latest Post**: 2025-12-27
-- **Last Updated**: 2025-12-27T23:32:52.395Z
+- **Latest Post**: 2025-12-28
+- **Last Updated**: 2025-12-28T06:58:00.655Z
 
 ## Tech stack
 

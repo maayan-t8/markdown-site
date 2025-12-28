@@ -347,7 +347,7 @@ export const siteConfig: SiteConfig = {
       },
       {
         src: "/images/logos/mcp.svg",
-        href: "https://modelcontextprotocol.io/",
+        href: "https://www.markdown.fast/how-to-use-mcp-server/",
       },
     ],
     position: "above-footer",

@@ -1,5 +1,5 @@
 ---
-title: "How to Use the MCP Server with MarkDown.fast"
+title: "How to Use the MCP Server with MarkDown Sync"
 description: "Guide to using the HTTP-based Model Context Protocol(MCP) server at www.markdown.fast/mcp with Cursor and other AI tools"
 date: "2025-12-28"
 slug: "how-to-use-mcp-server"

@@ -74,6 +74,8 @@ contactForm: {
 
 The Newsletter Admin page at `/newsletter-admin` provides:
 
+<img src="/images/newsletter-dashboard.png" alt="Newsletter Dashboard" />
+
 - View all subscribers with search and filters
 - Delete subscribers
 - Send blog posts as newsletters

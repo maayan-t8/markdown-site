@@ -1,4 +1,4 @@
-# How to Use the MCP Server with MarkDown.fast
+# How to Use the MCP Server with MarkDown Sync
 
 > Guide to using the HTTP-based Model Context Protocol(MCP) server at www.markdown.fast/mcp with Cursor and other AI tools
 

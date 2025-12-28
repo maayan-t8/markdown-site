@@ -4,7 +4,7 @@ This is the homepage index of all published content.
 
 ## Blog Posts (14)
 
-- **[How to Use the MCP Server with MarkDown.fast](/raw/how-to-use-mcp-server.md)** - Guide to using the HTTP-based Model Context Protocol(MCP) server at www.markdown.fast/mcp with Cursor and other AI tools
+- **[How to Use the MCP Server with MarkDown Sync](/raw/how-to-use-mcp-server.md)** - Guide to using the HTTP-based Model Context Protocol(MCP) server at www.markdown.fast/mcp with Cursor and other AI tools
   - Date: 2025-12-28 | Reading time: 5 min read | Tags: mcp, cursor, ai, tutorial, netlify
 - **[How to use AgentMail with Markdown Sync](/raw/how-to-use-agentmail.md)** - Complete guide to setting up AgentMail for newsletters and contact forms in your markdown blog
   - Date: 2025-12-27 | Reading time: 5 min read | Tags: agentmail, newsletter, email, setup

@@ -78,6 +78,10 @@ It's a hybrid: developer workflow for publishing + real-time delivery like a dyn
 - Generate Skill option for AI agent training
 - View as Markdown option in share dropdown
 - Markdown writing page at `/write` with frontmatter reference
+- HTTP-based MCP server at `/mcp` for AI tool integration (Cursor, Claude Desktop)
+- Firecrawl content importer (`npm run import <url>`) for external articles
+- Newsletter management with AgentMail integration and admin UI
+- Contact forms on pages/posts via frontmatter with AgentMail delivery
 
 ## Who this is for
 
