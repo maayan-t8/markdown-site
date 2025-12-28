@@ -1,9 +1,10 @@
 ---
 title: "How to use Firecrawl"
 description: "Import external articles as markdown posts using Firecrawl. Get your API key and configure environment variables for local imports and AI chat."
-date: "2025-01-20"
+date: "2025-12-20"
 slug: "how-to-use-firecrawl"
 published: true
+image: images/firecrwall-blog.png
 tags: ["tutorial", "firecrawl", "import"]
 ---
 

@@ -317,7 +317,7 @@ export const siteConfig: SiteConfig = {
       },
       {
         src: "/images/logos/firecrawl.svg",
-        href: "https://firecrawl.dev/?utm_source=markdownfast",
+        href: "https://www.markdown.fast/how-to-use-firecrawl",
       },
       {
         src: "/images/logos/markdown.svg",
@@ -329,7 +329,7 @@ export const siteConfig: SiteConfig = {
       },
       {
         src: "/images/logos/agentmail.svg",
-        href: "https://agentmail.to/utm_source=markdownfast",
+        href: "https://www.markdown.fast/how-to-use-agentmail/",
       },
       {
         src: "/images/logos/mcp.svg",

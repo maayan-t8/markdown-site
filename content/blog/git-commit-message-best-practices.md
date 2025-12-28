@@ -1,7 +1,7 @@
 ---
 title: "Git commit message best practices"
 description: "A guide to writing clear, consistent commit messages that help your team understand changes and generate better changelogs."
-date: "2025-01-17"
+date: "2025-12-14"
 slug: "git-commit-message-best-practices"
 published: true
 tags: ["git", "development", "best-practices", "workflow"]

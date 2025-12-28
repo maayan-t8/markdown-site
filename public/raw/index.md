@@ -2,7 +2,7 @@
 
 This is the homepage index of all published content.
 
-## Blog Posts (14)
+## Blog Posts (13)
 
 - **[How to use AgentMail with Markdown Sync](/raw/how-to-use-agentmail.md)** - Complete guide to setting up AgentMail for newsletters and contact forms in your markdown blog
   - Date: 2025-12-27 | Reading time: 5 min read | Tags: agentmail, newsletter, email, setup
@@ -14,12 +14,14 @@ This is the homepage index of all published content.
   - Date: 2025-12-21 | Reading time: 5 min read | Tags: features, stats, convex, updates, analytics
 - **[Configure your fork in one command](/raw/fork-configuration-guide.md)** - Two options to set up your forked markdown framework: automated JSON config with npm run configure, or step-by-step manual guide.
   - Date: 2025-12-20 | Reading time: 4 min read | Tags: configuration, setup, fork, tutorial
+- **[How to use Firecrawl](/raw/how-to-use-firecrawl.md)** - Import external articles as markdown posts using Firecrawl. Get your API key and configure environment variables for local imports and AI chat.
+  - Date: 2025-12-20 | Reading time: 2 min read | Tags: tutorial, firecrawl, import
 - **[v1.18.0 release: 12 versions of shipping](/raw/raw-markdown-and-copy-improvements.md)** - Everything new from v1.7 to v1.18.0. Automated fork setup, GitHub contributions graph, write page, mobile menu, aggregates, and more.
   - Date: 2025-12-20 | Reading time: 8 min read | Tags: release, features, updates, developer-tools
 - **[New features: search, featured section, and logo gallery](/raw/new-features-search-featured-logos.md)** - Three updates that make your markdown framework more useful: Command+K search, frontmatter-controlled featured items, and a scrolling logo gallery.
   - Date: 2025-12-17 | Reading time: 4 min read | Tags: features, search, convex, updates
-- **[About This Markdown Framework](/raw/about-this-blog.md)** - How this open source framework works with Convex for real-time sync and Netlify for deployment.
-  - Date: 2025-12-14 | Reading time: 4 min read | Tags: convex, netlify, open-source, markdown, ai, llm
+- **[Git commit message best practices](/raw/git-commit-message-best-practices.md)** - A guide to writing clear, consistent commit messages that help your team understand changes and generate better changelogs.
+  - Date: 2025-12-14 | Reading time: 5 min read | Tags: git, development, best-practices, workflow
 - **[How to Publish a Blog Post](/raw/how-to-publish.md)** - A quick guide to writing and publishing markdown posts using Cursor after your framework is set up.
   - Date: 2025-12-14 | Reading time: 3 min read | Tags: tutorial, markdown, cursor, IDE, publishing
 - **[Writing Markdown with Code Examples](/raw/markdown-with-code-examples.md)** - A complete reference for writing markdown with links, code blocks, images, tables, and formatting. Copy examples directly into your posts.
@@ -28,10 +30,6 @@ This is the homepage index of all published content.
   - Date: 2025-12-14 | Reading time: 8 min read | Tags: convex, netlify, tutorial, deployment
 - **[Using Images in Blog Posts](/raw/using-images-in-posts.md)** - Learn how to add header images, inline images, and Open Graph images to your markdown posts.
   - Date: 2025-12-14 | Reading time: 4 min read | Tags: images, tutorial, markdown, open-graph
-- **[How to use Firecrawl](/raw/how-to-use-firecrawl.md)** - Import external articles as markdown posts using Firecrawl. Get your API key and configure environment variables for local imports and AI chat.
-  - Date: 2025-01-20 | Reading time: 2 min read | Tags: tutorial, firecrawl, import
-- **[Git commit message best practices](/raw/git-commit-message-best-practices.md)** - A guide to writing clear, consistent commit messages that help your team understand changes and generate better changelogs.
-  - Date: 2025-01-17 | Reading time: 5 min read | Tags: git, development, best-practices, workflow
 
 ## Pages (6)
 
@@ -44,6 +42,6 @@ This is the homepage index of all published content.
 
 ---
 
-**Total Content:** 14 posts, 6 pages
+**Total Content:** 13 posts, 6 pages
 
 All content is available as raw markdown files at `/raw/{slug}.md`

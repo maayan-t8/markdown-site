@@ -4,6 +4,7 @@ description: "Complete guide to setting up AgentMail for newsletters and contact
 date: "2025-12-27"
 slug: "how-to-use-agentmail"
 published: true
+image: images/agentmail-blog.png
 tags: ["agentmail", "newsletter", "email", "setup"]
 ---
 
@@ -35,11 +36,11 @@ In the AgentMail dashboard, navigate to API settings and copy your API key. You'
 
 In your Convex dashboard, go to Settings > Environment Variables and add:
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `AGENTMAIL_API_KEY` | Your AgentMail API key | Yes |
-| `AGENTMAIL_INBOX` | Your inbox address (e.g., `markdown@agentmail.to`) | Yes |
-| `AGENTMAIL_CONTACT_EMAIL` | Contact form recipient (defaults to inbox if not set) | No |
+| Variable                  | Description                                           | Required |
+| ------------------------- | ----------------------------------------------------- | -------- |
+| `AGENTMAIL_API_KEY`       | Your AgentMail API key                                | Yes      |
+| `AGENTMAIL_INBOX`         | Your inbox address (e.g., `markdown@agentmail.to`)    | Yes      |
+| `AGENTMAIL_CONTACT_EMAIL` | Contact form recipient (defaults to inbox if not set) | No       |
 
 **Important:** Never hardcode email addresses in your code. Always use environment variables.
 
@@ -152,8 +153,8 @@ Submissions are stored in Convex and sent via AgentMail to your configured recip
 
 ### Frontmatter options
 
-| Field | Type | Description |
-|-------|------|-------------|
+| Field         | Type    | Description                           |
+| ------------- | ------- | ------------------------------------- |
 | `contactForm` | boolean | Enable contact form on this post/page |
 
 ## Frontmatter options
@@ -165,7 +166,7 @@ Control newsletter signup display per post/page:
 ```markdown
 ---
 title: "My Post"
-newsletter: true  # Show signup (default: follows siteConfig)
+newsletter: true # Show signup (default: follows siteConfig)
 ---
 ```
 
@@ -174,7 +175,7 @@ Or hide it:
 ```markdown
 ---
 title: "My Post"
-newsletter: false  # Hide signup even if enabled globally
+newsletter: false # Hide signup even if enabled globally
 ---
 ```
 
@@ -195,10 +196,10 @@ All AgentMail features require these Convex environment variables:
 
 ## CLI commands
 
-| Command | Description |
-|---------|-------------|
-| `npm run newsletter:send <slug>` | Send a blog post to all subscribers |
-| `npm run newsletter:send:stats` | Send weekly stats summary to your inbox |
+| Command                          | Description                             |
+| -------------------------------- | --------------------------------------- |
+| `npm run newsletter:send <slug>` | Send a blog post to all subscribers     |
+| `npm run newsletter:send:stats`  | Send weekly stats summary to your inbox |
 
 ## Troubleshooting
 

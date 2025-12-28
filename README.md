@@ -110,6 +110,19 @@ Follow the step-by-step guide in `FORK_CONFIG.md` to update each file manually. 
 - Run `npm run import <url>` to scrape and create draft posts locally
 - Then sync to dev or prod with `npm run sync` or `npm run sync:prod`
 
+### Newsletter and Email
+
+The framework includes AgentMail integration for newsletter subscriptions and contact forms. Features include:
+
+- Newsletter subscriptions and sending
+- Contact forms on any post or page
+- Automated weekly digests
+- Developer notifications
+- Admin UI for subscriber management
+- CLI tools for sending newsletters and stats
+
+See the [AgentMail setup guide](https://www.markdown.fast/blog/how-to-use-agentmail) for configuration instructions.
+
 ## Getting Started
 
 ### Prerequisites

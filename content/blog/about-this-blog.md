@@ -3,7 +3,7 @@ title: "About This Markdown Framework"
 description: "How this open source framework works with Convex for real-time sync and Netlify for deployment."
 date: "2025-12-14"
 slug: "about-this-blog"
-published: true
+published: false
 tags: ["convex", "netlify", "open-source", "markdown", "ai", "llm"]
 readTime: "4 min read"
 featured: false

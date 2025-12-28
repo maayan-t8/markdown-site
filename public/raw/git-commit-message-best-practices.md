@@ -4,7 +4,7 @@
 
 ---
 Type: post
-Date: 2025-01-17
+Date: 2025-12-14
 Reading time: 5 min read
 Tags: git, development, best-practices, workflow
 ---
