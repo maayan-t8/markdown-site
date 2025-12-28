@@ -4,7 +4,7 @@
 
 ---
 Type: post
-Date: 2025-12-21
+Date: 2025-12-14
 Reading time: 5 min read
 Tags: netlify, edge-functions, ai, troubleshooting, help
 ---

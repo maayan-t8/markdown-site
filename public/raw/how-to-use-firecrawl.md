@@ -4,7 +4,7 @@
 
 ---
 Type: post
-Date: 2025-12-20
+Date: 2025-12-26
 Reading time: 2 min read
 Tags: tutorial, firecrawl, import
 ---

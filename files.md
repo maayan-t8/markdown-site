@@ -242,6 +242,7 @@ Frontmatter is the YAML metadata at the top of each markdown file. Here is how i
 | `sitemap.ts` | Proxies `/sitemap.xml` to Convex HTTP                                                                          |
 | `api.ts`     | Proxies `/api/posts`, `/api/post`, `/api/export` to Convex                                                     |
 | `geo.ts`     | Returns user geo location from Netlify's automatic geo headers for visitor map                                 |
+| `mcp.ts`     | HTTP-based MCP server for AI tool integration (Cursor, Claude Desktop). Accessible at /mcp endpoint. Exposes read-only tools: list_posts, get_post, list_pages, get_page, get_homepage, search_content, export_all. Uses Netlify rate limiting (50 req/min public, 1000 req/min with API key). Optional authentication via MCP_API_KEY environment variable. |
 
 ## Public Assets (`public/`)
 

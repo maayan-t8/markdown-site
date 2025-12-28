@@ -114,6 +114,37 @@ Follow the step-by-step guide in `FORK_CONFIG.md` to update each file manually. 
 - `/openapi.yaml` - OpenAPI 3.0 specification
 - Copy Page dropdown for sharing to ChatGPT, Claude, Perplexity (uses raw markdown URLs for better AI parsing)
 
+### MCP Server
+
+The site includes an HTTP-based Model Context Protocol (MCP) server for AI tool integration. It allows AI assistants like Cursor and Claude Desktop to access blog content programmatically.
+
+**Endpoint:** `https://www.markdown.fast/mcp`
+
+**Features:**
+
+- 24/7 availability via Netlify Edge Functions (no local machine required)
+- Public access with rate limiting (50 req/min per IP)
+- Optional API key for higher limits (1000 req/min)
+- Seven tools: `list_posts`, `get_post`, `list_pages`, `get_page`, `get_homepage`, `search_content`, `export_all`
+
+**Configuration:**
+
+Add to your Cursor config (`~/.cursor/mcp.json`):
+
+```json
+{
+  "mcpServers": {
+    "markdown-fast": {
+      "url": "https://www.markdown.fast/mcp"
+    }
+  }
+}
+```
+
+**For forks:** Set `VITE_CONVEX_URL` in Netlify environment variables. Optionally set `MCP_API_KEY` for authenticated access.
+
+See [How to Use the MCP Server](https://www.markdown.fast/how-to-use-mcp-server) for full documentation.
+
 ### Content Import
 
 - Import external URLs as markdown posts using Firecrawl

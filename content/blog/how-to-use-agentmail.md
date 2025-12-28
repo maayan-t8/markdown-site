@@ -6,6 +6,7 @@ slug: "how-to-use-agentmail"
 published: true
 featured: true
 featuredOrder: 3
+blogFeatured: true
 image: /images/agentmail-blog.png
 tags: ["agentmail", "newsletter", "email", "setup"]
 ---

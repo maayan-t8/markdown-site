@@ -4,6 +4,36 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [1.39.0] - 2025-12-28
+
+### Added
+
+- HTTP-based MCP (Model Context Protocol) server deployed on Netlify Edge Functions
+  - Accessible 24/7 at `https://www.markdown.fast/mcp`
+  - Public access with Netlify built-in rate limiting (50 req/min per IP)
+  - Optional API key authentication for higher limits (1000 req/min)
+  - Read-only access to blog posts, pages, homepage, and search
+  - 7 tools: `list_posts`, `get_post`, `list_pages`, `get_page`, `get_homepage`, `search_content`, `export_all`
+  - JSON-RPC 2.0 protocol over HTTP POST
+  - CORS support for MCP clients
+  - No local machine required (unlike stdio-based MCP servers)
+- Blog post: "How to Use the MCP Server" with client configuration examples
+- MCP Server section in documentation (docs.md)
+- MCP configuration in siteConfig.ts (`mcpServer` object)
+
+### Changed
+
+- Updated setup-guide.md with MCP server section
+- Added `@modelcontextprotocol/sdk` to package.json dependencies
+
+### Technical
+
+- New file: `netlify/edge-functions/mcp.ts` (MCP server implementation)
+- New file: `content/blog/how-to-use-mcp-server.md`
+- Updated: `netlify.toml` (added /mcp edge function route)
+- Updated: `src/config/siteConfig.ts` (MCPServerConfig interface and config)
+- Updated: `files.md` (mcp.ts entry)
+
 ## [1.38.0] - 2025-12-27
 
 ### Added

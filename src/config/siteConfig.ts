@@ -171,6 +171,17 @@ export interface WeeklyDigestConfig {
   subject: string; // Email subject template
 }
 
+// MCP Server configuration
+// HTTP-based Model Context Protocol server for AI tool integration
+// Runs on Netlify Edge Functions at /mcp endpoint
+export interface MCPServerConfig {
+  enabled: boolean; // Global toggle for MCP server
+  endpoint: string; // Endpoint path (default: "/mcp")
+  publicRateLimit: number; // Requests per minute for public access
+  authenticatedRateLimit: number; // Requests per minute with API key
+  requireAuth: boolean; // Require API key for all requests
+}
+
 // Social link configuration for social footer
 export interface SocialLink {
   platform:
@@ -277,6 +288,9 @@ export interface SiteConfig {
 
   // Weekly digest configuration (optional)
   weeklyDigest?: WeeklyDigestConfig;
+
+  // MCP Server configuration (optional)
+  mcpServer?: MCPServerConfig;
 }
 
 // Default site configuration
@@ -555,6 +569,18 @@ Created by [Wayne](https://x.com/waynesutton) with Convex, Cursor, and Claude Op
     enabled: true, // Global toggle for weekly digest
     dayOfWeek: 0, // Sunday
     subject: "Weekly Digest", // Email subject prefix
+  },
+
+  // MCP Server configuration
+  // HTTP-based Model Context Protocol server for AI tool integration
+  // Runs on Netlify Edge Functions at /mcp endpoint
+  // Set MCP_API_KEY in Netlify env vars for authenticated access
+  mcpServer: {
+    enabled: true, // Global toggle for MCP server
+    endpoint: "/mcp", // Endpoint path
+    publicRateLimit: 50, // Requests per minute for public access (Netlify rate limiting)
+    authenticatedRateLimit: 1000, // Requests per minute with API key
+    requireAuth: false, // Set to true to require API key for all requests
   },
 };
 

@@ -1,7 +1,7 @@
 ---
 title: "Netlify edge functions blocking AI crawlers from static files"
 description: "Why excludedPath in netlify.toml isn't preventing edge functions from intercepting /raw/* requests, and how ChatGPT and Perplexity get blocked while Claude works."
-date: "2025-12-21"
+date: "2025-12-14"
 slug: "netlify-edge-excludedpath-ai-crawlers"
 published: true
 tags: ["netlify", "edge-functions", "ai", "troubleshooting", "help"]

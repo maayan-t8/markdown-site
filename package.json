@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.71.2",
+    "@modelcontextprotocol/sdk": "^1.0.0",
     "@convex-dev/aggregate": "^0.2.0",
     "@mendable/firecrawl-js": "^1.21.1",
     "@phosphor-icons/react": "^2.1.10",
