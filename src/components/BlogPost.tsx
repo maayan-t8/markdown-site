@@ -11,7 +11,7 @@ import NewsletterSignup from "./NewsletterSignup";
 import ContactForm from "./ContactForm";
 import siteConfig from "../config/siteConfig";
 
-// Sanitize schema that allows collapsible sections (details/summary) and inline styles for lists
+// Sanitize schema that allows collapsible sections (details/summary) and inline styles
 const sanitizeSchema = {
   ...defaultSchema,
   tagNames: [...(defaultSchema.tagNames || []), "details", "summary"],
@@ -21,6 +21,13 @@ const sanitizeSchema = {
     ul: ["style"], // Allow inline styles on ul for list-style control
     ol: ["style"], // Allow inline styles on ol for list-style control
     li: ["style"], // Allow inline styles on li elements
+    div: ["style"], // Allow inline styles on div for grid layouts
+    p: ["style"], // Allow inline styles on p elements
+    a: ["style", "href", "target", "rel"], // Allow inline styles on links
+    img: [
+      ...(defaultSchema.attributes?.img || []),
+      "style",
+    ], // Allow inline styles on images
   },
 };
 

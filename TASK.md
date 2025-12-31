@@ -7,9 +7,15 @@
 
 ## Current Status
 
-v2.2.0 ready. Footer content via markdown page complete. Created `content/pages/footer.md` for managing footer content via markdown sync. Footer content syncs with `npm run sync` without redeploy needed. Falls back to `siteConfig.footer.defaultContent` when page not found. Documentation updated in files.md, changelog.md, changelog-page.md, FORK_CONFIG.md, docs.md, setup-guide.md, and TASK.md.
+v2.2.1 ready. ES module compatibility fix for configure-fork.ts. Fixed `__dirname is not defined` error when running `npm run configure`. Added `fileURLToPath` import to create ES module equivalent of `__dirname`. Script now works correctly with `"type": "module"` in package.json.
 
 ## Completed
+
+- [x] ES module compatibility fix for configure-fork.ts
+  - [x] Fixed `__dirname is not defined` error when running `npm run configure`
+  - [x] Added `fileURLToPath` import from `url` module
+  - [x] Created ES module equivalent of `__dirname` using `import.meta.url`
+  - [x] Updated files.md, changelog.md, changelog-page.md, TASK.md
 
 - [x] Footer content via markdown page (footer.md)
   - [x] Created `content/pages/footer.md` for managing footer content via markdown sync

@@ -600,3 +600,113 @@ Indent code blocks with 4 spaces inside list items:
 | `![alt](image.png)` | image                 |
 | `> quote`           | blockquote            |
 | `---`               | horizontal rule       |
+
+## Image grid
+
+Create a grid layout using HTML and CSS Grid. Each cell contains an image, text, and a link:
+
+```html
+<div
+  style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0;"
+>
+  <div style="text-align: center;">
+    <img
+      src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=200&h=200&fit=crop"
+      alt=""
+      style="width: 100%; height: auto; border-radius: 4px;"
+    />
+    <p style="margin: 0.5rem 0 0.25rem;">Nature</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;"
+      >View</a
+    >
+  </div>
+  <!-- Repeat for 15 more cells -->
+</div>
+```
+
+Result:
+
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2rem 0;">
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Nature</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Mountains</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Ocean</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Forest</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Landscape</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Desert</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Sky</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Sunset</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Beach</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">River</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Valley</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Flowers</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1475924156734-496f6cac6ec1?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Lake</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Meadow</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Waterfall</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+  <div style="text-align: center;">
+    <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=200&h=200&fit=crop" alt="" style="width: 100%; height: auto; border-radius: 4px;" />
+    <p style="margin: 0.5rem 0 0.25rem;">Sunrise</p>
+    <a href="https://unsplash.com" style="font-size: 0.875rem; color: inherit;">View</a>
+  </div>
+</div>
+
+**Note:** The grid uses CSS Grid with `repeat(4, 1fr)` to create 4 equal columns. Images have empty `alt` attributes so no captions appear. Adjust the `gap` value to change spacing between cells.

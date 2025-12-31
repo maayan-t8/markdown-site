@@ -10,6 +10,18 @@ layout: "sidebar"
 All notable changes to this project.
 ![](https://img.shields.io/badge/License-MIT-yellow.svg)
 
+## v2.2.1
+
+Released December 31, 2025
+
+**ES module compatibility fix for configure-fork.ts**
+
+- Fixed `__dirname is not defined` error when running `npm run configure`
+- Added `fileURLToPath` import from `url` module to create ES module equivalent of `__dirname`
+- Script now works correctly with `"type": "module"` in package.json
+
+Updated files: `scripts/configure-fork.ts`, `files.md`, `changelog.md`, `content/pages/changelog-page.md`, `TASK.md`
+
 ## v2.2.0
 
 Released December 30, 2025
