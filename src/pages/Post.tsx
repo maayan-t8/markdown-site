@@ -6,10 +6,6 @@ import CopyPageDropdown from "../components/CopyPageDropdown";
 import PageSidebar from "../components/PageSidebar";
 import RightSidebar from "../components/RightSidebar";
 import DocsLayout from "../components/DocsLayout";
-import Footer from "../components/Footer";
-import SocialFooter from "../components/SocialFooter";
-import NewsletterSignup from "../components/NewsletterSignup";
-import ContactForm from "../components/ContactForm";
 import { extractHeadings } from "../utils/extractHeadings";
 import { useSidebar } from "../context/SidebarContext";
 import { format, parseISO } from "date-fns";
@@ -259,12 +255,6 @@ export default function Post({
               )}
             </header>
             <BlogPost content={page.content} slug={page.slug} pageType="page" />
-            {siteConfig.footer.enabled &&
-              (page.showFooter !== undefined
-                ? page.showFooter
-                : siteConfig.footer.showOnPages) && (
-                <Footer content={page.footer} />
-              )}
           </article>
         </DocsLayout>
       );
@@ -375,36 +365,6 @@ export default function Post({
             </header>
 
             <BlogPost content={page.content} slug={page.slug} pageType="page" />
-
-            {/* Contact form - shown when contactForm: true in frontmatter (only if not inline) */}
-            {siteConfig.contactForm?.enabled &&
-              page.contactForm &&
-              !page.content.includes("<!-- contactform -->") && (
-                <ContactForm source={`page:${page.slug}`} />
-              )}
-
-            {/* Newsletter signup - respects frontmatter override (only if not inline) */}
-            {siteConfig.newsletter?.enabled &&
-              (page.newsletter !== undefined
-                ? page.newsletter
-                : siteConfig.newsletter.signup.posts.enabled) &&
-              !page.content.includes("<!-- newsletter -->") && (
-                <NewsletterSignup source="post" postSlug={page.slug} />
-              )}
-
-            {/* Footer - shown inside article at bottom for pages */}
-            {siteConfig.footer.enabled &&
-              (page.showFooter !== undefined
-                ? page.showFooter
-                : siteConfig.footer.showOnPages) && (
-                <Footer content={page.footer} />
-              )}
-
-            {/* Social footer - shown inside article at bottom for pages */}
-            {siteConfig.socialFooter?.enabled &&
-              (page.showSocialFooter !== undefined
-                ? page.showSocialFooter
-                : siteConfig.socialFooter.showOnPages) && <SocialFooter />}
           </article>
 
           {/* Right sidebar - with optional AI chat support */}
@@ -490,12 +450,6 @@ export default function Post({
             )}
           </header>
           <BlogPost content={post.content} slug={post.slug} pageType="post" />
-          {siteConfig.footer.enabled &&
-            (post.showFooter !== undefined
-              ? post.showFooter
-              : siteConfig.footer.showOnPosts) && (
-              <Footer content={post.footer} />
-            )}
         </article>
       </DocsLayout>
     );
@@ -696,37 +650,7 @@ export default function Post({
                 </ul>
               </div>
             )}
-
-            {/* Newsletter signup - respects frontmatter override (only if not inline) */}
-            {siteConfig.newsletter?.enabled &&
-              (post.newsletter !== undefined
-                ? post.newsletter
-                : siteConfig.newsletter.signup.posts.enabled) &&
-              !post.content.includes("<!-- newsletter -->") && (
-                <NewsletterSignup source="post" postSlug={post.slug} />
-              )}
-
-            {/* Contact form - shown when contactForm: true in frontmatter (only if not inline) */}
-            {siteConfig.contactForm?.enabled &&
-              post.contactForm &&
-              !post.content.includes("<!-- contactform -->") && (
-                <ContactForm source={`post:${post.slug}`} />
-              )}
           </footer>
-
-          {/* Footer - shown inside article at bottom for posts */}
-          {siteConfig.footer.enabled &&
-            (post.showFooter !== undefined
-              ? post.showFooter
-              : siteConfig.footer.showOnPosts) && (
-              <Footer content={post.footer} />
-            )}
-
-          {/* Social footer - shown inside article at bottom for posts */}
-          {siteConfig.socialFooter?.enabled &&
-            (post.showSocialFooter !== undefined
-              ? post.showSocialFooter
-              : siteConfig.socialFooter.showOnPosts) && <SocialFooter />}
         </article>
 
         {/* Right sidebar - with optional AI chat support */}

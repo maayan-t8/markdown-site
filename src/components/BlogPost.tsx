@@ -7,8 +7,6 @@ import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { Copy, Check, X } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
-import NewsletterSignup from "./NewsletterSignup";
-import ContactForm from "./ContactForm";
 import siteConfig from "../config/siteConfig";
 
 // Whitelisted domains for iframe embeds (YouTube and Twitter/X only)
@@ -743,21 +741,9 @@ export default function BlogPost({
       <>
         <article className="blog-post-content">
           {segments.map((segment, index) => {
-            if (segment.type === "newsletter") {
-              // Newsletter signup inline
-              return siteConfig.newsletter?.enabled ? (
-                <NewsletterSignup
-                  key={`newsletter-${index}`}
-                  source={pageType === "page" ? "post" : "post"}
-                  postSlug={slug}
-                />
-              ) : null;
-            }
-            if (segment.type === "contactform") {
-              // Contact form inline
-              return siteConfig.contactForm?.enabled ? (
-                <ContactForm key={`contactform-${index}`} source={source} />
-              ) : null;
+            if (segment.type === "newsletter" || segment.type === "contactform") {
+              // Newsletter and contact forms are disabled - skip these segments
+              return null;
             }
             // Markdown content segment
             return renderMarkdown(segment.value, index);
