@@ -19,10 +19,10 @@ Your content is instantly available to browsers, LLMs, and AI agents.. Write mar
 - **Site Name**: markdown 
 - **Site Title**: markdown sync framework
 - **Site URL**: https://yoursite.example.com
-- **Total Posts**: 25
-- **Total Pages**: 0
+- **Total Posts**: 24
+- **Total Pages**: 1
 - **Latest Post**: 2026-01-03
-- **Last Updated**: 2026-01-03T20:11:06.783Z
+- **Last Updated**: 2026-01-03T20:46:25.538Z
 
 ## Tech stack
 
