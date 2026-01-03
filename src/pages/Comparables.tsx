@@ -1,14 +1,17 @@
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import BlogSidebar from "../components/BlogSidebar";
-import siteConfig from "../config/siteConfig";
+import BlogPost from "../components/BlogPost";
 
 // Comparables page component
 // Displays a sidebar with links to all comparables
-// and a main content area with the comparables intro/description
+// and a main content area with full markdown content from comparables-intro page
 export default function Comparables() {
   // Fetch all published comparables from Convex
   const comparables = useQuery(api.comparables.getAllComparables);
+
+  // Fetch the comparables landing page content
+  const introPage = useQuery(api.pages.getPageBySlug, { slug: "comparables-intro" });
 
   // Transform comparables for sidebar (only need slug, title, date)
   const sidebarComparables =
@@ -28,20 +31,25 @@ export default function Comparables() {
           <BlogSidebar posts={sidebarComparables} />
         </aside>
 
-        {/* Main content - comparables intro */}
+        {/* Main content - render markdown from comparables-intro page */}
         <article className="post-article post-article-with-sidebar">
-          <header className="post-header">
-            <h1 className="post-title">{siteConfig.comparablesPage.title}</h1>
-            {siteConfig.comparablesPage.description && (
-              <p className="post-description">
-                {siteConfig.comparablesPage.description}
-              </p>
-            )}
-          </header>
-
-          {/* Show message when no comparables exist */}
-          {comparables !== undefined && comparables.length === 0 && (
-            <p className="no-posts">No comparables yet. Check back soon!</p>
+          {introPage ? (
+            <>
+              <header className="post-header">
+                <h1 className="post-title">{introPage.title}</h1>
+              </header>
+              <BlogPost content={introPage.content} />
+            </>
+          ) : (
+            <>
+              <header className="post-header">
+                <h1 className="post-title">Comparables</h1>
+              </header>
+              {/* Show message when no comparables exist */}
+              {comparables !== undefined && comparables.length === 0 && (
+                <p className="no-posts">No comparables yet. Check back soon!</p>
+              )}
+            </>
           )}
         </article>
       </div>

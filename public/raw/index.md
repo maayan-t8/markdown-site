@@ -55,12 +55,13 @@ This is the homepage index of all published content.
 - **[Somatus](/raw/somatus.md)** - Somatus is the largest and leading provider of value-based kidney care in the United States, founded in 2016 and headquartered in McLean, Virginia.
   - Date: 2025-01-02 | Reading time: 21 min read | Tags: competitor-analysis
 
-## Pages (1)
+## Pages (2)
 
+- **[Comparables](/raw/comparables-intro.md)**
 - **[Documentation](/raw/documentation.md)**
 
 ---
 
-**Total Content:** 25 posts, 1 pages
+**Total Content:** 25 posts, 2 pages
 
 All content is available as raw markdown files at `/raw/{slug}.md`

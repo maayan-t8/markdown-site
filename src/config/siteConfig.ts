@@ -644,7 +644,7 @@ export const siteConfig: SiteConfig = {
     slug: "docs", // Base URL: /docs
     title: "Docs", // Page title
     showInNav: true, // Show "Docs" link in navigation
-    order: 1, // Nav order (lower = first)
+    order: 0, // Nav order (lower = first)
     defaultExpanded: true, // Expand all sidebar groups by default
   },
 
