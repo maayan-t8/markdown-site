@@ -46,6 +46,11 @@ interface PostFrontmatter {
   blogFeatured?: boolean; // Show as hero featured post on /blog page
   newsletter?: boolean; // Override newsletter signup display (true/false)
   contactForm?: boolean; // Enable contact form on this post
+  docsSection?: boolean; // Include in docs navigation
+  docsSectionGroup?: string; // Sidebar group name in docs
+  docsSectionOrder?: number; // Order within group (lower = first)
+  docsSectionGroupOrder?: number; // Order of group itself (lower = first)
+  docsLanding?: boolean; // Use as /docs landing page
 }
 
 interface ParsedPost {
@@ -74,6 +79,11 @@ interface ParsedPost {
   newsletter?: boolean; // Override newsletter signup display (true/false)
   contactForm?: boolean; // Enable contact form on this post
   unlisted?: boolean; // Hide from listings but allow direct access via slug
+  docsSection?: boolean; // Include in docs navigation
+  docsSectionGroup?: string; // Sidebar group name in docs
+  docsSectionOrder?: number; // Order within group (lower = first)
+  docsSectionGroupOrder?: number; // Order of group itself (lower = first)
+  docsLanding?: boolean; // Use as /docs landing page
 }
 
 // Page frontmatter (for static pages like About, Projects, Contact)
@@ -99,6 +109,11 @@ interface PageFrontmatter {
   contactForm?: boolean; // Enable contact form on this page
   newsletter?: boolean; // Override newsletter signup display (true/false)
   textAlign?: string; // Text alignment: "left", "center", "right" (default: "left")
+  docsSection?: boolean; // Include in docs navigation
+  docsSectionGroup?: string; // Sidebar group name in docs
+  docsSectionOrder?: number; // Order within group (lower = first)
+  docsSectionGroupOrder?: number; // Order of group itself (lower = first)
+  docsLanding?: boolean; // Use as /docs landing page
 }
 
 interface ParsedPage {
@@ -124,6 +139,11 @@ interface ParsedPage {
   contactForm?: boolean; // Enable contact form on this page
   newsletter?: boolean; // Override newsletter signup display (true/false)
   textAlign?: string; // Text alignment: "left", "center", "right" (default: "left")
+  docsSection?: boolean; // Include in docs navigation
+  docsSectionGroup?: string; // Sidebar group name in docs
+  docsSectionOrder?: number; // Order within group (lower = first)
+  docsSectionGroupOrder?: number; // Order of group itself (lower = first)
+  docsLanding?: boolean; // Use as /docs landing page
 }
 
 // Calculate reading time based on word count
@@ -174,6 +194,11 @@ function parseMarkdownFile(filePath: string): ParsedPost | null {
       newsletter: frontmatter.newsletter, // Override newsletter signup display
       contactForm: frontmatter.contactForm, // Enable contact form on this post
       unlisted: frontmatter.unlisted, // Hide from listings but allow direct access
+      docsSection: frontmatter.docsSection, // Include in docs navigation
+      docsSectionGroup: frontmatter.docsSectionGroup, // Sidebar group name
+      docsSectionOrder: frontmatter.docsSectionOrder, // Order within group
+      docsSectionGroupOrder: frontmatter.docsSectionGroupOrder, // Order of group itself
+      docsLanding: frontmatter.docsLanding, // Use as docs landing page
     };
   } catch (error) {
     console.error(`Error parsing ${filePath}:`, error);
@@ -234,6 +259,11 @@ function parsePageFile(filePath: string): ParsedPage | null {
       contactForm: frontmatter.contactForm, // Enable contact form on this page
       newsletter: frontmatter.newsletter, // Override newsletter signup display
       textAlign: frontmatter.textAlign, // Text alignment: "left", "center", "right"
+      docsSection: frontmatter.docsSection, // Include in docs navigation
+      docsSectionGroup: frontmatter.docsSectionGroup, // Sidebar group name
+      docsSectionOrder: frontmatter.docsSectionOrder, // Order within group
+      docsSectionGroupOrder: frontmatter.docsSectionGroupOrder, // Order of group itself
+      docsLanding: frontmatter.docsLanding, // Use as docs landing page
     };
   } catch (error) {
     console.error(`Error parsing page ${filePath}:`, error);

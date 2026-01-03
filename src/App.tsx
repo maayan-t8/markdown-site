@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Post from "./pages/Post";
 import Stats from "./pages/Stats";
 import Blog from "./pages/Blog";
+import DocsPage from "./pages/DocsPage";
 import Write from "./pages/Write";
 import TagPage from "./pages/TagPage";
 import AuthorPage from "./pages/AuthorPage";
@@ -85,6 +86,13 @@ function App() {
           {/* Blog page route - only enabled when blogPage.enabled is true */}
           {siteConfig.blogPage.enabled && (
             <Route path="/blog" element={<Blog />} />
+          )}
+          {/* Docs page route - only enabled when docsSection.enabled is true */}
+          {siteConfig.docsSection?.enabled && (
+            <Route
+              path={`/${siteConfig.docsSection.slug}`}
+              element={<DocsPage />}
+            />
           )}
           {/* Tag page route - displays posts filtered by tag */}
           <Route path="/tags/:tag" element={<TagPage />} />

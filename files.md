@@ -172,6 +172,10 @@ Markdown files with frontmatter for blog posts. Each file becomes a blog post.
 | `newsletter`    | Override newsletter signup display (optional, true/false) |
 | `contactForm`   | Enable contact form on this post (optional). Requires siteConfig.contactForm.enabled: true and AGENTMAIL_API_KEY/AGENTMAIL_INBOX environment variables. |
 | `unlisted`      | Hide from listings but allow direct access via slug (optional). Set `true` to hide from blog listings, featured sections, tag pages, search results, and related posts. Post remains accessible via direct link. |
+| `docsSection`   | Include in docs sidebar (optional). Set `true` to show in the docs section navigation. |
+| `docsSectionGroup` | Group name for docs sidebar (optional). Posts with the same group name appear together. |
+| `docsSectionOrder` | Order within docs group (optional). Lower numbers appear first within the group. |
+| `docsSectionGroupOrder` | Order of the group in docs sidebar (optional). Lower numbers make the group appear first. Groups without this field sort alphabetically. |
 
 ## Static Pages (`content/pages/`)
 
@@ -203,6 +207,10 @@ Markdown files for static pages like About, Projects, Contact, Changelog.
 | `newsletter`    | Override newsletter signup display (optional, true/false) |
 | `contactForm`   | Enable contact form on this page (optional). Requires siteConfig.contactForm.enabled: true and AGENTMAIL_API_KEY/AGENTMAIL_INBOX environment variables. |
 | `textAlign`     | Text alignment: "left", "center", "right" (optional, default: "left"). Used by home.md for home intro content alignment |
+| `docsSection`   | Include in docs sidebar (optional). Set `true` to show in the docs section navigation. |
+| `docsSectionGroup` | Group name for docs sidebar (optional). Pages with the same group name appear together. |
+| `docsSectionOrder` | Order within docs group (optional). Lower numbers appear first within the group. |
+| `docsSectionGroupOrder` | Order of the group in docs sidebar (optional). Lower numbers make the group appear first. Groups without this field sort alphabetically. |
 
 ## Scripts (`scripts/`)
 

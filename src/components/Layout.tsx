@@ -31,6 +31,23 @@ export default function Layout({ children }: LayoutProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
+  // Fetch docs pages and posts for detecting if current page is in docs section
+  const docsPages = useQuery(
+    siteConfig.docsSection?.enabled ? api.pages.getDocsPages : "skip"
+  );
+  const docsPosts = useQuery(
+    siteConfig.docsSection?.enabled ? api.posts.getDocsPosts : "skip"
+  );
+
+  // Check if current page is a docs page
+  const currentSlug = location.pathname.replace(/^\//, "");
+  const docsSlug = siteConfig.docsSection?.slug || "docs";
+  const isDocsLanding = currentSlug === docsSlug;
+  const isDocsPage =
+    isDocsLanding ||
+    (docsPages?.some((p) => p.slug === currentSlug) ?? false) ||
+    (docsPosts?.some((p) => p.slug === currentSlug) ?? false);
+
   // Get sidebar headings from context (if available)
   const sidebarContext = useSidebarOptional();
   const sidebarHeadings = sidebarContext?.headings || [];
@@ -100,6 +117,15 @@ export default function Layout({ children }: LayoutProps) {
       title: siteConfig.blogPage.title,
       order: siteConfig.blogPage.order ?? 0,
       isBlog: true,
+    });
+  }
+
+  // Add Docs link if enabled
+  if (siteConfig.docsSection?.enabled && siteConfig.docsSection?.showInNav) {
+    navItems.push({
+      slug: siteConfig.docsSection.slug,
+      title: siteConfig.docsSection.title,
+      order: siteConfig.docsSection.order ?? 1,
     });
   }
 
@@ -236,6 +262,8 @@ export default function Layout({ children }: LayoutProps) {
         onClose={closeMobileMenu}
         sidebarHeadings={sidebarHeadings}
         sidebarActiveId={sidebarActiveId}
+        showDocsNav={isDocsPage}
+        currentDocsSlug={currentSlug}
       >
         {/* Page navigation links in mobile menu (same order as desktop) */}
         <nav className="mobile-nav-links">

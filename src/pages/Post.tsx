@@ -5,6 +5,7 @@ import BlogPost from "../components/BlogPost";
 import CopyPageDropdown from "../components/CopyPageDropdown";
 import PageSidebar from "../components/PageSidebar";
 import RightSidebar from "../components/RightSidebar";
+import DocsLayout from "../components/DocsLayout";
 import Footer from "../components/Footer";
 import SocialFooter from "../components/SocialFooter";
 import NewsletterSignup from "../components/NewsletterSignup";
@@ -196,13 +197,79 @@ export default function Post({
     };
   }, [post, page]);
 
+  // Check if we're loading a docs page - keep layout mounted to prevent flash
+  const isDocsRoute = siteConfig.docsSection?.enabled && slug;
+
   // Return null during initial load to avoid flash (Convex data arrives quickly)
+  // But for docs pages, show skeleton within DocsLayout to prevent sidebar flash
   if (page === undefined || post === undefined) {
+    if (isDocsRoute) {
+      // Keep DocsLayout mounted during loading to prevent sidebar flash
+      return (
+        <DocsLayout headings={[]} currentSlug={slug || ""}>
+          <article className="docs-article">
+            <div className="docs-article-loading">
+              <div className="docs-loading-skeleton docs-loading-title" />
+              <div className="docs-loading-skeleton docs-loading-text" />
+              <div className="docs-loading-skeleton docs-loading-text" />
+              <div className="docs-loading-skeleton docs-loading-text-short" />
+            </div>
+          </article>
+        </DocsLayout>
+      );
+    }
     return null;
   }
 
   // If it's a static page, render simplified view
   if (page) {
+    // Check if this page should use docs layout
+    if (page.docsSection && siteConfig.docsSection?.enabled) {
+      const docsHeadings = extractHeadings(page.content);
+      return (
+        <DocsLayout
+          headings={docsHeadings}
+          currentSlug={page.slug}
+          aiChatEnabled={page.aiChat}
+          pageContent={page.content}
+        >
+          <article className="docs-article">
+            <div className="docs-article-actions">
+              <CopyPageDropdown
+                title={page.title}
+                content={page.content}
+                url={`${SITE_URL}/${page.slug}`}
+                slug={page.slug}
+                description={page.excerpt}
+              />
+            </div>
+            {page.showImageAtTop && page.image && (
+              <div className="post-header-image">
+                <img
+                  src={page.image}
+                  alt={page.title}
+                  className="post-header-image-img"
+                />
+              </div>
+            )}
+            <header className="docs-article-header">
+              <h1 className="docs-article-title">{page.title}</h1>
+              {page.excerpt && (
+                <p className="docs-article-description">{page.excerpt}</p>
+              )}
+            </header>
+            <BlogPost content={page.content} slug={page.slug} pageType="page" />
+            {siteConfig.footer.enabled &&
+              (page.showFooter !== undefined
+                ? page.showFooter
+                : siteConfig.footer.showOnPages) && (
+                <Footer content={page.footer} />
+              )}
+          </article>
+        </DocsLayout>
+      );
+    }
+
     // Extract headings for sidebar TOC (only for pages with layout: "sidebar")
     const headings =
       page.layout === "sidebar" ? extractHeadings(page.content) : [];
@@ -384,6 +451,55 @@ export default function Post({
       "_blank",
     );
   };
+
+  // Check if this post should use docs layout
+  if (post.docsSection && siteConfig.docsSection?.enabled) {
+    const docsHeadings = extractHeadings(post.content);
+    return (
+      <DocsLayout
+        headings={docsHeadings}
+        currentSlug={post.slug}
+        aiChatEnabled={post.aiChat}
+        pageContent={post.content}
+      >
+        <article className="docs-article">
+          <div className="docs-article-actions">
+            <CopyPageDropdown
+              title={post.title}
+              content={post.content}
+              url={`${SITE_URL}/${post.slug}`}
+              slug={post.slug}
+              description={post.description}
+              date={post.date}
+              tags={post.tags}
+            />
+          </div>
+          {post.showImageAtTop && post.image && (
+            <div className="post-header-image">
+              <img
+                src={post.image}
+                alt={post.title}
+                className="post-header-image-img"
+              />
+            </div>
+          )}
+          <header className="docs-article-header">
+            <h1 className="docs-article-title">{post.title}</h1>
+            {post.description && (
+              <p className="docs-article-description">{post.description}</p>
+            )}
+          </header>
+          <BlogPost content={post.content} slug={post.slug} pageType="post" />
+          {siteConfig.footer.enabled &&
+            (post.showFooter !== undefined
+              ? post.showFooter
+              : siteConfig.footer.showOnPosts) && (
+              <Footer content={post.footer} />
+            )}
+        </article>
+      </DocsLayout>
+    );
+  }
 
   // Extract headings for sidebar TOC (only for posts with layout: "sidebar")
   const headings =

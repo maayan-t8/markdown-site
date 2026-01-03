@@ -1,12 +1,17 @@
 ---
-title: "Docs"
-slug: "docs"
+title: "Documentation"
+slug: "documentation"
 published: true
 order: 0
+showInNav: false
 layout: "sidebar"
 aiChat: true
 rightSidebar: true
 showFooter: true
+docsSection: true
+docsSectionOrder: 1
+docsSectionGroup: "Setup"
+docsLanding: true
 ---
 
 ## Getting Started
@@ -130,6 +135,10 @@ Content here...
 | `newsletter`       | No       | Override newsletter signup display (`true` to show, `false` to hide)                                                                                                                                   |
 | `contactForm`      | No       | Enable contact form on this post                                                                                                                                                                       |
 | `unlisted`         | No       | Hide from listings but allow direct access via slug. Set `true` to hide from blog listings, featured sections, tag pages, search results, and related posts. Post remains accessible via direct link.  |
+| `docsSection`      | No       | Include in docs sidebar. Set `true` to show in the docs section navigation.                                                                                                                            |
+| `docsSectionGroup` | No       | Group name for docs sidebar. Posts with the same group name appear together.                                                                                                                           |
+| `docsSectionOrder` | No       | Order within docs group. Lower numbers appear first within the group.                                                                                                                                  |
+| `docsSectionGroupOrder` | No  | Order of the group in docs sidebar. Lower numbers make the group appear first. Groups without this field sort alphabetically.                                                                          |
 | `showImageAtTop`   | No       | Set `true` to display the `image` field at the top of the post above the header (default: `false`)                                                                                                     |
 
 ### Static pages
@@ -173,6 +182,10 @@ Content here...
 | `contactForm`      | No       | Enable contact form on this page                                                                                                                                                                       |
 | `showImageAtTop`   | No       | Set `true` to display the `image` field at the top of the page above the header (default: `false`)                                                                                                     |
 | `textAlign`        | No       | Text alignment: "left" (default), "center", or "right". Used by `home.md` for home intro alignment                                                                                                     |
+| `docsSection`      | No       | Include in docs sidebar. Set `true` to show in the docs section navigation.                                                                                                                            |
+| `docsSectionGroup` | No       | Group name for docs sidebar. Pages with the same group name appear together.                                                                                                                           |
+| `docsSectionOrder` | No       | Order within docs group. Lower numbers appear first within the group.                                                                                                                                  |
+| `docsSectionGroupOrder` | No  | Order of the group in docs sidebar. Lower numbers make the group appear first. Groups without this field sort alphabetically.                                                                          |
 
 **Hide pages from navigation:** Set `showInNav: false` to keep a page published and accessible via direct URL, but hidden from the navigation menu. Pages with `showInNav: false` remain searchable and available via API endpoints. Useful for pages you want to link directly but not show in the main nav.
 
@@ -1117,10 +1130,10 @@ The Dashboard includes a dedicated AI Agent section with tab-based UI for Chat a
 
 **Environment Variables (Convex):**
 
-| Variable | Description |
-| --- | --- |
-| `ANTHROPIC_API_KEY` | Required for Claude Sonnet 4 |
-| `OPENAI_API_KEY` | Required for GPT-4o |
+| Variable            | Description                                        |
+| ------------------- | -------------------------------------------------- |
+| `ANTHROPIC_API_KEY` | Required for Claude Sonnet 4                       |
+| `OPENAI_API_KEY`    | Required for GPT-4o                                |
 | `GOOGLE_AI_API_KEY` | Required for Gemini 2.0 Flash and image generation |
 
 **Note:** Only configure the API keys for models you want to use. If a key is not set, users see a helpful setup message when they try to use that model.

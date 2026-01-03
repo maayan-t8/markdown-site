@@ -2,11 +2,40 @@
 
 ---
 Type: page
-Date: 2026-01-02
+Date: 2026-01-03
 ---
 
 All notable changes to this project.
 ![](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+## v2.7.0
+
+Released January 2, 2026
+
+**Docs sidebar group ordering**
+
+- New `docsSectionGroupOrder` frontmatter field for controlling docs sidebar group order
+- Groups are sorted by the minimum `docsSectionGroupOrder` value among items in each group
+- Lower numbers appear first, groups without this field sort alphabetically
+- Works alongside `docsSection`, `docsSectionGroup`, and `docsSectionOrder` fields
+
+**Example usage:**
+
+```yaml
+---
+docsSection: true
+docsSectionGroup: "Getting Started"
+docsSectionGroupOrder: 1
+docsSectionOrder: 1
+---
+```
+
+**Technical details:**
+
+- Updated `convex/schema.ts` with `docsSectionGroupOrder` field in posts and pages tables
+- Updated `convex/posts.ts` and `convex/pages.ts` queries and mutations
+- Updated `scripts/sync-posts.ts` to parse `docsSectionGroupOrder` from frontmatter
+- Updated `src/components/DocsSidebar.tsx` to sort groups by `docsSectionGroupOrder`
 
 ## v2.6.0
 

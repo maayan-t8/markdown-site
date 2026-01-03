@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [2.7.0] - 2026-01-02
+
+### Added
+
+- `docsSectionGroupOrder` frontmatter field for controlling docs sidebar group order
+  - Groups are sorted by the minimum `docsSectionGroupOrder` value among items in each group
+  - Lower numbers appear first, groups without this field sort alphabetically
+  - Works alongside `docsSection`, `docsSectionGroup`, and `docsSectionOrder` fields
+
+### Technical
+
+- Updated `convex/schema.ts` to include `docsSectionGroupOrder` field in posts and pages tables
+- Updated `convex/posts.ts` and `convex/pages.ts` queries and mutations to handle `docsSectionGroupOrder`
+- Updated `scripts/sync-posts.ts` to parse `docsSectionGroupOrder` from frontmatter
+- Updated `src/components/DocsSidebar.tsx` to sort groups by `docsSectionGroupOrder`
+
 ## [2.6.0] - 2026-01-01
 
 ### Added
