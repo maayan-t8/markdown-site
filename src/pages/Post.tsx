@@ -5,6 +5,11 @@ import BlogPost from "../components/BlogPost";
 import CopyPageDropdown from "../components/CopyPageDropdown";
 import PageSidebar from "../components/PageSidebar";
 import RightSidebar from "../components/RightSidebar";
+import DocsLayout from "../components/DocsLayout";
+import Footer from "../components/Footer";
+import SocialFooter from "../components/SocialFooter";
+import NewsletterSignup from "../components/NewsletterSignup";
+import ContactForm from "../components/ContactForm";
 import { extractHeadings } from "../utils/extractHeadings";
 import { useSidebar } from "../context/SidebarContext";
 import { format, parseISO } from "date-fns";
@@ -192,13 +197,79 @@ export default function Post({
     };
   }, [post, page]);
 
+  // Check if we're loading a docs page - keep layout mounted to prevent flash
+  const isDocsRoute = siteConfig.docsSection?.enabled && slug;
+
   // Return null during initial load to avoid flash (Convex data arrives quickly)
+  // But for docs pages, show skeleton within DocsLayout to prevent sidebar flash
   if (page === undefined || post === undefined) {
+    if (isDocsRoute) {
+      // Keep DocsLayout mounted during loading to prevent sidebar flash
+      return (
+        <DocsLayout headings={[]} currentSlug={slug || ""}>
+          <article className="docs-article">
+            <div className="docs-article-loading">
+              <div className="docs-loading-skeleton docs-loading-title" />
+              <div className="docs-loading-skeleton docs-loading-text" />
+              <div className="docs-loading-skeleton docs-loading-text" />
+              <div className="docs-loading-skeleton docs-loading-text-short" />
+            </div>
+          </article>
+        </DocsLayout>
+      );
+    }
     return null;
   }
 
   // If it's a static page, render simplified view
   if (page) {
+    // Check if this page should use docs layout
+    if (page.docsSection && siteConfig.docsSection?.enabled) {
+      const docsHeadings = extractHeadings(page.content);
+      return (
+        <DocsLayout
+          headings={docsHeadings}
+          currentSlug={page.slug}
+          aiChatEnabled={page.aiChat}
+          pageContent={page.content}
+        >
+          <article className="docs-article">
+            <div className="docs-article-actions">
+              <CopyPageDropdown
+                title={page.title}
+                content={page.content}
+                url={`${SITE_URL}/${page.slug}`}
+                slug={page.slug}
+                description={page.excerpt}
+              />
+            </div>
+            {page.showImageAtTop && page.image && (
+              <div className="post-header-image">
+                <img
+                  src={page.image}
+                  alt={page.title}
+                  className="post-header-image-img"
+                />
+              </div>
+            )}
+            <header className="docs-article-header">
+              <h1 className="docs-article-title">{page.title}</h1>
+              {page.excerpt && (
+                <p className="docs-article-description">{page.excerpt}</p>
+              )}
+            </header>
+            <BlogPost content={page.content} slug={page.slug} pageType="page" />
+            {siteConfig.footer.enabled &&
+              (page.showFooter !== undefined
+                ? page.showFooter
+                : siteConfig.footer.showOnPages) && (
+                <Footer content={page.footer} />
+              )}
+          </article>
+        </DocsLayout>
+      );
+    }
+
     // Extract headings for sidebar TOC (only for pages with layout: "sidebar")
     const headings =
       page.layout === "sidebar" ? extractHeadings(page.content) : [];
@@ -304,6 +375,36 @@ export default function Post({
             </header>
 
             <BlogPost content={page.content} slug={page.slug} pageType="page" />
+
+            {/* Contact form - shown when contactForm: true in frontmatter (only if not inline) */}
+            {siteConfig.contactForm?.enabled &&
+              page.contactForm &&
+              !page.content.includes("<!-- contactform -->") && (
+                <ContactForm source={`page:${page.slug}`} />
+              )}
+
+            {/* Newsletter signup - respects frontmatter override (only if not inline) */}
+            {siteConfig.newsletter?.enabled &&
+              (page.newsletter !== undefined
+                ? page.newsletter
+                : siteConfig.newsletter.signup.posts.enabled) &&
+              !page.content.includes("<!-- newsletter -->") && (
+                <NewsletterSignup source="post" postSlug={page.slug} />
+              )}
+
+            {/* Footer - shown inside article at bottom for pages */}
+            {siteConfig.footer.enabled &&
+              (page.showFooter !== undefined
+                ? page.showFooter
+                : siteConfig.footer.showOnPages) && (
+                <Footer content={page.footer} />
+              )}
+
+            {/* Social footer - shown inside article at bottom for pages */}
+            {siteConfig.socialFooter?.enabled &&
+              (page.showSocialFooter !== undefined
+                ? page.showSocialFooter
+                : siteConfig.socialFooter.showOnPages) && <SocialFooter />}
           </article>
 
           {/* Right sidebar - with optional AI chat support */}
@@ -351,16 +452,62 @@ export default function Post({
     );
   };
 
+  // Check if this post should use docs layout
+  if (post.docsSection && siteConfig.docsSection?.enabled) {
+    const docsHeadings = extractHeadings(post.content);
+    return (
+      <DocsLayout
+        headings={docsHeadings}
+        currentSlug={post.slug}
+        aiChatEnabled={post.aiChat}
+        pageContent={post.content}
+      >
+        <article className="docs-article">
+          <div className="docs-article-actions">
+            <CopyPageDropdown
+              title={post.title}
+              content={post.content}
+              url={`${SITE_URL}/${post.slug}`}
+              slug={post.slug}
+              description={post.description}
+              date={post.date}
+              tags={post.tags}
+            />
+          </div>
+          {post.showImageAtTop && post.image && (
+            <div className="post-header-image">
+              <img
+                src={post.image}
+                alt={post.title}
+                className="post-header-image-img"
+              />
+            </div>
+          )}
+          <header className="docs-article-header">
+            <h1 className="docs-article-title">{post.title}</h1>
+            {post.description && (
+              <p className="docs-article-description">{post.description}</p>
+            )}
+          </header>
+          <BlogPost content={post.content} slug={post.slug} pageType="post" />
+          {siteConfig.footer.enabled &&
+            (post.showFooter !== undefined
+              ? post.showFooter
+              : siteConfig.footer.showOnPosts) && (
+              <Footer content={post.footer} />
+            )}
+        </article>
+      </DocsLayout>
+    );
+  }
+
   // Extract headings for sidebar TOC (only for posts with layout: "sidebar")
   const headings =
     post?.layout === "sidebar" ? extractHeadings(post.content) : [];
   const hasLeftSidebar = headings.length > 0;
-  // Check if right sidebar is enabled
-  // For blog posts: enabled by default unless explicitly disabled (rightSidebar: false)
+  // Check if right sidebar is enabled (only when explicitly set in frontmatter)
   const hasRightSidebar =
-    siteConfig.rightSidebar.enabled && post.rightSidebar !== false;
-  // AI chat is enabled by default for blog posts unless explicitly disabled (aiChat: false)
-  const postAiChatEnabled = post.aiChat !== false;
+    siteConfig.rightSidebar.enabled && post.rightSidebar === true;
   const hasAnySidebar = hasLeftSidebar || hasRightSidebar;
   // Track if only right sidebar is enabled (for centering article)
   const hasOnlyRightSidebar = hasRightSidebar && !hasLeftSidebar;
@@ -549,13 +696,43 @@ export default function Post({
                 </ul>
               </div>
             )}
+
+            {/* Newsletter signup - respects frontmatter override (only if not inline) */}
+            {siteConfig.newsletter?.enabled &&
+              (post.newsletter !== undefined
+                ? post.newsletter
+                : siteConfig.newsletter.signup.posts.enabled) &&
+              !post.content.includes("<!-- newsletter -->") && (
+                <NewsletterSignup source="post" postSlug={post.slug} />
+              )}
+
+            {/* Contact form - shown when contactForm: true in frontmatter (only if not inline) */}
+            {siteConfig.contactForm?.enabled &&
+              post.contactForm &&
+              !post.content.includes("<!-- contactform -->") && (
+                <ContactForm source={`post:${post.slug}`} />
+              )}
           </footer>
+
+          {/* Footer - shown inside article at bottom for posts */}
+          {siteConfig.footer.enabled &&
+            (post.showFooter !== undefined
+              ? post.showFooter
+              : siteConfig.footer.showOnPosts) && (
+              <Footer content={post.footer} />
+            )}
+
+          {/* Social footer - shown inside article at bottom for posts */}
+          {siteConfig.socialFooter?.enabled &&
+            (post.showSocialFooter !== undefined
+              ? post.showSocialFooter
+              : siteConfig.socialFooter.showOnPosts) && <SocialFooter />}
         </article>
 
-        {/* Right sidebar - with AI chat enabled by default for blog posts */}
+        {/* Right sidebar - with optional AI chat support */}
         {hasRightSidebar && (
           <RightSidebar
-            aiChatEnabled={postAiChatEnabled}
+            aiChatEnabled={post.aiChat}
             pageContent={post.content}
             slug={post.slug}
           />

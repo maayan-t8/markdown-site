@@ -40,6 +40,18 @@ export interface BlogPageConfig {
   showViewToggle: boolean; // Show toggle button to switch between views
 }
 
+// Comparables page configuration
+// Controls comparables content display and navigation
+export interface ComparablesPageConfig {
+  enabled: boolean; // Enable the /comparables route
+  showInNav: boolean; // Show "Comparables" link in navigation
+  title: string; // Page title for the comparables page
+  description?: string; // Optional description shown on comparables page
+  order?: number; // Nav order (lower = first, matches page frontmatter order)
+  viewMode: "list" | "cards"; // Default view mode (list or cards)
+  showViewToggle: boolean; // Show toggle button to switch between views
+}
+
 // Homepage posts read more link configuration
 // Optional link shown below limited post list on homepage
 export interface HomePostsReadMoreConfig {
@@ -177,6 +189,18 @@ export interface StatsPageConfig {
   showInNav: boolean; // Show link in navigation (controlled via hardcodedNavItems)
 }
 
+// Docs section configuration
+// Creates a Starlight-style documentation layout with left sidebar and right TOC
+// Pages/posts with docsSection: true in frontmatter appear in docs navigation
+export interface DocsSectionConfig {
+  enabled: boolean; // Global toggle for docs section
+  slug: string; // Base URL path (e.g., "docs" for /docs)
+  title: string; // Page title for docs landing
+  showInNav: boolean; // Show "Docs" link in navigation
+  order?: number; // Nav order (lower = first)
+  defaultExpanded: boolean; // Expand all sidebar groups by default
+}
+
 // Newsletter notifications configuration
 // Sends developer notifications for subscriber events
 // Uses AGENTMAIL_CONTACT_EMAIL or AGENTMAIL_INBOX as recipient
@@ -282,6 +306,9 @@ export interface SiteConfig {
   // Blog page configuration
   blogPage: BlogPageConfig;
 
+  // Comparables page configuration
+  comparablesPage: ComparablesPageConfig;
+
   // Hardcoded navigation items for React routes (like /stats, /write)
   hardcodedNavItems: HardcodedNavItem[];
 
@@ -324,6 +351,9 @@ export interface SiteConfig {
 
   // Stats page configuration (optional)
   statsPage?: StatsPageConfig;
+
+  // Docs section configuration (optional)
+  docsSection?: DocsSectionConfig;
 
   // Newsletter notifications configuration (optional)
   newsletterNotifications?: NewsletterNotificationsConfig;
@@ -440,14 +470,24 @@ export const siteConfig: SiteConfig = {
   },
 
   // Blog page configuration
-  // Blog is now the homepage, so disabled as a separate route
   blogPage: {
-    enabled: false, // Disabled - blog is now the homepage
-    showInNav: false, // No separate Blog link needed
+    enabled: true, // Enable /blog route
+    showInNav: true, // Show "Blog" in navigation
     title: "Blog", // Page title
     description: "All posts from the blog, sorted by date.", // Optional description
-    order: 2, // Nav order (lower = first, e.g., 0 = first, 5 = after pages with order 0-4)
+    order: 1, // Nav order (Blog first, Comparables second)
     viewMode: "cards", // Default view mode: "list" or "cards"
+    showViewToggle: true, // Show toggle button to switch between list and card views
+  },
+
+  // Comparables page configuration
+  comparablesPage: {
+    enabled: true, // Enable /comparables route
+    showInNav: true, // Show "Comparables" in navigation
+    title: "Comparables", // Page title
+    description: "Real estate comparable properties and market analysis.", // Optional description
+    order: 2, // Nav order (after Blog)
+    viewMode: "list", // Default view mode: "list" or "cards"
     showViewToggle: true, // Show toggle button to switch between list and card views
   },
 
@@ -593,6 +633,19 @@ export const siteConfig: SiteConfig = {
   statsPage: {
     enabled: false, // Global toggle for stats page
     showInNav: false, // Show link in navigation (also controlled via hardcodedNavItems)
+  },
+
+  // Docs section configuration
+  // Creates a Starlight-style documentation layout with left sidebar navigation and right TOC
+  // Add docsSection: true to page/post frontmatter to include in docs navigation
+  // Set docsLanding: true on one page to make it the /docs landing page
+  docsSection: {
+    enabled: true, // Global toggle for docs section
+    slug: "docs", // Base URL: /docs
+    title: "Docs", // Page title
+    showInNav: true, // Show "Docs" link in navigation
+    order: 1, // Nav order (lower = first)
+    defaultExpanded: true, // Expand all sidebar groups by default
   },
 
   // Newsletter notifications configuration
