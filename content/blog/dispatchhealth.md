@@ -1,11 +1,18 @@
 ---
-title: "DispatchHealth"
-description: "DispatchHealth is a leading provider of high-acuity, in-home medical care founded in 2013 in Denver, Colorado."
-date: "2026-01-02"
-slug: "dispatchhealth"
+title: DispatchHealth
+description: >-
+  DispatchHealth is a leading provider of high-acuity, in-home medical care
+  founded in 2013 in Denver, Colorado.
+date: '2026-01-02'
+slug: dispatchhealth
 published: true
-tags: ['competitor-analysis', 'enterprise']
-excerpt: "$737.5M funding"
+tags:
+  - competitor-analysis
+  - enterprise
+excerpt: $737.5M funding
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # DispatchHealth - Comprehensive Research Report

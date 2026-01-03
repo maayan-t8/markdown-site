@@ -1,12 +1,25 @@
 ---
-title: "Conversa Health -> Amwell Acquisition"
-description: "Amwell acquired Conversa Health as part of a dual acquisition for combined $320M to add AI-powered automated virtual care and patient engagement capabilities between visits."
-date: "2021-07-28"
-slug: "conversa-health-amwell-2021"
+title: Conversa Health -> Amwell Acquisition
+description: >-
+  Amwell acquired Conversa Health as part of a dual acquisition for combined
+  $320M to add AI-powered automated virtual care and patient engagement
+  capabilities between visits.
+date: '2021-07-28'
+slug: conversa-health-amwell-2021
 published: true
-tags: ["telehealth", "ai-automation", "patient-engagement", "platform-expansion", "2021"]
-excerpt: "AI-powered automated virtual care platform acquired in combined $320M dual acquisition"
-readTime: "9 min read"
+tags:
+  - telehealth
+  - ai-automation
+  - patient-engagement
+  - platform-expansion
+  - '2021'
+excerpt: >-
+  AI-powered automated virtual care platform acquired in combined $320M dual
+  acquisition
+readTime: 9 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Conversa Health -> Amwell Acquisition

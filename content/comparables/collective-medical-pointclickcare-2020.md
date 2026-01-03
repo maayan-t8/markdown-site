@@ -1,12 +1,25 @@
 ---
-title: "Collective Medical -> PointClickCare Acquisition"
-description: "PointClickCare acquired Collective Medical, the leading real-time care coordination network, for $650M to create the largest combined acute and post-acute care network in North America."
-date: "2020-12-08"
-slug: "collective-medical-pointclickcare-2020"
+title: Collective Medical -> PointClickCare Acquisition
+description: >-
+  PointClickCare acquired Collective Medical, the leading real-time care
+  coordination network, for $650M to create the largest combined acute and
+  post-acute care network in North America.
+date: '2020-12-08'
+slug: collective-medical-pointclickcare-2020
 published: true
-tags: ["care-coordination", "post-acute", "ehr", "care-transitions", "2020"]
-excerpt: "$650M acquisition of real-time care coordination network connecting 1,300+ hospitals"
-readTime: "11 min read"
+tags:
+  - care-coordination
+  - post-acute
+  - ehr
+  - care-transitions
+  - '2020'
+excerpt: >-
+  $650M acquisition of real-time care coordination network connecting 1,300+
+  hospitals
+readTime: 11 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Collective Medical -> PointClickCare Acquisition

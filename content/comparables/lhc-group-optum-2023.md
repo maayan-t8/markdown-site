@@ -1,12 +1,25 @@
 ---
-title: "LHC Group -> Optum Acquisition"
-description: "UnitedHealth's Optum acquired LHC Group, one of the nation's largest home health and hospice providers, for $5.4B to accelerate its payvider model and value-based care strategy."
-date: "2023-02-22"
-slug: "lhc-group-optum-2023"
+title: LHC Group -> Optum Acquisition
+description: >-
+  UnitedHealth's Optum acquired LHC Group, one of the nation's largest home
+  health and hospice providers, for $5.4B to accelerate its payvider model and
+  value-based care strategy.
+date: '2023-02-22'
+slug: lhc-group-optum-2023
 published: true
-tags: ["payer-integration", "home-health", "payvider", "value-based-care", "2023"]
-excerpt: "$5.4B acquisition of home health provider with 527 locations and 435+ hospital partnerships"
-readTime: "12 min read"
+tags:
+  - payer-integration
+  - home-health
+  - payvider
+  - value-based-care
+  - '2023'
+excerpt: >-
+  $5.4B acquisition of home health provider with 527 locations and 435+ hospital
+  partnerships
+readTime: 12 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # LHC Group -> Optum (UnitedHealth Group) Acquisition

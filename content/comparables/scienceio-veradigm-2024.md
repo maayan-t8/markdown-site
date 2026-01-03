@@ -1,12 +1,25 @@
 ---
-title: "ScienceIO -> Veradigm Acquisition"
-description: "Veradigm acquired ScienceIO, a healthcare-focused AI foundation model and NLP company, for $140M to build proprietary LLMs on its healthcare data spanning 400,000+ providers."
-date: "2024-02-27"
-slug: "scienceio-veradigm-2024"
+title: ScienceIO -> Veradigm Acquisition
+description: >-
+  Veradigm acquired ScienceIO, a healthcare-focused AI foundation model and NLP
+  company, for $140M to build proprietary LLMs on its healthcare data spanning
+  400,000+ providers.
+date: '2024-02-27'
+slug: scienceio-veradigm-2024
 published: true
-tags: ["healthcare-ai", "nlp", "llm", "data-platform", "2024"]
-excerpt: "$140M acquisition of healthcare AI/NLP platform to unlock value from 200M patient data assets"
-readTime: "9 min read"
+tags:
+  - healthcare-ai
+  - nlp
+  - llm
+  - data-platform
+  - '2024'
+excerpt: >-
+  $140M acquisition of healthcare AI/NLP platform to unlock value from 200M
+  patient data assets
+readTime: 9 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # ScienceIO -> Veradigm Acquisition

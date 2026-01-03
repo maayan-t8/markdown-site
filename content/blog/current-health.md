@@ -1,11 +1,18 @@
 ---
-title: "Current Health"
-description: "Current Health is a care-at-home technology company that provides remote patient monitoring (RPM), telehealth, and hospital-at-home solutions to healthcare organizations."
-date: "2025-01-03"
-slug: "current-health"
+title: Current Health
+description: >-
+  Current Health is a care-at-home technology company that provides remote
+  patient monitoring (RPM), telehealth, and hospital-at-home solutions to
+  healthcare organizations.
+date: '2025-01-03'
+slug: current-health
 published: true
-tags: ['competitor-analysis']
-excerpt: "Comprehensive competitor analysis"
+tags:
+  - competitor-analysis
+excerpt: Comprehensive competitor analysis
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Current Health - Comprehensive Research Report

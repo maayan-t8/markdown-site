@@ -1,11 +1,18 @@
 ---
-title: "Patina Health"
-description: "Patina Health was a Philadelphia-based senior-focused primary care startup that provided virtual and in-home primary care services to adults aged 65 and older through Medicare Advantage partnerships."
-date: "2026-01-02"
-slug: "patina-health"
+title: Patina Health
+description: >-
+  Patina Health was a Philadelphia-based senior-focused primary care startup
+  that provided virtual and in-home primary care services to adults aged 65 and
+  older through Medicare Advantage partnerships.
+date: '2026-01-02'
+slug: patina-health
 published: true
-tags: ['competitor-analysis']
-excerpt: "$57M funding"
+tags:
+  - competitor-analysis
+excerpt: $57M funding
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Patina Health - Comprehensive Research Report

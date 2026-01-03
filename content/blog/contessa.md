@@ -1,11 +1,19 @@
 ---
-title: "Contessa Health"
-description: "Contessa Health is a Nashville-based pioneer in hospital-at-home and comprehensive home-based care services, founded in 2015 by Travis Messina and David Coppeans."
-date: "2026-01-03"
-slug: "contessa-health"
+title: Contessa Health
+description: >-
+  Contessa Health is a Nashville-based pioneer in hospital-at-home and
+  comprehensive home-based care services, founded in 2015 by Travis Messina and
+  David Coppeans.
+date: '2026-01-03'
+slug: contessa-health
 published: true
-tags: ['competitor-analysis', 'hospital-at-home']
-excerpt: "Comprehensive competitor analysis"
+tags:
+  - competitor-analysis
+  - hospital-at-home
+excerpt: Comprehensive competitor analysis
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Contessa Health - Comprehensive Research Report

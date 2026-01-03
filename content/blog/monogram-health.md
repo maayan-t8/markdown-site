@@ -1,11 +1,19 @@
 ---
-title: "Monogram Health"
-description: "Monogram Health is a value-based specialty healthcare provider founded in 2019 in Nashville, Tennessee, delivering in-home, evidence-based care for patients with chronic kidney disease (CKD), end-stag"
-date: "2025-01-02"
-slug: "monogram-health"
+title: Monogram Health
+description: >-
+  Monogram Health is a value-based specialty healthcare provider founded in 2019
+  in Nashville, Tennessee, delivering in-home, evidence-based care for patients
+  with chronic kidney disease (CKD), end-stag
+date: '2025-01-02'
+slug: monogram-health
 published: true
-tags: ['competitor-analysis', 'enterprise']
-excerpt: "$546M funding"
+tags:
+  - competitor-analysis
+  - enterprise
+excerpt: $546M funding
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Monogram Health - Comprehensive Research Report

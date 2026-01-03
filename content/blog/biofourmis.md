@@ -1,11 +1,19 @@
 ---
-title: "Biofourmis"
-description: "Biofourmis is a global digital health and technology-enabled care delivery company founded in 2015, specializing in AI-driven virtual care, remote patient monitoring (RPM), and digital therapeutics."
-date: "2025-01-02"
-slug: "biofourmis"
+title: Biofourmis
+description: >-
+  Biofourmis is a global digital health and technology-enabled care delivery
+  company founded in 2015, specializing in AI-driven virtual care, remote
+  patient monitoring (RPM), and digital therapeutics.
+date: '2025-01-02'
+slug: biofourmis
 published: true
-tags: ['competitor-analysis', 'enterprise']
-excerpt: "$1.3B valuation"
+tags:
+  - competitor-analysis
+  - enterprise
+excerpt: $1.3B valuation
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Biofourmis - Comprehensive Research Report

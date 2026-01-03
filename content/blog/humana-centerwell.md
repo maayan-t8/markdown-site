@@ -1,11 +1,16 @@
 ---
-title: "Humana CenterWell"
-description: "CenterWell is Humana Inc."
-date: "2025-01-02"
-slug: "humana-centerwell"
+title: Humana CenterWell
+description: CenterWell is Humana Inc.
+date: '2025-01-02'
+slug: humana-centerwell
 published: true
-tags: ['competitor-analysis', 'enterprise']
-excerpt: "Comprehensive competitor analysis"
+tags:
+  - competitor-analysis
+  - enterprise
+excerpt: Comprehensive competitor analysis
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Humana CenterWell - Comprehensive Research Report

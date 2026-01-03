@@ -1,12 +1,25 @@
 ---
-title: "IBM Watson Health -> Francisco Partners Acquisition"
-description: "Francisco Partners acquired IBM's Watson Health data and analytics assets for ~$1B, relaunching as Merative after IBM's $4B+ investment failed to achieve healthcare AI ambitions."
-date: "2022-07-06"
-slug: "watson-health-francisco-partners-2022"
+title: IBM Watson Health -> Francisco Partners Acquisition
+description: >-
+  Francisco Partners acquired IBM's Watson Health data and analytics assets for
+  ~$1B, relaunching as Merative after IBM's $4B+ investment failed to achieve
+  healthcare AI ambitions.
+date: '2022-07-06'
+slug: watson-health-francisco-partners-2022
 published: true
-tags: ["distressed-carve-out", "pe-turnaround", "healthcare-data", "analytics", "2022"]
-excerpt: "~$1B distressed acquisition of Watson Health assets representing ~75% loss on IBM's $4B+ investment"
-readTime: "10 min read"
+tags:
+  - distressed-carve-out
+  - pe-turnaround
+  - healthcare-data
+  - analytics
+  - '2022'
+excerpt: >-
+  ~$1B distressed acquisition of Watson Health assets representing ~75% loss on
+  IBM's $4B+ investment
+readTime: 10 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # IBM Watson Health -> Francisco Partners (Merative)

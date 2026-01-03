@@ -1,11 +1,18 @@
 ---
-title: "Cadence"
-description: "Cadence is a New York-based health technology company founded in 2020 that specializes in remote patient monitoring (RPM) and chronic disease management."
-date: "2026-01-03"
-slug: "cadence"
+title: Cadence
+description: >-
+  Cadence is a New York-based health technology company founded in 2020 that
+  specializes in remote patient monitoring (RPM) and chronic disease management.
+date: '2026-01-03'
+slug: cadence
 published: true
-tags: ['competitor-analysis', 'healthcare']
-excerpt: "$141M funding, $1B valuation"
+tags:
+  - competitor-analysis
+  - healthcare
+excerpt: '$141M funding, $1B valuation'
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Cadence - Comprehensive Research Report

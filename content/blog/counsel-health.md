@@ -1,11 +1,19 @@
 ---
-title: "Counsel Health"
-description: "Counsel Health is an AI-enabled, physician-supervised virtual care company founded in 2023, pioneering a new model of asynchronous healthcare delivery that combines medical-grade AI with board-certifi"
-date: "2026-01-03"
-slug: "counsel-health"
+title: Counsel Health
+description: >-
+  Counsel Health is an AI-enabled, physician-supervised virtual care company
+  founded in 2023, pioneering a new model of asynchronous healthcare delivery
+  that combines medical-grade AI with board-certifi
+date: '2026-01-03'
+slug: counsel-health
 published: true
-tags: ['competitor-analysis', 'series-a']
-excerpt: "$36M funding, $155M valuation"
+tags:
+  - competitor-analysis
+  - series-a
+excerpt: '$36M funding, $155M valuation'
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Counsel Health - Comprehensive Research Report

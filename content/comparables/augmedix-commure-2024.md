@@ -1,12 +1,25 @@
 ---
-title: "Augmedix -> Commure Acquisition"
-description: "Commure acquired Augmedix, a pioneer in ambient AI medical documentation, for $139M in an all-cash transaction to become the largest AI software provider in healthcare."
-date: "2024-07-19"
-slug: "augmedix-commure-2024"
+title: Augmedix -> Commure Acquisition
+description: >-
+  Commure acquired Augmedix, a pioneer in ambient AI medical documentation, for
+  $139M in an all-cash transaction to become the largest AI software provider in
+  healthcare.
+date: '2024-07-19'
+slug: augmedix-commure-2024
 published: true
-tags: ["ai-documentation", "ambient-intelligence", "healthcare-platform", "roll-up", "2024"]
-excerpt: "$139M acquisition of ambient AI medical documentation company with 45% revenue growth"
-readTime: "10 min read"
+tags:
+  - ai-documentation
+  - ambient-intelligence
+  - healthcare-platform
+  - roll-up
+  - '2024'
+excerpt: >-
+  $139M acquisition of ambient AI medical documentation company with 45% revenue
+  growth
+readTime: 10 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Augmedix -> Commure Acquisition

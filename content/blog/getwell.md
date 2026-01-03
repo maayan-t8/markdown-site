@@ -1,11 +1,18 @@
 ---
-title: "Get Well (GetWellNetwork)"
-description: "Get Well (formerly GetWellNetwork) is a digital patient engagement company founded in 2000 by Michael O'Neil following his personal experience as a cancer patient."
-date: "2026-01-02"
-slug: "get-well-getwellnetwork"
+title: Get Well (GetWellNetwork)
+description: >-
+  Get Well (formerly GetWellNetwork) is a digital patient engagement company
+  founded in 2000 by Michael O'Neil following his personal experience as a
+  cancer patient.
+date: '2026-01-02'
+slug: get-well-getwellnetwork
 published: true
-tags: ['competitor-analysis']
-excerpt: "$19M funding"
+tags:
+  - competitor-analysis
+excerpt: $19M funding
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Get Well (GetWellNetwork) - Comprehensive Research Report

@@ -1,12 +1,25 @@
 ---
-title: "InTouch Health -> Teladoc Acquisition"
-description: "Teladoc acquired InTouch Health, the leading provider of enterprise telehealth solutions for hospitals, for $600M to become the only virtual care provider covering the full range of acuity."
-date: "2020-07-01"
-slug: "intouch-health-teladoc-2020"
+title: InTouch Health -> Teladoc Acquisition
+description: >-
+  Teladoc acquired InTouch Health, the leading provider of enterprise telehealth
+  solutions for hospitals, for $600M to become the only virtual care provider
+  covering the full range of acuity.
+date: '2020-07-01'
+slug: intouch-health-teladoc-2020
 published: true
-tags: ["telehealth", "enterprise", "hospital-systems", "virtual-care", "2020"]
-excerpt: "$600M acquisition of enterprise telehealth platform serving 450+ hospitals at 7.5x revenue"
-readTime: "10 min read"
+tags:
+  - telehealth
+  - enterprise
+  - hospital-systems
+  - virtual-care
+  - '2020'
+excerpt: >-
+  $600M acquisition of enterprise telehealth platform serving 450+ hospitals at
+  7.5x revenue
+readTime: 10 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # InTouch Health -> Teladoc Acquisition

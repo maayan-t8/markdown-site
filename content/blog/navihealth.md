@@ -1,11 +1,19 @@
 ---
-title: "naviHealth"
-description: "naviHealth is a post-acute care management company founded in 2012, now operating as part of Optum's Home & Community Care division within UnitedHealth Group."
-date: "2026-01-03"
-slug: "navihealth"
+title: naviHealth
+description: >-
+  naviHealth is a post-acute care management company founded in 2012, now
+  operating as part of Optum's Home & Community Care division within
+  UnitedHealth Group.
+date: '2026-01-03'
+slug: navihealth
 published: true
-tags: ['competitor-analysis', 'healthcare']
-excerpt: "Comprehensive competitor analysis"
+tags:
+  - competitor-analysis
+  - healthcare
+excerpt: Comprehensive competitor analysis
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # naviHealth - Comprehensive Research Report

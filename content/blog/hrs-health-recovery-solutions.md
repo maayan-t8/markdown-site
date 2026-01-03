@@ -1,11 +1,19 @@
 ---
-title: "Health Recovery Solutions (HRS)"
-description: "Health Recovery Solutions (HRS) is a leading healthcare technology company specializing in remote patient monitoring (RPM) and telehealth solutions, founded in 2012 in Hoboken, New Jersey."
-date: "2026-01-02"
-slug: "health-recovery-solutions-hrs"
+title: Health Recovery Solutions (HRS)
+description: >-
+  Health Recovery Solutions (HRS) is a leading healthcare technology company
+  specializing in remote patient monitoring (RPM) and telehealth solutions,
+  founded in 2012 in Hoboken, New Jersey.
+date: '2026-01-02'
+slug: health-recovery-solutions-hrs
 published: true
-tags: ['competitor-analysis', 'enterprise']
-excerpt: "$89.5M funding"
+tags:
+  - competitor-analysis
+  - enterprise
+excerpt: $89.5M funding
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Health Recovery Solutions (HRS) - Comprehensive Research Report

@@ -1,12 +1,24 @@
 ---
-title: "98point6 -> Transcarent Acquisition"
-description: "Transcarent acquired 98point6's AI-powered virtual care platform for $100M in a distressed acquisition of the once highly-valued telehealth company."
-date: "2023-03-06"
-slug: "98point6-transcarent-2023"
+title: 98point6 -> Transcarent Acquisition
+description: >-
+  Transcarent acquired 98point6's AI-powered virtual care platform for $100M in
+  a distressed acquisition of the once highly-valued telehealth company.
+date: '2023-03-06'
+slug: 98point6-transcarent-2023
 published: true
-tags: ["distressed-exit", "ai-virtual-care", "telehealth", "platform-acquisition", "2023"]
-excerpt: "Distressed $100M acquisition of AI-powered text-based virtual care platform and primary care business"
-readTime: "12 min read"
+tags:
+  - distressed-exit
+  - ai-virtual-care
+  - telehealth
+  - platform-acquisition
+  - '2023'
+excerpt: >-
+  Distressed $100M acquisition of AI-powered text-based virtual care platform
+  and primary care business
+readTime: 12 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # 98point6 -> Transcarent Acquisition

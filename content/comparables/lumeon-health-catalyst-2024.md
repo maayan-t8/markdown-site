@@ -1,12 +1,24 @@
 ---
-title: "Lumeon -> Health Catalyst Acquisition"
-description: "Health Catalyst acquired Lumeon, a care orchestration and automation platform, for $40M to add automated care pathway management to its analytics platform."
-date: "2024-08-07"
-slug: "lumeon-health-catalyst-2024"
+title: Lumeon -> Health Catalyst Acquisition
+description: >-
+  Health Catalyst acquired Lumeon, a care orchestration and automation platform,
+  for $40M to add automated care pathway management to its analytics platform.
+date: '2024-08-07'
+slug: lumeon-health-catalyst-2024
 published: true
-tags: ["care-orchestration", "analytics", "automation", "tuck-in", "2024"]
-excerpt: "$40M acquisition of care orchestration platform with up to $25M earnout potential"
-readTime: "8 min read"
+tags:
+  - care-orchestration
+  - analytics
+  - automation
+  - tuck-in
+  - '2024'
+excerpt: >-
+  $40M acquisition of care orchestration platform with up to $25M earnout
+  potential
+readTime: 8 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Lumeon -> Health Catalyst Acquisition

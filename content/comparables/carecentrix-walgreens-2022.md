@@ -1,12 +1,25 @@
 ---
-title: "CareCentrix -> Walgreens Boots Alliance Acquisition"
-description: "Walgreens acquired CareCentrix, a post-acute and home care benefit management platform, for $722M in a two-stage transaction to build integrated healthcare capabilities."
-date: "2022-10-11"
-slug: "carecentrix-walgreens-2022"
+title: CareCentrix -> Walgreens Boots Alliance Acquisition
+description: >-
+  Walgreens acquired CareCentrix, a post-acute and home care benefit management
+  platform, for $722M in a two-stage transaction to build integrated healthcare
+  capabilities.
+date: '2022-10-11'
+slug: carecentrix-walgreens-2022
 published: true
-tags: ["post-acute", "home-care", "benefit-management", "retail-healthcare", "2022"]
-excerpt: "$722M acquisition of post-acute care coordination platform managing 19M+ members"
-readTime: "10 min read"
+tags:
+  - post-acute
+  - home-care
+  - benefit-management
+  - retail-healthcare
+  - '2022'
+excerpt: >-
+  $722M acquisition of post-acute care coordination platform managing 19M+
+  members
+readTime: 10 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # CareCentrix -> Walgreens Boots Alliance Acquisition

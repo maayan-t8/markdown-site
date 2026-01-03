@@ -1,11 +1,18 @@
 ---
-title: "K Health"
-description: "K Health is an AI-driven digital healthcare company that provides virtual primary care services through a clinical AI platform."
-date: "2026-01-02"
-slug: "k-health"
+title: K Health
+description: >-
+  K Health is an AI-driven digital healthcare company that provides virtual
+  primary care services through a clinical AI platform.
+date: '2026-01-02'
+slug: k-health
 published: true
-tags: ['competitor-analysis', 'enterprise']
-excerpt: "$438M funding, $900M valuation"
+tags:
+  - competitor-analysis
+  - enterprise
+excerpt: '$438M funding, $900M valuation'
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # K Health - Comprehensive Research Report

@@ -1,12 +1,26 @@
 ---
-title: "Medalogix + Forcura Merger (Berkshire Partners)"
-description: "Medalogix and Forcura merged under Berkshire Partners ownership at ~$1B valuation to create Mosai, the leading post-acute care technology platform for home health and hospice providers."
-date: "2025-03-19"
-slug: "medalogix-forcura-berkshire-2025"
+title: Medalogix + Forcura Merger (Berkshire Partners)
+description: >-
+  Medalogix and Forcura merged under Berkshire Partners ownership at ~$1B
+  valuation to create Mosai, the leading post-acute care technology platform for
+  home health and hospice providers.
+date: '2025-03-19'
+slug: medalogix-forcura-berkshire-2025
 published: true
-tags: ["pe-platform", "post-acute", "home-health", "analytics", "workflow", "2025"]
-excerpt: "~$1B PE-backed merger creating end-to-end post-acute care technology platform, rebranded as Mosai"
-readTime: "11 min read"
+tags:
+  - pe-platform
+  - post-acute
+  - home-health
+  - analytics
+  - workflow
+  - '2025'
+excerpt: >-
+  ~$1B PE-backed merger creating end-to-end post-acute care technology platform,
+  rebranded as Mosai
+readTime: 11 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Medalogix + Forcura Merger (Berkshire Partners)

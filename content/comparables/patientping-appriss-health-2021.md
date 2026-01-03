@@ -1,12 +1,25 @@
 ---
-title: "PatientPing -> Appriss Health Acquisition"
-description: "Appriss Health acquired PatientPing, the nation's leading real-time ADT notification platform, for ~$500M to create Bamboo Health, the largest care coordination network focused on whole-person care."
-date: "2021-03-23"
-slug: "patientping-appriss-health-2021"
+title: PatientPing -> Appriss Health Acquisition
+description: >-
+  Appriss Health acquired PatientPing, the nation's leading real-time ADT
+  notification platform, for ~$500M to create Bamboo Health, the largest care
+  coordination network focused on whole-person care.
+date: '2021-03-23'
+slug: patientping-appriss-health-2021
 published: true
-tags: ["care-coordination", "adt-notifications", "pe-rollup", "care-transitions", "2021"]
-excerpt: "~$500M PE-backed acquisition of ADT notification platform processing 135M events annually"
-readTime: "10 min read"
+tags:
+  - care-coordination
+  - adt-notifications
+  - pe-rollup
+  - care-transitions
+  - '2021'
+excerpt: >-
+  ~$500M PE-backed acquisition of ADT notification platform processing 135M
+  events annually
+readTime: 10 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # PatientPing -> Appriss Health Acquisition

@@ -1,11 +1,18 @@
 ---
-title: "Signify Health"
-description: "Signify Health is a leading healthcare platform that leverages advanced analytics, technology, and nationwide healthcare provider networks to create and power value-based payment programs."
-date: "2026-01-03"
-slug: "signify-health"
+title: Signify Health
+description: >-
+  Signify Health is a leading healthcare platform that leverages advanced
+  analytics, technology, and nationwide healthcare provider networks to create
+  and power value-based payment programs.
+date: '2026-01-03'
+slug: signify-health
 published: true
-tags: ['competitor-analysis']
-excerpt: "Comprehensive competitor analysis"
+tags:
+  - competitor-analysis
+excerpt: Comprehensive competitor analysis
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Signify Health - Comprehensive Research Report

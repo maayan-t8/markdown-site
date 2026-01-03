@@ -1,11 +1,19 @@
 ---
-title: "Phreesia"
-description: "Phreesia is a publicly traded (NYSE: PHR) healthcare technology company founded in 2005 that provides SaaS-based patient intake, engagement, and activation solutions for healthcare organizations."
-date: "2026-01-02"
-slug: "phreesia"
+title: Phreesia
+description: >-
+  Phreesia is a publicly traded (NYSE: PHR) healthcare technology company
+  founded in 2005 that provides SaaS-based patient intake, engagement, and
+  activation solutions for healthcare organizations.
+date: '2026-01-02'
+slug: phreesia
 published: true
-tags: ['competitor-analysis', 'public-company']
-excerpt: "Comprehensive competitor analysis"
+tags:
+  - competitor-analysis
+  - public-company
+excerpt: Comprehensive competitor analysis
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Phreesia - Comprehensive Research Report

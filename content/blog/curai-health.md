@@ -1,11 +1,19 @@
 ---
-title: "Curai Health"
-description: "Curai Health is an AI-powered virtual primary care company founded in 2017 that delivers chat-based telehealth services combining licensed clinicians with advanced machine learning technology."
-date: "2026-01-02"
-slug: "curai-health"
+title: Curai Health
+description: >-
+  Curai Health is an AI-powered virtual primary care company founded in 2017
+  that delivers chat-based telehealth services combining licensed clinicians
+  with advanced machine learning technology.
+date: '2026-01-02'
+slug: curai-health
 published: true
-tags: ['competitor-analysis', 'healthcare']
-excerpt: "$57M funding"
+tags:
+  - competitor-analysis
+  - healthcare
+excerpt: $57M funding
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Curai Health - Comprehensive Research Report

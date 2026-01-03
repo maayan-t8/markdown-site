@@ -1,16 +1,29 @@
 ---
-title: "About This Markdown Framework"
-description: "How this open source framework works with Convex for real-time sync and Netlify for deployment."
-date: "2025-12-14"
-slug: "about-this-blog"
+title: About This Markdown Framework
+description: >-
+  How this open source framework works with Convex for real-time sync and
+  Netlify for deployment.
+date: '2025-12-14'
+slug: about-this-blog
 published: false
-tags: ["convex", "netlify", "open-source", "markdown", "ai", "llm"]
-readTime: "4 min read"
+tags:
+  - convex
+  - netlify
+  - open-source
+  - markdown
+  - ai
+  - llm
+readTime: 4 min read
 featured: false
 featuredOrder: 3
-excerpt: "Learn how this open source framework works with real-time sync and instant updates."
-authorName: "Markdown Framework"
-authorImage: "/images/authors/markdown.png"
+excerpt: >-
+  Learn how this open source framework works with real-time sync and instant
+  updates.
+authorName: Markdown Framework
+authorImage: /images/authors/markdown.png
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # About This Markdown Framework

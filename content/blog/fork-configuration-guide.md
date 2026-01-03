@@ -1,22 +1,32 @@
 ---
-title: "Configure your fork in one command"
-description: "Two options to set up your forked markdown framework: automated JSON config with npm run configure, or step-by-step manual guide."
-date: "2025-12-20"
-slug: "fork-configuration-guide"
+title: Configure your fork in one command
+description: >-
+  Two options to set up your forked markdown framework: automated JSON config
+  with npm run configure, or step-by-step manual guide.
+date: '2025-12-20'
+slug: fork-configuration-guide
 published: true
-tags: ["configuration", "setup", "fork", "tutorial"]
-readTime: "4 min read"
+tags:
+  - configuration
+  - setup
+  - fork
+  - tutorial
+readTime: 4 min read
 featured: true
-layout: "sidebar"
+layout: sidebar
 featuredOrder: 2
-authorName: "Markdown"
-authorImage: "/images/authors/markdown.png"
-image: "/images/forkconfig.png"
-excerpt: "Set up your forked site with npm run configure or follow the manual FORK_CONFIG.md guide."
+authorName: Markdown
+authorImage: /images/authors/markdown.png
+image: /images/forkconfig.png
+excerpt: >-
+  Set up your forked site with npm run configure or follow the manual
+  FORK_CONFIG.md guide.
 docsSection: true
-docsSectionGroup: "Setup"
+docsSectionGroup: Setup
 docsSectionGroupOrder: 1
 docsSectionOrder: 1
+rightSidebar: true
+aiChat: true
 ---
 
 # Configure your fork in one command

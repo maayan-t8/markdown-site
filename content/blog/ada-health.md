@@ -1,11 +1,18 @@
 ---
-title: "Ada Health"
-description: "Ada Health is a Berlin-based digital health company founded in 2011 that develops AI-powered symptom assessment and care navigation technology."
-date: "2026-01-02"
-slug: "ada-health"
+title: Ada Health
+description: >-
+  Ada Health is a Berlin-based digital health company founded in 2011 that
+  develops AI-powered symptom assessment and care navigation technology.
+date: '2026-01-02'
+slug: ada-health
 published: true
-tags: ['competitor-analysis', 'enterprise']
-excerpt: "$600M valuation"
+tags:
+  - competitor-analysis
+  - enterprise
+excerpt: $600M valuation
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Ada Health - Comprehensive Research Report

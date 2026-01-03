@@ -1,11 +1,19 @@
 ---
-title: "Medically Home"
-description: "Medically Home was a Boston-based healthcare technology company founded in 2017 that pioneered the hospital-at-home care delivery model, enabling health systems to provide acute hospital-level care to"
-date: "2025-01-02"
-slug: "medically-home"
+title: Medically Home
+description: >-
+  Medically Home was a Boston-based healthcare technology company founded in
+  2017 that pioneered the hospital-at-home care delivery model, enabling health
+  systems to provide acute hospital-level care to
+date: '2025-01-02'
+slug: medically-home
 published: true
-tags: ['competitor-analysis', 'hospital-at-home']
-excerpt: "$284M funding"
+tags:
+  - competitor-analysis
+  - hospital-at-home
+excerpt: $284M funding
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Medically Home - Comprehensive Research Report

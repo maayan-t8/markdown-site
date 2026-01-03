@@ -1,11 +1,19 @@
 ---
-title: "CareBridge"
-description: "CareBridge is the nation's leading value-based care provider for individuals receiving home and community-based services (HCBS), primarily serving Medicaid and dual-eligible patients with physical, in"
-date: "2026-01-03"
-slug: "carebridge"
+title: CareBridge
+description: >-
+  CareBridge is the nation's leading value-based care provider for individuals
+  receiving home and community-based services (HCBS), primarily serving Medicaid
+  and dual-eligible patients with physical, in
+date: '2026-01-03'
+slug: carebridge
 published: true
-tags: ['competitor-analysis', 'enterprise']
-excerpt: "$180M funding"
+tags:
+  - competitor-analysis
+  - enterprise
+excerpt: $180M funding
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # CareBridge - Comprehensive Research Report

@@ -1,12 +1,25 @@
 ---
-title: "Care.ai -> Stryker Acquisition"
-description: "Stryker acquired Care.ai, an AI-powered virtual care and ambient intelligence platform, to strengthen its healthcare IT offerings and address nursing shortages through ambient AI monitoring."
-date: "2024-08-12"
-slug: "care-ai-stryker-2024"
+title: Care.ai -> Stryker Acquisition
+description: >-
+  Stryker acquired Care.ai, an AI-powered virtual care and ambient intelligence
+  platform, to strengthen its healthcare IT offerings and address nursing
+  shortages through ambient AI monitoring.
+date: '2024-08-12'
+slug: care-ai-stryker-2024
 published: true
-tags: ["ai-monitoring", "ambient-intelligence", "medtech", "smart-hospital", "2024"]
-excerpt: "Undisclosed acquisition of AI-powered virtual care platform serving 1,000+ facilities"
-readTime: "9 min read"
+tags:
+  - ai-monitoring
+  - ambient-intelligence
+  - medtech
+  - smart-hospital
+  - '2024'
+excerpt: >-
+  Undisclosed acquisition of AI-powered virtual care platform serving 1,000+
+  facilities
+readTime: 9 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Care.ai -> Stryker Acquisition

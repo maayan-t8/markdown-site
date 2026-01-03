@@ -1,11 +1,20 @@
 ---
-title: "Commure"
-description: "AI-powered healthcare operating system for hospitals and health systems, merged with Athelas to create $6B entity"
-date: "2026-01-02"
-slug: "commure"
+title: Commure
+description: >-
+  AI-powered healthcare operating system for hospitals and health systems,
+  merged with Athelas to create $6B entity
+date: '2026-01-02'
+slug: commure
 published: true
-tags: ['competitor-analysis', 'enterprise', 'ai-powered', 'healthcare']
-excerpt: "$1.6B funding, $6B valuation, serving 130+ health systems"
+tags:
+  - competitor-analysis
+  - enterprise
+  - ai-powered
+  - healthcare
+excerpt: '$1.6B funding, $6B valuation, serving 130+ health systems'
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Commure - Comprehensive Research Report

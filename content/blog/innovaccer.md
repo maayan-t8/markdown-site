@@ -1,11 +1,19 @@
 ---
-title: "Innovaccer"
-description: "Innovaccer is a San Francisco-based healthcare technology company specializing in healthcare data activation, analytics, and AI-powered intelligence platforms."
-date: "2026-01-03"
-slug: "innovaccer"
+title: Innovaccer
+description: >-
+  Innovaccer is a San Francisco-based healthcare technology company specializing
+  in healthcare data activation, analytics, and AI-powered intelligence
+  platforms.
+date: '2026-01-03'
+slug: innovaccer
 published: true
-tags: ['competitor-analysis', 'healthcare-data']
-excerpt: "$676M funding, $3.45B valuation"
+tags:
+  - competitor-analysis
+  - healthcare-data
+excerpt: '$676M funding, $3.45B valuation'
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Innovaccer - Comprehensive Research Report

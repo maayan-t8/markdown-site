@@ -1,11 +1,18 @@
 ---
-title: "Aetna Care Management (CVS Health)"
-description: "Aetna Care Management is the care coordination and medical management division of Aetna, a CVS Health company, delivering comprehensive care management services to over 36 million members across comme"
-date: "2026-01-03"
-slug: "aetna-care-management-cvs-health"
+title: Aetna Care Management (CVS Health)
+description: >-
+  Aetna Care Management is the care coordination and medical management division
+  of Aetna, a CVS Health company, delivering comprehensive care management
+  services to over 36 million members across comme
+date: '2026-01-03'
+slug: aetna-care-management-cvs-health
 published: true
-tags: ['competitor-analysis']
-excerpt: "Comprehensive competitor analysis"
+tags:
+  - competitor-analysis
+excerpt: Comprehensive competitor analysis
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Aetna Care Management (CVS Health) - Comprehensive Research Report

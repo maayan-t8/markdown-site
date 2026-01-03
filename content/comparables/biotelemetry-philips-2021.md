@@ -1,12 +1,25 @@
 ---
-title: "BioTelemetry -> Philips Acquisition"
-description: "Philips acquired BioTelemetry, the leading U.S. provider of remote cardiac monitoring and diagnostics, for $2.8B to create a global leader in patient care management spanning hospital to home."
-date: "2021-02-01"
-slug: "biotelemetry-philips-2021"
+title: BioTelemetry -> Philips Acquisition
+description: >-
+  Philips acquired BioTelemetry, the leading U.S. provider of remote cardiac
+  monitoring and diagnostics, for $2.8B to create a global leader in patient
+  care management spanning hospital to home.
+date: '2021-02-01'
+slug: biotelemetry-philips-2021
 published: true
-tags: ["medtech", "remote-monitoring", "cardiac-care", "hospital-to-home", "2021"]
-excerpt: "$2.8B acquisition of leading remote cardiac monitoring provider at 6.4x revenue"
-readTime: "11 min read"
+tags:
+  - medtech
+  - remote-monitoring
+  - cardiac-care
+  - hospital-to-home
+  - '2021'
+excerpt: >-
+  $2.8B acquisition of leading remote cardiac monitoring provider at 6.4x
+  revenue
+readTime: 11 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # BioTelemetry -> Philips Acquisition

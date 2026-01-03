@@ -1,11 +1,18 @@
 ---
-title: "Interwell Health"
-description: "Interwell Health is the nation's leading value-based kidney care management company, formed through a $2."
-date: "2025-01-02"
-slug: "interwell-health"
+title: Interwell Health
+description: >-
+  Interwell Health is the nation's leading value-based kidney care management
+  company, formed through a $2.
+date: '2025-01-02'
+slug: interwell-health
 published: true
-tags: ['competitor-analysis', 'value-based-care']
-excerpt: "$172M funding"
+tags:
+  - competitor-analysis
+  - value-based-care
+excerpt: $172M funding
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Interwell Health - Comprehensive Research Report

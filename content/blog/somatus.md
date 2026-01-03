@@ -1,11 +1,17 @@
 ---
-title: "Somatus"
-description: "Somatus is the largest and leading provider of value-based kidney care in the United States, founded in 2016 and headquartered in McLean, Virginia."
-date: "2025-01-02"
-slug: "somatus"
+title: Somatus
+description: >-
+  Somatus is the largest and leading provider of value-based kidney care in the
+  United States, founded in 2016 and headquartered in McLean, Virginia.
+date: '2025-01-02'
+slug: somatus
 published: true
-tags: ['competitor-analysis']
-excerpt: "$479M funding, $2.5B valuation"
+tags:
+  - competitor-analysis
+excerpt: '$479M funding, $2.5B valuation'
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Somatus - Comprehensive Research Report

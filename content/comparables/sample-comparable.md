@@ -1,14 +1,20 @@
 ---
-title: "123 Main Street - Market Analysis"
-description: "Comprehensive comparable property analysis for 123 Main Street"
-date: "2025-01-03"
-slug: "123-main-street-analysis"
+title: 123 Main Street - Market Analysis
+description: Comprehensive comparable property analysis for 123 Main Street
+date: '2025-01-03'
+slug: 123-main-street-analysis
 published: true
-tags: ["residential", "single-family", "downtown"]
-readTime: "5 min read"
-excerpt: "3 bed, 2 bath home in downtown district"
+tags:
+  - residential
+  - single-family
+  - downtown
+readTime: 5 min read
+excerpt: '3 bed, 2 bath home in downtown district'
 featured: true
 featuredOrder: 1
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # 123 Main Street - Market Analysis

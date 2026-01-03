@@ -1,12 +1,26 @@
 ---
-title: "Nuance Communications -> Microsoft Acquisition"
-description: "Microsoft acquired Nuance Communications, the pioneer in AI-powered clinical documentation and speech recognition, for $19.7B to dominate the healthcare cloud market with clinical AI capabilities."
-date: "2022-03-04"
-slug: "nuance-microsoft-2022"
+title: Nuance Communications -> Microsoft Acquisition
+description: >-
+  Microsoft acquired Nuance Communications, the pioneer in AI-powered clinical
+  documentation and speech recognition, for $19.7B to dominate the healthcare
+  cloud market with clinical AI capabilities.
+date: '2022-03-04'
+slug: nuance-microsoft-2022
 published: true
-tags: ["big-tech", "clinical-ai", "documentation", "ambient-intelligence", "platform", "2022"]
-excerpt: "$19.7B acquisition (13.3x revenue) of clinical AI leader serving 77% of U.S. hospitals"
-readTime: "13 min read"
+tags:
+  - big-tech
+  - clinical-ai
+  - documentation
+  - ambient-intelligence
+  - platform
+  - '2022'
+excerpt: >-
+  $19.7B acquisition (13.3x revenue) of clinical AI leader serving 77% of U.S.
+  hospitals
+readTime: 13 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Nuance Communications -> Microsoft Acquisition

@@ -1,12 +1,25 @@
 ---
-title: "Kindred at Home -> Humana Acquisition"
-description: "Humana acquired the remaining 60% of Kindred at Home, the nation's largest home health and hospice provider, for $5.7B to fully integrate home-based care delivery for Medicare Advantage members."
-date: "2021-04-27"
-slug: "kindred-at-home-humana-2021"
+title: Kindred at Home -> Humana Acquisition
+description: >-
+  Humana acquired the remaining 60% of Kindred at Home, the nation's largest
+  home health and hospice provider, for $5.7B to fully integrate home-based care
+  delivery for Medicare Advantage members.
+date: '2021-04-27'
+slug: kindred-at-home-humana-2021
 published: true
-tags: ["payer-integration", "home-health", "hospice", "value-based-care", "2021"]
-excerpt: "$8.1B total enterprise value acquisition of largest home health provider serving 550,000+ patients"
-readTime: "13 min read"
+tags:
+  - payer-integration
+  - home-health
+  - hospice
+  - value-based-care
+  - '2021'
+excerpt: >-
+  $8.1B total enterprise value acquisition of largest home health provider
+  serving 550,000+ patients
+readTime: 13 min read
+layout: sidebar
+rightSidebar: true
+aiChat: true
 ---
 
 # Kindred at Home -> Humana Acquisition
