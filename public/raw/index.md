@@ -41,12 +41,8 @@ This is the homepage index of all published content.
 - **[Using Images in Blog Posts](/raw/using-images-in-posts.md)** - Learn how to add header images, inline images, and Open Graph images to your markdown posts.
   - Date: 2025-12-14 | Reading time: 4 min read | Tags: images, tutorial, markdown, open-graph
 
-## Pages (1)
-
-- **[Footer](/raw/footer.md)**
-
 ---
 
-**Total Content:** 18 posts, 1 pages
+**Total Content:** 18 posts, 0 pages
 
 All content is available as raw markdown files at `/raw/{slug}.md`
