@@ -1,14 +1,17 @@
 import { useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import BlogSidebar from "../components/BlogSidebar";
-import siteConfig from "../config/siteConfig";
+import BlogPost from "../components/BlogPost";
 
 // Blog page component
 // Displays a sidebar with links to all blog posts
-// and a main content area with the blog intro/description
+// and a main content area with full markdown content from blog-intro page
 export default function Blog() {
   // Fetch all published posts from Convex
   const posts = useQuery(api.posts.getAllPosts);
+
+  // Fetch the blog landing page content
+  const introPage = useQuery(api.pages.getPageBySlug, { slug: "blog-intro" });
 
   // Transform posts for sidebar (only need slug, title, date)
   const sidebarPosts =
@@ -28,20 +31,25 @@ export default function Blog() {
           <BlogSidebar posts={sidebarPosts} />
         </aside>
 
-        {/* Main content - blog intro */}
+        {/* Main content - render markdown from blog-intro page */}
         <article className="post-article post-article-with-sidebar">
-          <header className="post-header">
-            <h1 className="post-title">{siteConfig.blogPage.title}</h1>
-            {siteConfig.blogPage.description && (
-              <p className="post-description">
-                {siteConfig.blogPage.description}
-              </p>
-            )}
-          </header>
-
-          {/* Show message when no posts exist */}
-          {posts !== undefined && posts.length === 0 && (
-            <p className="no-posts">No posts yet. Check back soon!</p>
+          {introPage ? (
+            <>
+              <header className="post-header">
+                <h1 className="post-title">{introPage.title}</h1>
+              </header>
+              <BlogPost content={introPage.content} />
+            </>
+          ) : (
+            <>
+              <header className="post-header">
+                <h1 className="post-title">Blog</h1>
+              </header>
+              {/* Show message when no posts exist */}
+              {posts !== undefined && posts.length === 0 && (
+                <p className="no-posts">No posts yet. Check back soon!</p>
+              )}
+            </>
           )}
         </article>
       </div>

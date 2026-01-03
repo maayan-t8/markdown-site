@@ -473,7 +473,7 @@ export const siteConfig: SiteConfig = {
   blogPage: {
     enabled: true, // Enable /blog route
     showInNav: true, // Show "Blog" in navigation
-    title: "Blog", // Page title
+    title: "Competitors", // Page title
     description: "All posts from the blog, sorted by date.", // Optional description
     order: 1, // Nav order (Blog first, Comparables second)
     viewMode: "cards", // Default view mode: "list" or "cards"
@@ -642,7 +642,7 @@ export const siteConfig: SiteConfig = {
   docsSection: {
     enabled: true, // Global toggle for docs section
     slug: "docs", // Base URL: /docs
-    title: "Docs", // Page title
+    title: "Home", // Page title
     showInNav: true, // Show "Docs" link in navigation
     order: 0, // Nav order (lower = first)
     defaultExpanded: true, // Expand all sidebar groups by default
