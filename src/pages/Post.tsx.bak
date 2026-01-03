@@ -524,72 +524,72 @@ export default function Post({
           className={`post-article ${hasAnySidebar ? "post-article-with-sidebar" : ""} ${hasOnlyRightSidebar ? "post-article-centered" : ""}`}
         >
           {/* Display image at top if showImageAtTop is true */}
-          {contentToRender.showImageAtTop && contentToRender.image && (
+          {post.showImageAtTop && post.image && (
             <div className="post-header-image">
               <img
-                src={contentToRender.image}
-                alt={contentToRender.title}
+                src={post.image}
+                alt={post.title}
                 className="post-header-image-img"
               />
             </div>
           )}
           <header className="post-header">
             <div className="post-title-row">
-              <h1 className="post-title">{contentToRender.title}</h1>
+              <h1 className="post-title">{post.title}</h1>
               {/* Show CopyPageDropdown aligned with title when sidebars are enabled */}
               {hasAnySidebar && (
                 <div className="post-header-actions">
                   <CopyPageDropdown
-                    title={contentToRender.title}
-                    content={contentToRender.content}
+                    title={post.title}
+                    content={post.content}
                     url={window.location.href}
-                    slug={contentToRender.slug}
-                    description={contentToRender.description}
-                    date={contentToRender.date}
-                    tags={contentToRender.tags}
-                    readTime={contentToRender.readTime}
+                    slug={post.slug}
+                    description={post.description}
+                    date={post.date}
+                    tags={post.tags}
+                    readTime={post.readTime}
                   />
                 </div>
               )}
             </div>
             <div className="post-meta-header">
               {/* Author avatar and name (optional) */}
-              {(contentToRender.authorImage || contentToRender.authorName) && (
+              {(post.authorImage || post.authorName) && (
                 <div className="post-author">
-                  {contentToRender.authorImage && (
+                  {post.authorImage && (
                     <img
-                      src={contentToRender.authorImage}
-                      alt={contentToRender.authorName || "Author"}
+                      src={post.authorImage}
+                      alt={post.authorName || "Author"}
                       className="post-author-image"
                     />
                   )}
-                  {contentToRender.authorName && (
+                  {post.authorName && (
                     <Link
-                      to={`/author/${contentToRender.authorName.toLowerCase().replace(/\s+/g, "-")}`}
+                      to={`/author/${post.authorName.toLowerCase().replace(/\s+/g, "-")}`}
                       className="post-author-name post-author-link"
                     >
-                      {contentToRender.authorName}
+                      {post.authorName}
                     </Link>
                   )}
                   <span className="post-meta-separator">·</span>
                 </div>
               )}
               <time className="post-date">
-                {format(parseISO(contentToRender.date), "MMMM yyyy")}
+                {format(parseISO(post.date), "MMMM yyyy")}
               </time>
-              {contentToRender.readTime && (
+              {post.readTime && (
                 <>
                   <span className="post-meta-separator">·</span>
-                  <span className="post-read-time">{contentToRender.readTime}</span>
+                  <span className="post-read-time">{post.readTime}</span>
                 </>
               )}
             </div>
-            {contentToRender.description && (
-              <p className="post-description">{contentToRender.description}</p>
+            {post.description && (
+              <p className="post-description">{post.description}</p>
             )}
           </header>
 
-          <BlogPost content={contentToRender.content} slug={contentToRender.slug} pageType="post" />
+          <BlogPost content={post.content} slug={post.slug} pageType="post" />
 
           <footer className="post-footer">
             <div className="post-share">
@@ -621,10 +621,10 @@ export default function Post({
               </a>
             </div>
 
-            {contentToRender.tags && contentToRender.tags.length > 0 && (
+            {post.tags && post.tags.length > 0 && (
               <div className="post-tags">
                 <Tag size={14} className="post-tags-icon" aria-hidden="true" />
-                {contentToRender.tags.map((tag) => (
+                {post.tags.map((tag) => (
                   <Link
                     key={tag}
                     to={`/tags/${encodeURIComponent(tag.toLowerCase())}`}
@@ -667,9 +667,9 @@ export default function Post({
         {/* Right sidebar - with optional AI chat support */}
         {hasRightSidebar && (
           <RightSidebar
-            aiChatEnabled={contentToRender.aiChat}
-            pageContent={contentToRender.content}
-            slug={contentToRender.slug}
+            aiChatEnabled={post.aiChat}
+            pageContent={post.content}
+            slug={post.slug}
           />
         )}
       </div>

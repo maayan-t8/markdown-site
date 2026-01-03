@@ -20,6 +20,7 @@ dotenv.config();
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "blog");
 const PAGES_DIR = path.join(process.cwd(), "content", "pages");
+const COMPARABLES_DIR = path.join(process.cwd(), "content", "comparables");
 const RAW_OUTPUT_DIR = path.join(process.cwd(), "public", "raw");
 
 interface PostFrontmatter {
@@ -290,6 +291,19 @@ function getAllPageFiles(): string[] {
     .map((file) => path.join(PAGES_DIR, file));
 }
 
+// Get all comparable markdown files from the comparables directory
+function getAllComparableFiles(): string[] {
+  if (!fs.existsSync(COMPARABLES_DIR)) {
+    // Comparables directory is optional, don't create it automatically
+    return [];
+  }
+
+  const files = fs.readdirSync(COMPARABLES_DIR);
+  return files
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => path.join(COMPARABLES_DIR, file));
+}
+
 // Main sync function
 async function syncPosts() {
   console.log("Starting post sync...\n");
@@ -370,6 +384,39 @@ async function syncPosts() {
         console.log(`  Deleted: ${pageResult.deleted}`);
       } catch (error) {
         console.error("Error syncing pages:", error);
+        process.exit(1);
+      }
+    }
+  }
+
+  // Sync comparables if comparables directory exists
+  const comparableFiles = getAllComparableFiles();
+  const comparables: ParsedPost[] = [];
+
+  if (comparableFiles.length > 0) {
+    console.log(`\nFound ${comparableFiles.length} comparable files\n`);
+
+    for (const filePath of comparableFiles) {
+      const comparable = parseMarkdownFile(filePath);
+      if (comparable) {
+        comparables.push(comparable);
+        console.log(`Parsed comparable: ${comparable.title} (${comparable.slug})`);
+      }
+    }
+
+    if (comparables.length > 0) {
+      console.log(`\nSyncing ${comparables.length} comparables to Convex...\n`);
+
+      try {
+        const comparableResult = await client.mutation(api.comparables.syncComparablesPublic, {
+          comparables,
+        });
+        console.log("Comparables sync complete!");
+        console.log(`  Created: ${comparableResult.created}`);
+        console.log(`  Updated: ${comparableResult.updated}`);
+        console.log(`  Deleted: ${comparableResult.deleted}`);
+      } catch (error) {
+        console.error("Error syncing comparables:", error);
         process.exit(1);
       }
     }
