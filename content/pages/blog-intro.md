@@ -1,6 +1,6 @@
 ---
 title: "Competitors"
-slug: "competitors-intro"
+slug: "blog-intro"
 published: true
 showInNav: false
 order: -1

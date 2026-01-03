@@ -57,7 +57,7 @@ This is the homepage index of all published content.
 
 ## Pages (3)
 
-- **[Competitors](/raw/competitors-intro.md)**
+- **[Competitors](/raw/blog-intro.md)**
 - **[Comparables](/raw/comparables-intro.md)**
 - **[Documentation](/raw/documentation.md)**
 
