@@ -1,18 +1,86 @@
 import { v } from "convex/values";
-import {
-  query,
-  mutation,
-  internalQuery,
-  internalMutation,
-} from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 
-// Message validator for reuse
-const messageValidator = v.object({
-  role: v.union(v.literal("user"), v.literal("assistant")),
-  content: v.string(),
-  timestamp: v.number(),
-  attachments: v.optional(
-    v.array(
+// Get or create an AI chat session
+export const getOrCreateAIChat = mutation({
+  args: {
+    sessionId: v.string(),
+    contextId: v.string(),
+  },
+  handler: async (ctx, { sessionId, contextId }) => {
+    // Check if a chat already exists for this session and context
+    const existingChat = await ctx.db
+      .query("aiChats")
+      .withIndex("by_session_and_context", (q) =>
+        q.eq("sessionId", sessionId).eq("contextId", contextId),
+      )
+      .first();
+
+    if (existingChat) {
+      return existingChat._id;
+    }
+
+    // Create a new chat if one doesn't exist
+    return await ctx.db.insert("aiChats", {
+      sessionId,
+      contextId,
+      messages: [],
+      lastMessageAt: Date.now(),
+    });
+  },
+});
+
+// Get AI chat by ID
+export const get = query({
+    args: { id: v.id("aiChats") },
+    handler: async (ctx, { id }) => {
+        return await ctx.db.get(id);
+    },
+});
+
+// Get AI chat by context
+export const getAIChatByContext = query({
+  args: {
+    sessionId: v.string(),
+    contextId: v.string(),
+  },
+  handler: async (ctx, { sessionId, contextId }) => {
+    return await ctx.db
+      .query("aiChats")
+      .withIndex("by_session_and_context", (q) =>
+        q.eq("sessionId", sessionId).eq("contextId", contextId),
+      )
+      .first();
+  },
+});
+
+// Add a user message to the chat
+export const addUserMessage = mutation({
+  args: {
+    chatId: v.id("aiChats"),
+    content: v.string(),
+  },
+  handler: async (ctx, { chatId, content }) => {
+    await ctx.db.patch(chatId, {
+      messages: [
+        ...(await ctx.db.get(chatId))!.messages,
+        {
+          role: "user",
+          content,
+          timestamp: Date.now(),
+        },
+      ],
+      lastMessageAt: Date.now(),
+    });
+  },
+});
+
+// Add user message with attachments
+export const addUserMessageWithAttachments = mutation({
+  args: {
+    chatId: v.id("aiChats"),
+    content: v.string(),
+    attachments: v.array(
       v.object({
         type: v.union(v.literal("image"), v.literal("link")),
         storageId: v.optional(v.id("_storage")),
@@ -21,393 +89,90 @@ const messageValidator = v.object({
         title: v.optional(v.string()),
       }),
     ),
-  ),
-});
-
-/**
- * Get storage URL for an image attachment
- */
-export const getStorageUrl = query({
-  args: {
-    storageId: v.id("_storage"),
   },
-  returns: v.union(v.string(), v.null()),
-  handler: async (ctx, args) => {
-    return await ctx.storage.getUrl(args.storageId);
-  },
-});
-
-/**
- * Get AI chat by session and context
- * Returns null if no chat exists
- */
-export const getAIChatByContext = query({
-  args: {
-    sessionId: v.string(),
-    contextId: v.string(),
-  },
-  returns: v.union(
-    v.object({
-      _id: v.id("aiChats"),
-      _creationTime: v.number(),
-      sessionId: v.string(),
-      contextId: v.string(),
-      messages: v.array(messageValidator),
-      pageContext: v.optional(v.string()),
-      lastMessageAt: v.optional(v.number()),
-    }),
-    v.null(),
-  ),
-  handler: async (ctx, args) => {
-    const chat = await ctx.db
-      .query("aiChats")
-      .withIndex("by_session_and_context", (q) =>
-        q.eq("sessionId", args.sessionId).eq("contextId", args.contextId),
-      )
-      .first();
-
-    return chat;
-  },
-});
-
-/**
- * Internal query for use in actions
- */
-export const getAIChatInternal = internalQuery({
-  args: {
-    chatId: v.id("aiChats"),
-  },
-  returns: v.union(
-    v.object({
-      _id: v.id("aiChats"),
-      _creationTime: v.number(),
-      sessionId: v.string(),
-      contextId: v.string(),
-      messages: v.array(messageValidator),
-      pageContext: v.optional(v.string()),
-      lastMessageAt: v.optional(v.number()),
-    }),
-    v.null(),
-  ),
-  handler: async (ctx, args) => {
-    return await ctx.db.get(args.chatId);
-  },
-});
-
-/**
- * Get storage URL for an image attachment (internal)
- */
-export const getStorageUrlInternal = internalQuery({
-  args: {
-    storageId: v.id("_storage"),
-  },
-  returns: v.union(v.string(), v.null()),
-  handler: async (ctx, args) => {
-    return await ctx.storage.getUrl(args.storageId);
-  },
-});
-
-/**
- * Get or create AI chat for session and context
- * Returns the chat ID (creates new chat if needed)
- */
-export const getOrCreateAIChat = mutation({
-  args: {
-    sessionId: v.string(),
-    contextId: v.string(),
-  },
-  returns: v.id("aiChats"),
-  handler: async (ctx, args) => {
-    // Check for existing chat
-    const existing = await ctx.db
-      .query("aiChats")
-      .withIndex("by_session_and_context", (q) =>
-        q.eq("sessionId", args.sessionId).eq("contextId", args.contextId),
-      )
-      .first();
-
-    if (existing) {
-      return existing._id;
-    }
-
-    // Create new chat
-    const chatId = await ctx.db.insert("aiChats", {
-      sessionId: args.sessionId,
-      contextId: args.contextId,
-      messages: [],
+  handler: async (ctx, { chatId, content, attachments }) => {
+    await ctx.db.patch(chatId, {
+      messages: [
+        ...(await ctx.db.get(chatId))!.messages,
+        {
+          role: "user",
+          content,
+          timestamp: Date.now(),
+          attachments,
+        },
+      ],
       lastMessageAt: Date.now(),
     });
-
-    return chatId;
   },
 });
 
-/**
- * Add user message to chat
- * Returns the updated chat
- */
-export const addUserMessage = mutation({
-  args: {
-    chatId: v.id("aiChats"),
-    content: v.string(),
-  },
-  returns: v.null(),
-  handler: async (ctx, args) => {
-    const chat = await ctx.db.get(args.chatId);
-    if (!chat) {
-      throw new Error("Chat not found");
-    }
-
-    const now = Date.now();
-    const newMessage = {
-      role: "user" as const,
-      content: args.content,
-      timestamp: now,
-    };
-
-    await ctx.db.patch(args.chatId, {
-      messages: [...chat.messages, newMessage],
-      lastMessageAt: now,
-    });
-
-    return null;
-  },
+// Generate a URL for file uploads
+export const generateUploadUrl = mutation(async (ctx) => {
+  return await ctx.storage.generateUploadUrl();
 });
 
-/**
- * Add user message with attachments
- * Used when sending images or links
- */
-export const addUserMessageWithAttachments = mutation({
-  args: {
-    chatId: v.id("aiChats"),
-    content: v.string(),
-    attachments: v.optional(
-      v.array(
-        v.object({
-          type: v.union(v.literal("image"), v.literal("link")),
-          storageId: v.optional(v.id("_storage")),
-          url: v.optional(v.string()),
-          scrapedContent: v.optional(v.string()),
-          title: v.optional(v.string()),
-        }),
-      ),
-    ),
-  },
-  returns: v.null(),
-  handler: async (ctx, args) => {
-    const chat = await ctx.db.get(args.chatId);
-    if (!chat) {
-      throw new Error("Chat not found");
-    }
-
-    const now = Date.now();
-    const newMessage = {
-      role: "user" as const,
-      content: args.content,
-      timestamp: now,
-      attachments: args.attachments,
-    };
-
-    await ctx.db.patch(args.chatId, {
-      messages: [...chat.messages, newMessage],
-      lastMessageAt: now,
-    });
-
-    return null;
-  },
+// Get URL for a stored file
+export const getStorageUrl = query(async (ctx, { storageId }: { storageId: v.Id<"_storage"> }) => {
+  return await ctx.storage.getUrl(storageId);
 });
 
-/**
- * Generate upload URL for image attachments
- */
-export const generateUploadUrl = mutation({
-  args: {},
-  returns: v.string(),
-  handler: async (ctx) => {
-    return await ctx.storage.generateUploadUrl();
-  },
-});
-
-/**
- * Add assistant message to chat (internal - called from action)
- */
-export const addAssistantMessage = internalMutation({
-  args: {
-    chatId: v.id("aiChats"),
-    content: v.string(),
-  },
-  returns: v.null(),
-  handler: async (ctx, args) => {
-    const chat = await ctx.db.get(args.chatId);
-    if (!chat) {
-      throw new Error("Chat not found");
-    }
-
-    const now = Date.now();
-    const newMessage = {
-      role: "assistant" as const,
-      content: args.content,
-      timestamp: now,
-    };
-
-    await ctx.db.patch(args.chatId, {
-      messages: [...chat.messages, newMessage],
-      lastMessageAt: now,
-    });
-
-    return null;
-  },
-});
-
-/**
- * Clear all messages from a chat
- */
+// Clear all messages from a chat
 export const clearChat = mutation({
   args: {
     chatId: v.id("aiChats"),
   },
-  returns: v.null(),
-  handler: async (ctx, args) => {
-    const chat = await ctx.db.get(args.chatId);
-    if (!chat) {
-      return null; // Idempotent - no error if chat doesn't exist
-    }
-
-    await ctx.db.patch(args.chatId, {
+  handler: async (ctx, { chatId }) => {
+    await ctx.db.patch(chatId, {
       messages: [],
       pageContext: undefined,
       lastMessageAt: Date.now(),
     });
-
-    return null;
   },
 });
 
-/**
- * Set page context for a chat (loads page markdown for AI context)
- */
+// Set page context for a chat
 export const setPageContext = mutation({
   args: {
     chatId: v.id("aiChats"),
     pageContext: v.string(),
   },
-  returns: v.null(),
-  handler: async (ctx, args) => {
-    const chat = await ctx.db.get(args.chatId);
-    if (!chat) {
-      throw new Error("Chat not found");
-    }
-
-    await ctx.db.patch(args.chatId, {
-      pageContext: args.pageContext,
+  handler: async (ctx, { chatId, pageContext }) => {
+    await ctx.db.patch(chatId, {
+      pageContext,
     });
-
-    return null;
   },
 });
 
-/**
- * Delete entire chat session
- */
-export const deleteChat = mutation({
-  args: {
-    chatId: v.id("aiChats"),
-  },
-  returns: v.null(),
-  handler: async (ctx, args) => {
-    const chat = await ctx.db.get(args.chatId);
-    if (!chat) {
-      return null; // Idempotent
+// Update assistant message (for streaming)
+export const updateAssistantMessage = mutation({
+    args: {
+        chatId: v.id("aiChats"),
+        assistantResponse: v.string(),
+    },
+    handler: async(ctx, {chatId, assistantResponse}) => {
+        const chat = await ctx.db.get(chatId);
+        if(!chat) return;
+
+        const lastMessage = chat.messages[chat.messages.length - 1];
+
+        if(lastMessage?.role === 'assistant') {
+            await ctx.db.patch(chatId, {
+                messages: [
+                    ...chat.messages.slice(0, -1),
+                    {...lastMessage, content: assistantResponse}
+                ]
+            })
+        } else {
+             await ctx.db.patch(chatId, {
+                messages: [
+                    ...chat.messages,
+                    {
+                        role: "assistant",
+                        content: assistantResponse,
+                        timestamp: Date.now()
+                    }
+                ]
+            })
+        }
     }
-
-    await ctx.db.delete(args.chatId);
-    return null;
-  },
 });
-
-/**
- * Get all chats for a session (for potential future chat history feature)
- */
-export const getChatsBySession = query({
-  args: {
-    sessionId: v.string(),
-  },
-  returns: v.array(
-    v.object({
-      _id: v.id("aiChats"),
-      _creationTime: v.number(),
-      sessionId: v.string(),
-      contextId: v.string(),
-      messages: v.array(messageValidator),
-      pageContext: v.optional(v.string()),
-      lastMessageAt: v.optional(v.number()),
-    }),
-  ),
-  handler: async (ctx, args) => {
-    const chats = await ctx.db
-      .query("aiChats")
-      .withIndex("by_session", (q) => q.eq("sessionId", args.sessionId))
-      .collect();
-
-    return chats;
-  },
-});
-
-/**
- * Save generated image metadata (internal - called from action)
- */
-export const saveGeneratedImage = internalMutation({
-  args: {
-    sessionId: v.string(),
-    prompt: v.string(),
-    model: v.string(),
-    storageId: v.id("_storage"),
-    mimeType: v.string(),
-  },
-  returns: v.id("aiGeneratedImages"),
-  handler: async (ctx, args) => {
-    const imageId = await ctx.db.insert("aiGeneratedImages", {
-      sessionId: args.sessionId,
-      prompt: args.prompt,
-      model: args.model,
-      storageId: args.storageId,
-      mimeType: args.mimeType,
-      createdAt: Date.now(),
-    });
-
-    return imageId;
-  },
-});
-
-/**
- * Get recent generated images for a session (internal - called from action)
- */
-export const getRecentImagesInternal = internalQuery({
-  args: {
-    sessionId: v.string(),
-    limit: v.number(),
-  },
-  returns: v.array(
-    v.object({
-      _id: v.id("aiGeneratedImages"),
-      _creationTime: v.number(),
-      sessionId: v.string(),
-      prompt: v.string(),
-      model: v.string(),
-      storageId: v.id("_storage"),
-      mimeType: v.string(),
-      createdAt: v.number(),
-    })
-  ),
-  handler: async (ctx, args) => {
-    const images = await ctx.db
-      .query("aiGeneratedImages")
-      .withIndex("by_session", (q) => q.eq("sessionId", args.sessionId))
-      .order("desc")
-      .take(args.limit);
-
-    return images;
-  },
-});
-

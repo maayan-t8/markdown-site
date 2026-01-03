@@ -10,7 +10,6 @@ import LogoMarquee from "../components/LogoMarquee";
 import GitHubContributions from "../components/GitHubContributions";
 import Footer from "../components/Footer";
 import SocialFooter from "../components/SocialFooter";
-import NewsletterSignup from "../components/NewsletterSignup";
 import siteConfig from "../config/siteConfig";
 
 // Local storage key for view mode preference
@@ -174,7 +173,7 @@ export default function Home() {
         )}
         <h1 className="home-name">{siteConfig.name}</h1>
 
-        {/* Home intro from Convex page content (synced via npm run sync) */}
+        {/* Home intro from Convex page content (synced via markdown) */}
         {/* Show nothing while loading (undefined), show content if found, fallback to bio only if page doesn't exist (null) */}
         {homeIntro === undefined ? null : homeIntro ? (
           <div
@@ -289,7 +288,7 @@ export default function Home() {
         {siteConfig.newsletter?.enabled &&
           siteConfig.newsletter.signup.home.enabled &&
           siteConfig.newsletter.signup.home.position === "below-intro" && (
-            <NewsletterSignup source="home" />
+             null
           )}
 
         {/* Featured section with optional view toggle */}
@@ -407,7 +406,7 @@ export default function Home() {
       {siteConfig.newsletter?.enabled &&
         siteConfig.newsletter.signup.home.enabled &&
         siteConfig.newsletter.signup.home.position === "above-footer" && (
-          <NewsletterSignup source="home" />
+          null
         )}
 
       {/* Footer section */}

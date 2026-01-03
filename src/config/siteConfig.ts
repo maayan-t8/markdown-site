@@ -427,7 +427,7 @@ export const siteConfig: SiteConfig = {
   // Visitor map configuration
   // Displays real-time visitor locations on the stats page
   visitorMap: {
-    enabled: true, // Set to false to hide the visitor map
+    enabled: false, // Set to false to hide the visitor map
     title: "Live Visitors", // Optional title above the map
   },
 
@@ -454,20 +454,7 @@ export const siteConfig: SiteConfig = {
   // Hardcoded navigation items for React routes
   // Add React route pages (like /stats, /write) that should appear in navigation
   // Set showInNav: false to hide from nav while keeping the route accessible
-  hardcodedNavItems: [
-    {
-      slug: "stats",
-      title: "Stats",
-      order: 10,
-      showInNav: true,
-    },
-    {
-      slug: "write",
-      title: "Write",
-      order: 20,
-      showInNav: true,
-    },
-  ],
+  hardcodedNavItems: [],
 
   // Posts display configuration
   // Controls where the post list appears
@@ -545,7 +532,7 @@ export const siteConfig: SiteConfig = {
   // Set enabled: true and configure AgentMail to activate
   // Requires AGENTMAIL_API_KEY and AGENTMAIL_INBOX environment variables in Convex dashboard
   newsletter: {
-    enabled: true, // Set to true to enable newsletter signup forms
+    enabled: false, // Set to true to enable newsletter signup forms
     signup: {
       home: {
         enabled: true,
@@ -573,7 +560,7 @@ export const siteConfig: SiteConfig = {
   // Requires AGENTMAIL_API_KEY and AGENTMAIL_INBOX in Convex dashboard
   // Optionally set AGENTMAIL_CONTACT_EMAIL to override recipient (defaults to AGENTMAIL_INBOX)
   contactForm: {
-    enabled: true, // Global toggle for contact form feature
+    enabled: false, // Global toggle for contact form feature
     title: "Get in Touch",
     description: "Send us a message and we'll get back to you.",
   },
@@ -616,8 +603,8 @@ export const siteConfig: SiteConfig = {
   // Controls access to the /stats route for viewing site analytics
   // Set enabled: false to make stats page private (route still accessible but shows disabled message)
   statsPage: {
-    enabled: true, // Global toggle for stats page
-    showInNav: true, // Show link in navigation (also controlled via hardcodedNavItems)
+    enabled: false, // Global toggle for stats page
+    showInNav: false, // Show link in navigation (also controlled via hardcodedNavItems)
   },
 
   // Newsletter notifications configuration

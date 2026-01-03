@@ -6,7 +6,6 @@ import PostList from "../components/PostList";
 import BlogHeroCard from "../components/BlogHeroCard";
 import Footer from "../components/Footer";
 import SocialFooter from "../components/SocialFooter";
-import NewsletterSignup from "../components/NewsletterSignup";
 import siteConfig from "../config/siteConfig";
 import { ArrowLeft } from "lucide-react";
 
@@ -200,11 +199,7 @@ export default function Blog() {
       )}
 
       {/* Newsletter signup (below-posts position) */}
-      {siteConfig.newsletter?.enabled &&
-        siteConfig.newsletter.signup.blogPage.enabled &&
-        siteConfig.newsletter.signup.blogPage.position === "below-posts" && (
-          <NewsletterSignup source="blog-page" />
-        )}
+
       {/* Message when posts are disabled on blog page */}
       {!showPosts && (
         <p className="blog-disabled-message">
@@ -214,11 +209,7 @@ export default function Blog() {
       )}
 
       {/* Newsletter signup (above-footer position) */}
-      {siteConfig.newsletter?.enabled &&
-        siteConfig.newsletter.signup.blogPage.enabled &&
-        siteConfig.newsletter.signup.blogPage.position === "above-footer" && (
-          <NewsletterSignup source="blog-page" />
-        )}
+
 
       {/* Footer section */}
       {showFooter && <Footer content={footerPage?.content} />}
