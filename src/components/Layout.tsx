@@ -199,7 +199,7 @@ export default function Layout({ children }: LayoutProps) {
       <div className="top-nav">
         {/* Logo on the left (visible on all pages) */}
         {siteConfig.innerPageLogo.enabled && siteConfig.logo && (
-          <Link to="/" className="top-nav-logo-link">
+          <Link to="/documentation" className="top-nav-logo-link">
             <img
               src={siteConfig.logo}
               alt={siteConfig.name}
