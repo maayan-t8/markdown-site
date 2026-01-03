@@ -643,7 +643,7 @@ export const siteConfig: SiteConfig = {
     enabled: true, // Global toggle for docs section
     slug: "docs", // Base URL: /docs
     title: "Home", // Page title
-    showInNav: true, // Show "Docs" link in navigation
+    showInNav: false, // Show "Docs" link in navigation
     order: 0, // Nav order (lower = first)
     defaultExpanded: true, // Expand all sidebar groups by default
   },

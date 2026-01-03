@@ -2,7 +2,7 @@
 
 This is the homepage index of all published content.
 
-## Blog Posts (25)
+## Blog Posts (24)
 
 - **[Aetna Care Management (CVS Health)](/raw/aetna-care-management-cvs-health.md)** - Aetna Care Management is the care coordination and medical management division of Aetna, a CVS Health company, delivering comprehensive care management services to over 36 million members across comme
   - Date: 2026-01-03 | Reading time: 14 min read | Tags: competitor-analysis
@@ -38,8 +38,6 @@ This is the homepage index of all published content.
   - Date: 2026-01-02 | Reading time: 15 min read | Tags: competitor-analysis
 - **[Phreesia](/raw/phreesia.md)** - Phreesia is a publicly traded (NYSE: PHR) healthcare technology company founded in 2005 that provides SaaS-based patient intake, engagement, and activation solutions for healthcare organizations.
   - Date: 2026-01-02 | Reading time: 17 min read | Tags: competitor-analysis, public-company
-- **[Configure your fork in one command](/raw/fork-configuration-guide.md)** - Two options to set up your forked markdown framework: automated JSON config with npm run configure, or step-by-step manual guide.
-  - Date: 2025-12-20 | Reading time: 4 min read | Tags: configuration, setup, fork, tutorial
 - **[Current Health](/raw/current-health.md)** - Current Health is a care-at-home technology company that provides remote patient monitoring (RPM), telehealth, and hospital-at-home solutions to healthcare organizations.
   - Date: 2025-01-03 | Reading time: 15 min read | Tags: competitor-analysis
 - **[Biofourmis](/raw/biofourmis.md)** - Biofourmis is a global digital health and technology-enabled care delivery company founded in 2015, specializing in AI-driven virtual care, remote patient monitoring (RPM), and digital therapeutics.
@@ -59,10 +57,10 @@ This is the homepage index of all published content.
 
 - **[Competitors](/raw/blog-intro.md)**
 - **[Comparables](/raw/comparables-intro.md)**
-- **[Documentation](/raw/documentation.md)**
+- **[Dimer Health](/raw/documentation.md)**
 
 ---
 
-**Total Content:** 25 posts, 3 pages
+**Total Content:** 24 posts, 3 pages
 
 All content is available as raw markdown files at `/raw/{slug}.md`
